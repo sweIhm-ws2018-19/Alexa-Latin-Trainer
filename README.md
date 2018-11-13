@@ -9,7 +9,7 @@ Eine [AWS Lambda](http://aws.amazon.com/lambda) Funktion, mit der man lateinisch
 ## Anleitung
 Nachdem der Skill gestartet wird und bevor die Abfrage der Vokabeln beginnt, werden dem User Fragen zur Konfiguration gestellt.
 
-Beispiele für User-Eingaben
+Beispiele für Spracheingaben durch den User:
 - Starten des Skills: "Alexa, lerne Latein mit mir"
 - Modusauswahl: "Fortschritt" oder "Zufall"
 - Vokabelabfrage: bei richtigen Antworten wird sofort die nächste Abfrage eingeleitet, bei nicht richtigen Antworten hat der User die Möglichkeit die aktuelle Vokabel zu "wiederholen", zu "überspringen" oder "auflösen" zu lassen
