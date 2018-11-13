@@ -1,0 +1,31 @@
+1. Sprint
+1. Sprint für das Praktikumsprojekt (siehe Projektauftrag)
+
+Ihre Aufgabe:
+
+1. Release Ihres Praktikumsprodukts
+Vorgehen:
+
+Aktualisieren Sie das README.md Ihres Github Repositories. Schreiben Sie den Namen und eine kurze Beschreibung Ihres Skills.
+Überprüfen und aktualisieren Sie Ihren Product-Backlog.
+Sprint-Planning Meeting:
+Setzen Sie ein Sprint-Ziel (ein fachliches Ziel, nicht Release-1). Erstellen sie eine Wiki-Seite für den 1. Sprint. Notieren Sie das Sprintziel und eine Zusammenfassung der wesentlichen User Stories auf der Wiki-Seite.
+Erstellen Sie einen Sprint-Backlog. Verschieben Sie dazu diejenigen User Stories aus dem Product Backlog, die Sie für den 1. Sprint auswählen in die Spalte 'Ready' in Ihrem agilen Board (Project in Ihrem Github Repository). Kennzeichnen Sie diese User Stories mit dem Milestone 'Sprint1'.
+Weisen Sie im Sprint-Backlog jeder User Story ein verantwortliches Teammitglied zu (Auswahl als 'Assignee' im jeweiligen Github Issue).
+während des Sprints:
+Stellen Sie für jede User Story Ihre Lösungsidee wenn möglich als UML Diagramm (z.B. UML Klassendiagramm oder UML Sequenzdiagramm) dar. Es kann manchmal sinnvoll sein, dass Sie die Lösungsidee zu mehreren User Stories in einem Diagramm zusammenfassen.
+Verschieben Sie eine User Story, an der Sie arbeiten in Ihrem Project Board in die Spalte 'in Progress'.
+Programmieren Sie Ihre User Story.
+Erstellen Sie JUnit-Tests. JUnit-Tests stehen in einem Maven Projekt unter dem Verzeichnis src/test/java.Testen Sie automatisiert.
+Fragen und Anmerkungen zu Ihrer User Story notieren Sie in Kommentaren des jeweiligen Github Issues.
+Machen Sie häufige commits in Github.
+Stellen Sie sicher, dass Ihr Projekt in travis-ci gebaut werden kann (siehe https://moodle.hm.edu/mod/page/view.php?id=349664).
+Kennzeichnen Sie eine User Story mit 'ready for review', wenn das verantwortliche Teammitglied sicher gestellt hat, dass alle Akzeptanzkriterien erfüllt sind. Ein weiteres Teammitglied überprüft die Akzeptanzkritieren und lässt sich den Code erklären. Nach dem Code Review und möglichen Änderungen, die sich aus dem Code Review ergeben, wird die User Story auf dem Project Board in die Spalte Done verschoben. 
+Checken Sie allen Code und alle Dokumente in Ihr Git-Repository ein!
+
+Abgabe im Team:
+
+Taggen Sie Ihr Release in dem Master Branch in Ihrem Github Repository (siehe https://help.github.com/articles/creating-releases/).
+Stellen Sie sicher, dass sich alle Teammitglieder in die Teamarbeit einbringen. 
+Stellen Sie sicher, dass Ihr Skill getestet werden kann. Tragen Sie dazu alle Ihre Teammitglieder und Ihre Professorin bei mindestens einer funktionierenden Alexa Skills Console unter Settings->User Permissions ein. Der Amazon Account Ihrer Professorin ist 'gsocher@yahoo.com'.
+Schreiben Sie in das Textfeld unten den Invocation Name Ihres Skills, d.h. 'Alexa, öffne <IHR INVOCATION NAME>'
