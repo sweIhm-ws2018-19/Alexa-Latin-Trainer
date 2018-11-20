@@ -13,6 +13,6 @@ Beispiele für Spracheingaben durch den User:
 - Starten des Skills: "Alexa, lerne Latein mit mir"
 - Modusauswahl: "Fortschritt" oder "Zufall"
 - Vokabelabfrage: bei richtigen Antworten wird sofort die nächste Abfrage eingeleitet, bei nicht richtigen Antworten hat der User die Möglichkeit die aktuelle Vokabel zu "wiederholen", zu "überspringen" oder "auflösen" zu lassen
-- Abfrage des Fortschritts: "Highscore"
-- Skill beenden: "Ende"
+- Abfrage des Fortschritts: "Wo bin ich stehen geblieben?"
+- Skill beenden: "Ende" -> Alexa sagt den Highscore der aktuellen Session an und verabschiedet sich
 
