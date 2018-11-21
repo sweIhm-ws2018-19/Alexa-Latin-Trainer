@@ -16,25 +16,107 @@
           "samples": []
         },
         {
-          "name": "MyColorIsIntent",
+          "name": "SetModeIntent",
           "slots": [
             {
-              "name": "Color",
-              "type": "LIST_OF_COLORS"
+              "name": "mode",
+              "type": "LIST_OF_MODES"
             }
           ],
           "samples": [
-            " Meine Lieblingsfarbe ist {Color}",
-            " Ich mag {Color}"
+            "{mode}"
           ]
         },
         {
-          "name": "WhatsMyColorIntent",
+          "name": "SetDirectionIntent",
+          "slots": [
+            {
+              "name": "dir",
+              "type": "LIST_OF_DIRS"
+            }
+          ],
+          "samples": [
+            "{dir}",
+            "Von {dir}",
+            "{dir}e"
+          ]
+        },
+        {
+          "name": "NextWordIntent",
           "slots": [],
           "samples": [
             "was ist meine Lieblingsfarbe",
             "welche Farbe mag ich am liebsten",
             "sag mir meine Lieblingsfarbe"
+          ]
+        },
+        {
+          "name": "CheckAnswerIntent",
+          "slots": [],
+          "samples": [
+            "was ist meine Lieblingsfarbe",
+            "welche Farbe mag ich am liebsten",
+            "sag mir meine Lieblingsfarbe"
+          ]
+        },
+        {
+          "name": "NoIdeaIntent",
+          "slots": [],
+          "samples": [
+            "weiss nicht",
+            "keine Ahnung",
+            "kein Plan"
+          ]
+        },
+        {
+          "name": "TellMeIntent",
+          "slots": [],
+          "samples": [
+            "Aufloesen",
+            "Sags mir"
+          ]
+        },
+        {
+          "name": "SkipThisOneIntent",
+          "slots": [],
+          "samples": [
+            "ueberspringen",
+            "next"
+          ]
+        },
+        {
+          "name": "WhatsMySuccessIntent",
+          "slots": [],
+          "samples": [
+            "Letzter Stand",
+            "Wo bin ich stehen geblieben",
+            "Was ist mein letzter Stand"
+          ]
+        },
+        {
+          "name": "RepeatWordIntent",
+          "slots": [],
+          "samples": [
+            "Wiederholen",
+            "Nochmal",
+            "Wie bitte?"
+          ]
+        },
+        {
+          "name": "WhatsMyCurrentHighscoreIntent",
+          "slots": [],
+          "samples": [
+            "Punktestand",
+            "Wie viele Punkte hab ich gerade?"
+          ]
+        },
+        {
+          "name": "WhatsMyAllTimeHighscoreIntent",
+          "slots": [],
+          "samples": [
+            "bester Punktestand",
+            "Was ist mein Highscore",
+            "Highscore"
           ]
         },
         {

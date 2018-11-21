@@ -2,11 +2,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>alexa-skills-kit-samples</groupId>
-  <artifactId>colorpicker</artifactId>
+  <artifactId>latintrainer</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>colorpicker</name>
-  <url>http://developer.amazon.com/ask</url>
+  <name>latintrainer</name>
+  <url>https://github.com/sweIhm-ws2018-19/skillproject-di-1</url>
   <licenses>
     <license>
       <name>The Apache License, Version 2.0</name>
@@ -15,16 +15,22 @@
   </licenses>
   <developers>
     <developer>
-      <name>Alexa Skills Kit</name>
-      <email>ask-sdk-java@amazon.com</email>
-      <organization>Alexa</organization>
-      <organizationUrl>http://developer.amazon.com/ask</organizationUrl>
+      <name>Erwin Kupris</name>
+      <email>kupris@hm.edu</email>
+      <organization>skillproject-di-1</organization>
+      <organizationUrl>https://github.com/sweIhm-ws2018-19/skillproject-di-1</organizationUrl>
+    </developer>
+    <developer>
+      <name>Bahadir Suezer</name>
+      <email>suezer@hm.edu</email>
+      <organization>skillproject-di-1</organization>
+      <organizationUrl>https://github.com/sweIhm-ws2018-19/skillproject-di-1</organizationUrl>
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:https://github.com/amzn/alexa-skills-kit-java.git</connection>
-    <developerConnection>scm:git:https://github.com/amzn/alexa-skills-kit-java.git</developerConnection>
-    <url>https://github.com/amzn/alexa-skills-kit-java.git</url>
+    <connection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-di-1.git</connection>
+    <developerConnection>scm:git:https://github.com/sweIhm-ws2018-19/skillproject-di-1.git</developerConnection>
+    <url>https://github.com/sweIhm-ws2018-19/skillproject-di-1.git</url>
   </scm>
 
   <dependencies>
@@ -52,5 +58,5 @@
       </plugins>
     </pluginManagement>
   </build>
-  
+
 </project>
