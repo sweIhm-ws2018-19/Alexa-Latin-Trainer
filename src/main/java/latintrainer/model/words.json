@@ -1,0 +1,102 @@
+{
+  "1": {
+    "latin": "domus",
+    "german": "Haus",
+    "rating": 0
+  },
+  "2": {
+    "latin": "sol",
+    "german": "Sonne",
+    "rating": 0
+  },
+  "3": {
+    "latin": "amicus",
+    "german": "Freund",
+    "rating": 0
+  },
+  "4": {
+    "latin": "magister",
+    "german": "Lehrer",
+    "rating": 0
+  },
+  "5": {
+    "latin": "studium",
+    "german": "Eifer",
+    "rating": 0
+  },
+  "6": {
+    "latin": "amare",
+    "german": "lieben",
+    "rating": 0
+  },
+  "7": {
+    "latin": "ante",
+    "german": "vor",
+    "rating": 0
+  },
+  "8": {
+    "latin": "videre",
+    "german": "sehen",
+    "rating": 0
+  },
+  "9": {
+    "latin": "montis",
+    "german": "Berg",
+    "rating": 0
+  },
+  "10": {
+    "latin": "verbum",
+    "german": "Wort",
+    "rating": 0
+  },
+  "11": {
+    "latin": "ius",
+    "german": "Recht",
+    "rating": 0
+  },
+  "12": {
+    "latin": "lex",
+    "german": "Gesetz",
+    "rating": 0
+  },
+  "13": {
+    "latin": "mandare",
+    "german": "anvertrauen",
+    "rating": 0
+  },
+  "14": {
+    "latin": "fortis",
+    "german": "tapfer",
+    "rating": 0
+  },
+  "15": {
+    "latin": "conari",
+    "german": "versuchen",
+    "rating": 0
+  },
+  "16": {
+    "latin": "redire",
+    "german": "zurueckkehren",
+    "rating": 0
+  },
+  "17": {
+    "latin": "bene",
+    "german": "gut",
+    "rating": 0
+  },
+  "18": {
+    "latin": "gravis",
+    "german": "schwer",
+    "rating": 0
+  },
+  "19": {
+    "latin": "tantum",
+    "german": "nur",
+    "rating": 0
+  },
+  "20": {
+    "latin": "venire",
+    "german": "kommen",
+    "rating": 0
+  }
+}
