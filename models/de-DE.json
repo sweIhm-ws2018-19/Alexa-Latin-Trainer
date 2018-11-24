@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "lieblingsfarbe",
+      "invocationName": "latintrainer",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -45,18 +45,21 @@
           "name": "NextWordIntent",
           "slots": [],
           "samples": [
-            "was ist meine Lieblingsfarbe",
-            "welche Farbe mag ich am liebsten",
-            "sag mir meine Lieblingsfarbe"
+            "Starte die Demo",
+            "Neues Wort",
+            "Ueberspringen"
           ]
         },
         {
           "name": "CheckAnswerIntent",
-          "slots": [],
+          "slots": [
+            {
+              "name": "Answer",
+              "type": "LIST_OF_ANSWERS"
+            }
+          ],
           "samples": [
-            "was ist meine Lieblingsfarbe",
-            "welche Farbe mag ich am liebsten",
-            "sag mir meine Lieblingsfarbe"
+            "Die Antwort ist {Answer}"
           ]
         },
         {
@@ -74,14 +77,6 @@
           "samples": [
             "Aufloesen",
             "Sags mir"
-          ]
-        },
-        {
-          "name": "SkipThisOneIntent",
-          "slots": [],
-          "samples": [
-            "ueberspringen",
-            "next"
           ]
         },
         {
@@ -130,46 +125,141 @@
       ],
       "types": [
         {
-          "name": "LIST_OF_COLORS",
+          "name": "LIST_OF_ANSWERS",
           "values": [
             {
               "name": {
-                "value": "grün"
+                "value": "Sonne"
               }
             },
             {
               "name": {
-                "value": "blau"
+                "value": "Haus"
               }
             },
             {
               "name": {
-                "value": "lila"
+                "value": "Freund"
               }
             },
             {
               "name": {
-                "value": "rot"
+                "value": "Lehrer"
               }
             },
             {
               "name": {
-                "value": "orange"
+                "value": "Eifer"
               }
             },
             {
               "name": {
-                "value": "rosa"
+                "value": "lieben"
               }
             },
             {
               "name": {
-                "value": "türkis"
+                "value": "vor"
               }
             },
             {
               "name": {
-                "value": "gelb"
+                "value": "Berg"
+              }
+            },
+            {
+              "name": {
+                "value": "Wort"
+              }
+            },
+            {
+              "name": {
+                "value": "Recht"
+              }
+            },
+            {
+              "name": {
+                "value": "Gesetz"
+              }
+            },
+            {
+              "name": {
+                "value": "anvertrauen"
+              }
+            },
+            {
+              "name": {
+                "value": "tapfer"
+              }
+            },
+            {
+              "name": {
+                "value": "versuchen"
+              }
+            },
+            {
+              "name": {
+                "value": "zurueckkehren"
+              }
+            },
+            {
+              "name": {
+                "value": "gut"
+              }
+            },
+            {
+              "name": {
+                "value": "schwer"
+              }
+            },
+            {
+              "name": {
+                "value": "nur"
+              }
+            },
+            {
+              "name": {
+                "value": "kommen"
+              }
+            },
+            {
+              "name": {
+                "value": "sehen"
+              }
+            }
+          ]
+        },
+        {
+          "name": "LIST_OF_DIRS",
+          "values": [
+            {
+              "name": {
+                "value": "Deutsch"
+              }
+            },
+            {
+              "name": {
+                "value": "Lateinisch"
+              }
+            }
+          ]
+        },
+        {
+          "name": "LIST_OF_MODES",
+          "values": [
+            {
+              "name": {
+                "value": "Zufall"
+              }
+            },
+            {
+              "name": {
+                "value": "Fortschritt"
+              }
+            },
+            {
+              "name": {
+                "value": "Kapitel"
               }
             }
           ]

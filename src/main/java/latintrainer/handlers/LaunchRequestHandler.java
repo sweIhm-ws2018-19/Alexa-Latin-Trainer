@@ -18,11 +18,24 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.requestType;
+import main.java.latintrainer.model.*;
 
 public class LaunchRequestHandler implements RequestHandler {
+    public static Session currentSession;
+
+    static {
+        try {
+            currentSession = new Session();
+            currentSession.newQuery();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public boolean canHandle(HandlerInput input) {
         return input.matches(requestType(LaunchRequest.class));
@@ -30,8 +43,8 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Start um direkt zu beginnen oder Hilfe um Zusatzinformationen zu bekommen.";
-        String repromptText = "Bitte sage Start oder Hilfe.";
+        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Starte die Demo, um direkt zu beginnen, oder Hilfe um Zusatzinformationen zu bekommen.";
+        String repromptText = "Bitte sage Starte die Demo oder Hilfe.";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)

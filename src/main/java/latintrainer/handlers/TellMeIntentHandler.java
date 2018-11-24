@@ -6,19 +6,18 @@ import com.amazon.ask.model.Response;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-
+import static main.java.latintrainer.handlers.LaunchRequestHandler.currentSession;
 public class TellMeIntentHandler implements RequestHandler{
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("AMAZON.HelpIntent"));
+        return input.matches(intentName("TellMeIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
-                "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
-                "willst. Möchtest du die Erfahrung beginnen?";
-        String repromptText = "Sage Start, um loszulegen.";
+        String answer = currentSession.getCurrentQuery().getGermanWord();
+        String speechText = "Die Antwort ist " + answer + ". Sage Neues Wort um ein neues Wort zu bekommen.";
+        String repromptText = "Sage Neues Wort um ein neues Wort zu bekommen.";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)

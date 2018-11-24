@@ -27,7 +27,6 @@ import main.java.latintrainer.handlers.NextWordIntentHandler;
 import main.java.latintrainer.handlers.CheckAnswerIntentHandler;
 import main.java.latintrainer.handlers.NoIdeaIntentHandler;
 import main.java.latintrainer.handlers.TellMeIntentHandler;
-import main.java.latintrainer.handlers.SkipThisOneIntentHandler;
 import main.java.latintrainer.handlers.WhatsMySuccessIntentHandler;
 import main.java.latintrainer.handlers.RepeatWordIntentHandler;
 import main.java.latintrainer.handlers.WhatsMyCurrentHighscoreIntentHandler;
@@ -44,7 +43,6 @@ public class LatinTrainerStreamHandler extends SkillStreamHandler {
                         new CheckAnswerIntentHandler(),
                         new NoIdeaIntentHandler(),
                         new TellMeIntentHandler(),
-                        new SkipThisOneIntentHandler(),
                         new WhatsMySuccessIntentHandler(),
                         new RepeatWordIntentHandler(),
                         new WhatsMyCurrentHighscoreIntentHandler(),

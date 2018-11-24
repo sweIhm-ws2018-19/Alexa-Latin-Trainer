@@ -12,15 +12,13 @@ import static com.amazon.ask.request.Predicates.intentName;
 public class NoIdeaIntentHandler implements RequestHandler{
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("AMAZON.HelpIntent"));
+        return input.matches(intentName("NoIdeaIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
-                "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
-                "willst. Möchtest du die Erfahrung beginnen?";
-        String repromptText = "Sage Start, um loszulegen.";
+        String speechText = "Kein Problem. Willst du das Wort wiederholen, ueberspringen oder aufloesen?";
+        String repromptText = "Willst du das Wort wiederholen, ueberspringen oder aufloesen?";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)
