@@ -21,10 +21,10 @@ public class NextWordIntentHandler implements RequestHandler{
     @Override
     public Optional<Response> handle(HandlerInput input) {
         String nextLatinWord = currentSession.getCurrentQuery().getLatinWord();
-        String speechText = "Das zu uebersetzende Wort lautet " + nextLatinWord + ". Bitte sage, die Antwort ist x y, " +
-                "oder wenn du es nicht weisst, keine Ahnung.";
+        String speechText = "Das zu übersetzende Wort lautet " + nextLatinWord + ". Bitte sage, die Antwort ist x y, " +
+                "oder wenn du es nicht weißt, keine Ahnung.";
         return input.getResponseBuilder()
-                .withSimpleCard("ColorSession", speechText)
+                .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
                 .withReprompt(speechText)
                 .withShouldEndSession(false)

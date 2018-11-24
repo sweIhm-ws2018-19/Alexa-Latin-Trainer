@@ -42,8 +42,8 @@ public class CheckAnswerIntentHandler implements RequestHandler{
                 speechText = "Richtig. Sage Neues Wort um weiterzumachen";
                 repromptText = "Sage Neues Wort um weiterzumachen";
             } else{
-                speechText = "Falsch. Willst du das Wort wiederholen, ueberspringen oder aufloesen?";
-                repromptText = "Willst du das Wort wiederholen, ueberspringen oder aufloesen?";
+                speechText = "Falsch. Willst du das Wort wiederholen, überspringen oder auflösen?";
+                repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
             }
         } else {
             // Render an error since we don't know what the users answer is.
@@ -54,7 +54,7 @@ public class CheckAnswerIntentHandler implements RequestHandler{
 
         ResponseBuilder responseBuilder = input.getResponseBuilder();
 
-        responseBuilder.withSimpleCard("ColorSession", speechText)
+        responseBuilder.withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
                 .withShouldEndSession(false);
 

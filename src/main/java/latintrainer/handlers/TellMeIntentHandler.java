@@ -19,7 +19,7 @@ public class TellMeIntentHandler implements RequestHandler{
         String speechText = "Die Antwort ist " + answer + ". Sage Neues Wort um ein neues Wort zu bekommen.";
         String repromptText = "Sage Neues Wort um ein neues Wort zu bekommen.";
         return input.getResponseBuilder()
-                .withSimpleCard("ColorSession", speechText)
+                .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
                 .withReprompt(repromptText)
                 .withShouldEndSession(false)

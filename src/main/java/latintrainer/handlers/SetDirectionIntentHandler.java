@@ -18,10 +18,10 @@ public class SetDirectionIntentHandler implements RequestHandler{
     public Optional<Response> handle(HandlerInput input) {
         String speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
                 "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
-                "willst. Möchtest du die Erfahrung beginnen?";
-        String repromptText = "Sage Start, um loszulegen.";
+                "willst. Möchtest du die Erfahrung beginnen? Sage Starte die Demo, um loszulegen.";
+        String repromptText = "Sage Starte die Demo, um loszulegen.";
         return input.getResponseBuilder()
-                .withSimpleCard("ColorSession", speechText)
+                .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
                 .withReprompt(repromptText)
                 .withShouldEndSession(false)

@@ -46,7 +46,7 @@ public class LaunchRequestHandler implements RequestHandler {
         String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Starte die Demo, um direkt zu beginnen, oder Hilfe um Zusatzinformationen zu bekommen.";
         String repromptText = "Bitte sage Starte die Demo oder Hilfe.";
         return input.getResponseBuilder()
-                .withSimpleCard("ColorSession", speechText)
+                .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
                 .withReprompt(repromptText)
                 .build();

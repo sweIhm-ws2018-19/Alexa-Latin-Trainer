@@ -17,10 +17,10 @@ public class NoIdeaIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Kein Problem. Willst du das Wort wiederholen, ueberspringen oder aufloesen?";
-        String repromptText = "Willst du das Wort wiederholen, ueberspringen oder aufloesen?";
+        String speechText = "Kein Problem. Willst du das Wort wiederholen, überspringen oder auflösen?";
+        String repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
         return input.getResponseBuilder()
-                .withSimpleCard("ColorSession", speechText)
+                .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
                 .withReprompt(repromptText)
                 .withShouldEndSession(false)
