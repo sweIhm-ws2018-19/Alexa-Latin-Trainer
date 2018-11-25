@@ -22,6 +22,7 @@ public class JsonHandler {
 
         System.out.println(word);
     }
+
     public void readQuery() throws IOException {
         File file = new File("src/main/java/latintrainer/model/words.json");
         ObjectMapper om = new ObjectMapper();

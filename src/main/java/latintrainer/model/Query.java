@@ -9,7 +9,7 @@ public class Query {
     private final int rating;
 
     @JsonCreator
-    Query(@JsonProperty("latin") String latin, @JsonProperty("german") String german, @JsonProperty("rating")int rating)
+    public Query(@JsonProperty("latin") String latin, @JsonProperty("german") String german, @JsonProperty("rating")int rating)
     {
         this.germanWord = german;
         this.latinWord = latin;

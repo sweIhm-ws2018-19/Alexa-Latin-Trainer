@@ -4,11 +4,11 @@ public class Chapter {
 
     private int chapter;
 
-    Chapter(int chapter){
+    public Chapter(int chapter){
         this.chapter=chapter;
     }
 
-    public int getChapter() {
+    public int getChapterAsInt() {
         return chapter;
     }
 
@@ -20,4 +20,5 @@ public class Chapter {
     public String toString() {
         return (String.valueOf(chapter));
     }
+
 }
