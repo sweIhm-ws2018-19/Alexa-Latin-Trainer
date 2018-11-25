@@ -48,27 +48,27 @@ public class Session {
     }
 
     // get a new set of Words
-    public void newQuery() throws IOException {
-        int newIndex;
-        // not in sprint 1: check here what chapter were in and which mode the user chose
-        // String mode = this.getMode().toString();
-        // int chapter = Integer.parseInt(this.getChapter().toString());
-        //
-        //
-        newIndex = (int) (Math.random()*20);
-        newQuery(newIndex);
-    }
-
-    private void newQuery(int index) throws IOException {
-        File file = new File("src/main/java/latintrainer/model/words.json");
-        ObjectMapper om = new ObjectMapper();
-        TypeFactory typeFactory = om.getTypeFactory();
-        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Query.class);
-
-        Map<String, Query> words = om.readValue(file, mapType);
-        Query out = words.get(String.valueOf(index));
-        currentQuery = out;
-    }
+//    public void newQuery() throws IOException {
+//        int newIndex;
+//        // not in sprint 1: check here what chapter were in and which mode the user chose
+//        // String mode = this.getMode().toString();
+//        // int chapter = Integer.parseInt(this.getChapter().toString());
+//        //
+//        //
+//        newIndex = (int) (Math.random()*20);
+//        newQuery(newIndex);
+//    }
+//
+//    private void newQuery(int index) throws IOException {
+//        File file = new File("src/main/java/latintrainer/model/words.json");
+//        ObjectMapper om = new ObjectMapper();
+//        TypeFactory typeFactory = om.getTypeFactory();
+//        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Query.class);
+//
+//        Map<String, Query> words = om.readValue(file, mapType);
+//        Query out = words.get(String.valueOf(index));
+//        currentQuery = out;
+//    }
 
     private Mode setMode(String mode) {
         Mode result = Mode.RANDOM;

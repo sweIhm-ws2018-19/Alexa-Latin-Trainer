@@ -30,7 +30,6 @@ public class LaunchRequestHandler implements RequestHandler {
     static {
         try {
             currentSession = new Session();
-            currentSession.newQuery();
         } catch (IOException e) {
             e.printStackTrace();
         }

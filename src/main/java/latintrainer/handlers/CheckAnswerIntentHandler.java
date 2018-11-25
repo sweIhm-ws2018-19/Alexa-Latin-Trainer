@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.LaunchRequestHandler.currentSession;
+import static main.java.latintrainer.handlers.NextWordIntentHandler.currentQuery;
 import static main.java.latintrainer.handlers.NextWordIntentHandler.ANSWER_SLOT;
 
 public class CheckAnswerIntentHandler implements RequestHandler{
@@ -30,7 +30,7 @@ public class CheckAnswerIntentHandler implements RequestHandler{
 
         // Get the color slot from the list of slots.
         Slot answerSlot = slots.get(ANSWER_SLOT);
-        String answer = currentSession.getCurrentQuery().getGermanWord();
+        String answer = currentQuery.getGermanWord();
         String speechText, repromptText;
         boolean isAskResponse = false;
 
@@ -38,11 +38,11 @@ public class CheckAnswerIntentHandler implements RequestHandler{
         if (answerSlot != null) {
             // Store the user's favorite color in the Session and create response.
             String userAnswer = answerSlot.getValue();
-            if (userAnswer.equals(answer)) {
+            if (userAnswer.equalsIgnoreCase(answer)) {
                 speechText = "Richtig. Sage Neues Wort um weiterzumachen";
                 repromptText = "Sage Neues Wort um weiterzumachen";
             } else{
-                speechText = "Falsch. Willst du das Wort wiederholen, überspringen oder auflösen?";
+                speechText = String.format("Falsch. Es ist nicht %s. Willst du das Wort wiederholen, überspringen oder auflösen?", userAnswer);
                 repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
             }
         } else {

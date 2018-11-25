@@ -6,7 +6,7 @@ import com.amazon.ask.model.Response;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.LaunchRequestHandler.currentSession;
+import static main.java.latintrainer.handlers.NextWordIntentHandler.currentQuery;
 
 public class RepeatWordIntentHandler implements RequestHandler{
     @Override
@@ -16,7 +16,7 @@ public class RepeatWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String nextLatinWord = currentSession.getCurrentQuery().getLatinWord();
+        String nextLatinWord = currentQuery.getLatinWord();
         String speechText = "Das zu übersetzende Wort lautet " + nextLatinWord + ". Bitte sage, die Antwort ist x y, " +
                 "oder wenn du es nicht weißt, keine Ahnung.";
         return input.getResponseBuilder()
