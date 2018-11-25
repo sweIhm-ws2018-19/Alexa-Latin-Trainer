@@ -12,11 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Session {
-    private final Direction dir;
-    private final Mode mode;
+    private Direction dir;
+    private Mode mode;
     private Chapter chapter;
     private Highscore currentHighscore;
-    private final Highscore allTimeHighscore;
+    private Highscore allTimeHighscore;
     private Query currentQuery;
     private int index;
 
@@ -24,11 +24,11 @@ public class Session {
     public Session( @JsonProperty("dir") String dir, @JsonProperty("mode") String mode,
                     @JsonProperty("chapter") int chapter, @JsonProperty("currentHighscore") int currentHighscore,
                     @JsonProperty("allTimeHighscore") int allTimeHighscore) {
-        this.dir = setDir(dir);
-        this.mode = setMode(mode);
-        this.chapter = setChapter(chapter);
-        this.currentHighscore = setCurrentHighscore(currentHighscore);
-        this.allTimeHighscore = setAllTimeHighscore(allTimeHighscore);
+        this.dir = Direction.valueOf(dir);
+        this.mode = Mode.valueOf(mode);
+        this.chapter = new Chapter(chapter);
+        this.currentHighscore = new Highscore(currentHighscore);
+        this.allTimeHighscore = new Highscore(allTimeHighscore);
     }
 
 
@@ -48,48 +48,51 @@ public class Session {
     }
 
     // get a new set of Words
-//    public void newQuery() throws IOException {
-//        int newIndex;
-//        // not in sprint 1: check here what chapter were in and which mode the user chose
-//        // String mode = this.getMode().toString();
-//        // int chapter = Integer.parseInt(this.getChapter().toString());
-//        //
-//        //
-//        newIndex = (int) (Math.random()*20);
-//        newQuery(newIndex);
-//    }
-//
-//    private void newQuery(int index) throws IOException {
-//        File file = new File("src/main/java/latintrainer/model/words.json");
-//        ObjectMapper om = new ObjectMapper();
-//        TypeFactory typeFactory = om.getTypeFactory();
-//        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Query.class);
-//
-//        Map<String, Query> words = om.readValue(file, mapType);
-//        Query out = words.get(String.valueOf(index));
-//        currentQuery = out;
-//    }
+    public void newQuery() throws IOException {
+        int newIndex;
+        // not in sprint 1: check here what chapter were in and which mode the user chose
+        // String mode = this.getMode().toString();
+        // int chapter = Integer.parseInt(this.getChapterAsInt().toString());
+        //
+        //
+        newIndex = (int) (Math.random()*20);
+        newQuery(newIndex);
+    }
+
+    private void newQuery(int index) throws IOException {
+        File file = new File("src/main/java/latintrainer/model/words.json");
+        ObjectMapper om = new ObjectMapper();
+        TypeFactory typeFactory = om.getTypeFactory();
+        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Query.class);
+
+        Map<String, Query> words = om.readValue(file, mapType);
+        Query out = words.get(String.valueOf(index));
+        currentQuery = out;
+    }
 
     private Mode setMode(String mode) {
-        Mode result = Mode.RANDOM;
-        return result;
+        this.mode = Mode.valueOf(mode);
+        return this.mode;
     }
 
     private Direction setDir(String dir) {
-        Direction result = Direction.GERMAN;
-        return result;
+        this.dir = Direction.valueOf(dir);
+        return this.dir;
     }
 
-    private Chapter setChapter(int chapter) {
-        return new Chapter(1);
+    private Chapter setChapt(int chapter) {
+        this.chapter.setChapter(chapter);
+        return this.chapter;
     }
 
     private Highscore setAllTimeHighscore(int allTimeHighscore) {
-        return new Highscore(9000);
+        this.allTimeHighscore.setHighscore(allTimeHighscore);
+        return this.allTimeHighscore;
     }
 
     private Highscore setCurrentHighscore(int currentHighscore) {
-        return new Highscore(1);
+        this.currentHighscore.setHighscore(currentHighscore);
+        return this.currentHighscore;
     }
 
     public int getIndex() {
