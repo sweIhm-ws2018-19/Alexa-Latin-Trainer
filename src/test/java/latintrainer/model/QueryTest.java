@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class QueryTest {
 
-    Query sut = new Query("domus", "Haus", 2);
+    Query sut = new Query(1,"domus", "Haus", 2);
 
     @Test
     public void checkRatingValue() {

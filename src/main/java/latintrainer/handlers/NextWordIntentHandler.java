@@ -4,7 +4,6 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
-import java.io.IOException;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
@@ -16,15 +15,7 @@ public class NextWordIntentHandler implements RequestHandler{
     public static final String ANSWER_KEY = "ANSWER";
     public static final String ANSWER_SLOT = "Answer";
     public static Query currentQuery;
-    //    public static Query currentQuery;
-//
-//    static {
-//        try {
-//            currentQuery = new Query();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
     @Override
     public boolean canHandle(HandlerInput input) {
         return input.matches(intentName("NextWordIntent"));
