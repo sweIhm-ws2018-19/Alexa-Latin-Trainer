@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Session {
     private Direction dir;
@@ -51,11 +52,11 @@ public class Session {
     public void newQuery() throws IOException {
         int newIndex;
         // not in sprint 1: check here what chapter were in and which mode the user chose
-        // String mode = this.getMode().toString();
+        // String mode = this.getModeName().toString();
         // int chapter = Integer.parseInt(this.getChapterAsInt().toString());
         //
         //
-        newIndex = (int) (Math.random()*20);
+        newIndex = new Random().nextInt(20);
         newQuery(newIndex);
     }
 
@@ -81,17 +82,17 @@ public class Session {
     }
 
     private Chapter setChapt(int chapter) {
-        this.chapter.setChapter(chapter);
+        this.chapter.setChapterNumber(chapter);
         return this.chapter;
     }
 
     private Highscore setAllTimeHighscore(int allTimeHighscore) {
-        this.allTimeHighscore.setHighscore(allTimeHighscore);
+        this.allTimeHighscore.setHighscoreValue(allTimeHighscore);
         return this.allTimeHighscore;
     }
 
     private Highscore setCurrentHighscore(int currentHighscore) {
-        this.currentHighscore.setHighscore(currentHighscore);
+        this.currentHighscore.setHighscoreValue(currentHighscore);
         return this.currentHighscore;
     }
 

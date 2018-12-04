@@ -4,7 +4,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public class QueryList {
-    public static final List<Query> WORDS = Arrays.asList(
+
+    /**
+     *  Private constructor to hide implicit public one.
+     */
+    private QueryList() {}
+
+
+    public final static List<Query> WORDS = Arrays.asList(
             new Query(1, "Domus","Haus", 0),
             new Query(2, "Sol","Sonne", 0),
             new Query(3, "Amicus","Freund", 0),

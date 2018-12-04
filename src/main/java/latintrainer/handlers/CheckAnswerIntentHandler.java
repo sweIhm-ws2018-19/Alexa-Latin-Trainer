@@ -7,7 +7,6 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import com.amazon.ask.response.ResponseBuilder;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
@@ -35,7 +34,8 @@ public class CheckAnswerIntentHandler implements RequestHandler{
         // Get the color slot from the list of slots.
         Slot answerSlot = slots.get(ANSWER_SLOT);
         String answer = currentQuery.getGermanWord();
-        String speechText, repromptText;
+        String speechText;
+        String repromptText;
         boolean isAskResponse = false;
 
         // Check for favorite color and create output to user.

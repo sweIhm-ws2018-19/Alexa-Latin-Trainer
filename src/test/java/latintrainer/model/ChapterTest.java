@@ -16,7 +16,7 @@ public class ChapterTest {
 
     @Test
     public void changeChapter() {
-        sut.setChapter(2);
+        sut.setChapterNumber(2);
         assertEquals(2, sut.getChapterAsInt());
     }
 

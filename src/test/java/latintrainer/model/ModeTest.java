@@ -31,21 +31,21 @@ public class ModeTest {
     @Test
     public void firstModeIsProgressAsString() {
         String expectedMode = "Fortschritt";
-        String actualMode = Mode.values()[0].getMode();
+        String actualMode = Mode.values()[0].getModeName();
         assertEquals(expectedMode, actualMode);
     }
 
     @Test
     public void secondModeIsRandomAsString() {
         String expectedMode = "Zufall";
-        String actualMode = Mode.values()[1].getMode();
+        String actualMode = Mode.values()[1].getModeName();
         assertEquals(expectedMode, actualMode);
     }
 
     @Test
     public void thirdModeIsRandomAsString() {
         String expectedMode = "Kapitel";
-        String actualMode = Mode.values()[2].getMode();
+        String actualMode = Mode.values()[2].getModeName();
         assertEquals(expectedMode, actualMode);
     }
 }

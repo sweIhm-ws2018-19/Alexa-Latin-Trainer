@@ -3,13 +3,13 @@ package main.java.latintrainer.model;
 public enum Mode {
     PROGRESS("Fortschritt"),RANDOM("Zufall"),CHAPTER("Kapitel");
 
-    private final String mode;
+    private final String modeName;
 
-    Mode(String mode){
-        this.mode=mode;
+    Mode(String modeName){
+        this.modeName = modeName;
     }
 
-    public String getMode() {
-        return mode;
+    public String getModeName() {
+        return modeName;
     }
 }

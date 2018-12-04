@@ -2,23 +2,23 @@ package main.java.latintrainer.model;
 
 public class Chapter {
 
-    private int chapter;
+    private int chapterNumber;
 
     public Chapter(int chapter){
-        this.chapter=chapter;
+        this.chapterNumber =chapter;
     }
 
     public int getChapterAsInt() {
-        return chapter;
+        return chapterNumber;
     }
 
-    public void setChapter(int chapter) {
-        this.chapter = chapter;
+    public void setChapterNumber(int chapterNumber) {
+        this.chapterNumber = chapterNumber;
     }
 
     @Override
     public String toString() {
-        return (String.valueOf(chapter));
+        return (String.valueOf(chapterNumber));
     }
 
 }

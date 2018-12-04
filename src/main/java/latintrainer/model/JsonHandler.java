@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.MapType;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 public class JsonHandler {
 
     Map<String, Query> abfrage = new HashMap<>();
+    private final static Logger log = Logger.getLogger(JsonHandler.class.getName());
 
     public void readSessionInfo() throws IOException {
         File file = new File("src/main/java/latintrainer/model/session.json");
@@ -31,17 +33,16 @@ public class JsonHandler {
 
         Map<String, Query> words = om.readValue(file, mapType);
         String out = words.get("3").getLatinWord();
-        System.out.println(out);
+        log.info(out);
     }
 
     @Override
     public String toString() {
-        String tmp = "";
+        StringBuffer tmp = new StringBuffer();
         for (Query current : abfrage.values()) {
-            tmp += current.toString() + "\n";
-            tmp += "\n\n";
+            tmp.append(current.toString()).append("\n\n\n");
         }
-        return tmp;
+        return tmp.toString();
     }
 
     public static void main(String[] args) throws IOException {

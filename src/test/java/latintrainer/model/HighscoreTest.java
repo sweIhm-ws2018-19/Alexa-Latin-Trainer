@@ -11,7 +11,7 @@ public class HighscoreTest {
 
     @Test
     public void checkHighscore() {
-        assertEquals(9000, sut.getHighscore());
+        assertEquals(9000, sut.getHighscoreValue());
     }
 
     @Test
