@@ -9,6 +9,8 @@ install:
 addons:
    sonarcloud:
        organization: "sweihmws2018-19"
+       token:
+        secure: "ff0a081293a30e625ef806bb453e449c18501402"
 
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
