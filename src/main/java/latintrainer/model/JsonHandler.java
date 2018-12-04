@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 public class JsonHandler {
 
     Map<String, Query> abfrage = new HashMap<>();
-    private final static Logger log = Logger.getLogger(JsonHandler.class.getName());
+    private static final Logger log = Logger.getLogger(JsonHandler.class.getName());
 
     public void readSessionInfo() throws IOException {
         File file = new File("src/main/java/latintrainer/model/session.json");
@@ -38,7 +38,7 @@ public class JsonHandler {
 
     @Override
     public String toString() {
-        StringBuffer tmp = new StringBuffer();
+        StringBuilder tmp = new StringBuilder();
         for (Query current : abfrage.values()) {
             tmp.append(current.toString()).append("\n\n\n");
         }
