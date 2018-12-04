@@ -1,9 +1,11 @@
 package main.java.latintrainer.handlers;
 
+import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
@@ -23,10 +25,20 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        AttributesManager attributesManager = input.getAttributesManager();
+        Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
+        persistentAttributes.put("modus", "deutsch");
+        attributesManager.setPersistentAttributes(persistentAttributes);
+        attributesManager.savePersistentAttributes();
+
+
         currentQuery = WORDS.get((int) (Math.random()*20));
         String toTranslate = currentQuery.getLatinWord();
         String speechText = String.format("Das zu übersetzende Wort lautet %s. Bitte sage, die Antwort ist x y, " +
                 "oder wenn du es nicht weißt, keine Ahnung.", toTranslate);
+
+
+
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)

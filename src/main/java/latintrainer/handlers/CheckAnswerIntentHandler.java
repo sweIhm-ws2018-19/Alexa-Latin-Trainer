@@ -1,6 +1,7 @@
 package main.java.latintrainer.handlers;
 
 
+import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
@@ -22,6 +23,9 @@ public class CheckAnswerIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        AttributesManager attributesManager = input.getAttributesManager();
+        Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
+        String a1 = (String) persistentAttributes.get("modus");
 
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
@@ -39,7 +43,7 @@ public class CheckAnswerIntentHandler implements RequestHandler{
             // Store the user's favorite color in the Session and create response.
             String userAnswer = answerSlot.getValue();
             if (userAnswer.equalsIgnoreCase(answer)) {
-                speechText = "Richtig. Sage Neues Wort um weiterzumachen";
+                speechText = String.format("Richtig. Sage Neues Wort um weiterzumachen und %s",a1);
                 repromptText = "Sage Neues Wort um weiterzumachen";
             } else{
                 speechText = String.format("Falsch. Es ist nicht %s. Willst du das Wort wiederholen, überspringen oder auflösen?", userAnswer);
