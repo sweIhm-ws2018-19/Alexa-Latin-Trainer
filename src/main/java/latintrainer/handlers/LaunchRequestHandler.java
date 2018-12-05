@@ -26,17 +26,17 @@ import static com.amazon.ask.request.Predicates.requestType;
 import main.java.latintrainer.model.*;
 
 public class LaunchRequestHandler implements RequestHandler {
-    public static Session currentSession;
-
-    private static final Logger log = Logger.getLogger(LaunchRequestHandler.class.getName());
-
-    static {
-        try {
-            currentSession = new Session();
-        } catch (IOException e) {
-            log.info("!!!Session could not be created!!!");
-        }
-    }
+//    public static Session currentSession;
+//
+//    private static final Logger log = Logger.getLogger(LaunchRequestHandler.class.getName());
+//
+//    static {
+//        try {
+//            currentSession = new Session();
+//        } catch (IOException e) {
+//            log.info("!!!Session could not be created!!!");
+//        }
+//    }
 
     @Override
     public boolean canHandle(HandlerInput input) {

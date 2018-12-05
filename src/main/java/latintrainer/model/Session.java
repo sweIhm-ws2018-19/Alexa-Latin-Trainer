@@ -1,107 +1,31 @@
 package main.java.latintrainer.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.MapType;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
 
 public class Session {
     private Direction dir;
     private Mode mode;
     private Chapter chapter;
-    private Highscore currentHighscore;
+    private Highscore currentHighscore = new Highscore(0);
     private Highscore allTimeHighscore;
-    private Query currentQuery;
     private int index;
 
-    @JsonCreator
-    public Session( @JsonProperty("dir") String dir, @JsonProperty("mode") String mode,
-                    @JsonProperty("chapter") int chapter, @JsonProperty("currentHighscore") int currentHighscore,
-                    @JsonProperty("allTimeHighscore") int allTimeHighscore) {
-        this.dir = Direction.valueOf(dir);
-        this.mode = Mode.valueOf(mode);
+    public Session(Direction dir, Mode mode, int chapter, int highscore) {
+        this.dir = dir;
+        this.mode = mode;
         this.chapter = new Chapter(chapter);
-        this.currentHighscore = new Highscore(currentHighscore);
-        this.allTimeHighscore = new Highscore(allTimeHighscore);
+        this.allTimeHighscore = new Highscore(highscore);
     }
 
-
-    public Session() throws IOException {
-        File file = new File("src/main/java/latintrainer/model/session.json");
-        ObjectMapper om = new ObjectMapper();
-        TypeFactory typeFactory = om.getTypeFactory();
-        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Session.class);
-
-        Map<String, Session> session = om.readValue(file, mapType);
-        Session info = session.get("Infos");
-        this.chapter = info.getChapter();
-        this.dir = info.getDir();
-        this.mode = info.getMode();
-        this.allTimeHighscore = info.getAllTimeHighscore();
-        this.currentHighscore = info.getCurrentHighscore();
+    public void incrementChapter() {
+        this.chapter.setChapterNumber(this.chapter.getChapterAsInt()+1);
     }
 
-    // get a new set of Words
-    public void newQuery() throws IOException {
-        int newIndex;
-        // not in sprint 1: check here what chapter were in and which mode the user chose
-        // String mode = this.getModeName().toString();
-        // int chapter = Integer.parseInt(this.getChapterAsInt().toString());
-        //
-        //
-        newIndex = new Random().nextInt(20);
-        newQuery(newIndex);
-    }
-
-    private void newQuery(int index) throws IOException {
-        File file = new File("src/main/java/latintrainer/model/words.json");
-        ObjectMapper om = new ObjectMapper();
-        TypeFactory typeFactory = om.getTypeFactory();
-        MapType mapType = typeFactory.constructMapType(HashMap.class, String.class, Query.class);
-
-        Map<String, Query> words = om.readValue(file, mapType);
-        Query out = words.get(String.valueOf(index));
-        currentQuery = out;
-    }
-
-    private Mode setMode(String mode) {
-        this.mode = Mode.valueOf(mode);
-        return this.mode;
-    }
-
-    private Direction setDir(String dir) {
-        this.dir = Direction.valueOf(dir);
-        return this.dir;
-    }
-
-    private Chapter setChapt(int chapter) {
-        this.chapter.setChapterNumber(chapter);
-        return this.chapter;
-    }
-
-    private Highscore setAllTimeHighscore(int allTimeHighscore) {
-        this.allTimeHighscore.setHighscoreValue(allTimeHighscore);
-        return this.allTimeHighscore;
-    }
-
-    private Highscore setCurrentHighscore(int currentHighscore) {
-        this.currentHighscore.setHighscoreValue(currentHighscore);
-        return this.currentHighscore;
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public int getIndex() {
         return index;
-    }
-
-    public Query getCurrentQuery() {
-        return currentQuery;
     }
 
     public Chapter getChapter() {
@@ -112,12 +36,11 @@ public class Session {
         return dir;
     }
 
-    public Highscore getAllTimeHighscore() {
-        return allTimeHighscore;
-    }
-
     public Highscore getCurrentHighscore() {
         return currentHighscore;
+    }
+    public Highscore getAllTimeHighscore() {
+        return allTimeHighscore;
     }
 
     public Mode getMode() {
@@ -127,6 +50,6 @@ public class Session {
     @Override
     public String toString() {
         return "Richtung: " + dir + "; Modus: " + mode + "; Highscore: " + currentHighscore
-                + "; Highest score: " + allTimeHighscore+ "; Kapitel: " + chapter;
+                + "; Kapitel: " + chapter;
     }
 }

@@ -16,21 +16,7 @@ package main.java.latintrainer;
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import main.java.latintrainer.handlers.FallbackIntentHandler;
-import main.java.latintrainer.handlers.HelpIntentHandler;
-import main.java.latintrainer.handlers.LaunchRequestHandler;
-import main.java.latintrainer.handlers.SessionEndedRequestHandler;
-import main.java.latintrainer.handlers.CancelandStopIntentHandler;
-import main.java.latintrainer.handlers.SetModeIntentHandler;
-import main.java.latintrainer.handlers.SetDirectionIntentHandler;
-import main.java.latintrainer.handlers.NextWordIntentHandler;
-import main.java.latintrainer.handlers.CheckAnswerIntentHandler;
-import main.java.latintrainer.handlers.NoIdeaIntentHandler;
-import main.java.latintrainer.handlers.TellMeIntentHandler;
-import main.java.latintrainer.handlers.WhatsMySuccessIntentHandler;
-import main.java.latintrainer.handlers.RepeatWordIntentHandler;
-import main.java.latintrainer.handlers.WhatsMyCurrentHighscoreIntentHandler;
-import main.java.latintrainer.handlers.WhatsMyAllTimeHighscoreIntentHandler;
+import main.java.latintrainer.handlers.*;
 
 public class LatinTrainerStreamHandler extends SkillStreamHandler {
 
@@ -45,8 +31,7 @@ public class LatinTrainerStreamHandler extends SkillStreamHandler {
                         new TellMeIntentHandler(),
                         new WhatsMySuccessIntentHandler(),
                         new RepeatWordIntentHandler(),
-                        new WhatsMyCurrentHighscoreIntentHandler(),
-                        new WhatsMyAllTimeHighscoreIntentHandler(),
+                        new WhatsMyHighscoreIntentHandler(),
                         new LaunchRequestHandler(),
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),

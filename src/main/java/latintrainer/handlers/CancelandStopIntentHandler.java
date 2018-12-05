@@ -13,13 +13,16 @@
 
 package main.java.latintrainer.handlers;
 
+import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
+import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
 
 public class CancelandStopIntentHandler implements RequestHandler {
     @Override
@@ -29,6 +32,17 @@ public class CancelandStopIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+
+        int thisScore = currentSession.getCurrentHighscore().getHighscoreValue();
+        int oldAllTimeHighscore = currentSession.getAllTimeHighscore().getHighscoreValue();
+
+        if (thisScore > oldAllTimeHighscore) {
+            AttributesManager attributesManager = input.getAttributesManager();
+            Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
+            persistentAttributes.put("highscore", thisScore);
+            attributesManager.setPersistentAttributes(persistentAttributes);
+            attributesManager.savePersistentAttributes();
+        }
         return input.getResponseBuilder()
                 .withSpeech("Auf Wiedersehen")
                 .withSimpleCard("LatinTrainerSession", "Auf Wiedersehen")

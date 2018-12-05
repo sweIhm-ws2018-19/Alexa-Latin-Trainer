@@ -94,22 +94,15 @@
           "samples": [
             "Wiederholen",
             "Nochmal",
-            "Wie bitte?"
+            "Wie bitte"
           ]
         },
         {
-          "name": "WhatsMyCurrentHighscoreIntent",
+          "name": "WhatsMyHighscoreIntent",
           "slots": [],
           "samples": [
             "Punktestand",
-            "Wie viele Punkte hab ich gerade?"
-          ]
-        },
-        {
-          "name": "WhatsMyAllTimeHighscoreIntent",
-          "slots": [],
-          "samples": [
-            "bester Punktestand",
+            "Wie viele Punkte hab ich gerade",
             "Was ist mein Highscore",
             "Highscore"
           ]
