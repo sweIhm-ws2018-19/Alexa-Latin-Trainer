@@ -44,7 +44,7 @@ public class CancelandStopIntentHandler implements RequestHandler {
             attributesManager.savePersistentAttributes();
         }
         return input.getResponseBuilder()
-                .withSpeech("Auf Wiedersehen")
+                .withSpeech(String.format("Du hast diese Session %d Punkte erreicht. Auf Wiedersehen",thisScore))
                 .withSimpleCard("LatinTrainerSession", "Auf Wiedersehen")
                 .build();
     }

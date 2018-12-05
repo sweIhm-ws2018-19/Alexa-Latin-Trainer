@@ -41,26 +41,20 @@ public class NextWordIntentHandler implements RequestHandler{
         if (isFirst) {
             AttributesManager attributesManager = input.getAttributesManager();
             Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
-            persistentAttributes.put("modus", "Zufall");
-            persistentAttributes.put("richtung", "deutsch");
-            persistentAttributes.put("kapitel", 1);
-            persistentAttributes.put("highscore", 4);
-            attributesManager.setPersistentAttributes(persistentAttributes);
-            attributesManager.savePersistentAttributes();
             savedMode = (String) persistentAttributes.get("modus");
             savedDir = (String) persistentAttributes.get("richtung");
-            savedChapter = (Integer) persistentAttributes.get("kapitel");
-            savedHighscore = (Integer) persistentAttributes.get("highscore");
+            savedChapter = 1;//(String) persistentAttributes.get("kapitel");
+            savedHighscore = 4;//(String) persistentAttributes.get("highscore");
 
 
             switch (savedMode) {
-                case "Fortschritt":
+                case "fortschritt":
                     sessionMode = Mode.PROGRESS;
                     break;
-                case "Zufall":
+                case "zufall":
                     sessionMode = Mode.CHAPTER;
                     break;
-                case "Kapitel":
+                case "kapitel":
                     sessionMode = Mode.RANDOM;
                     break;
                 default:
