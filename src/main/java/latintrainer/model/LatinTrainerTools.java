@@ -31,6 +31,7 @@ public class LatinTrainerTools {
     public static boolean isChangingSession = true;
     public static boolean currentDirIsGerman = false;
     public static boolean modeIsRandom = true;
+    public static int currentChapter = 0;
 
 
     public static Slot getAnswerSlot(String slotName, HandlerInput input) {

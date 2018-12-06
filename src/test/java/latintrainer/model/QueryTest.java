@@ -7,12 +7,8 @@ import static org.junit.Assert.*;
 
 public class QueryTest {
 
-    Query sut = new Query(1,"domus", "Haus", 2);
+    Query sut = new Query(1,"domus", "Haus");
 
-    @Test
-    public void checkRatingValue() {
-        assertEquals(2, sut.getRating());
-    }
 
     @Test
     public void checkLatinTranslation() {

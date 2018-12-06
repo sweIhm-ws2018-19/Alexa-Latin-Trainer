@@ -1,26 +1,37 @@
 package main.java.latintrainer.model;
 
 
+import java.util.List;
+import java.util.Random;
+
 public class Session {
     private Direction dir;
     private Mode mode;
-    private Chapter chapter;
+    private int chapter;
+    private List<Query> wordList;
+    private int currentWordIndex;
     private Highscore currentHighscore = new Highscore(0);
     private Highscore allTimeHighscore;
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
         this.dir = dir;
         this.mode = mode;
-        this.chapter = new Chapter(chapter);
         this.allTimeHighscore = new Highscore(highscore);
+        this.chapter = chapter;
+        wordList = QueryList.getChapter(chapter);
+        currentWordIndex = 0;
     }
 
-    public void incrementChapter() {
-        this.chapter.setChapterNumber(this.chapter.getChapterAsInt()+1);
-    }
+    public Query getCurrentWord(int... index) {
+        Query result;
+        if(index.length == 0) {
+            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(20) : currentWordIndex+1;
+            result = wordList.get(currentWordIndex);
+        }
+        else
+            result = wordList.get(index[0]);
 
-    public Chapter getChapter() {
-        return chapter;
+        return result;
     }
 
     public Direction getDir() {
@@ -30,6 +41,7 @@ public class Session {
     public Highscore getCurrentHighscore() {
         return currentHighscore;
     }
+
     public Highscore getAllTimeHighscore() {
         return allTimeHighscore;
     }
@@ -46,9 +58,7 @@ public class Session {
         this.mode = mode;
     }
 
-    public void setChapter(int chapter) {
-        this.chapter = new Chapter(chapter);
-    }
+    public void setChapter(int index) { chapter = index;   }
 
     public void setAllTimeHighscore(int highscore) {
         this.allTimeHighscore = new Highscore(highscore);

@@ -1,6 +1,5 @@
 package main.java.latintrainer.handlers;
 
-import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
@@ -15,7 +14,6 @@ import main.java.latintrainer.model.Session;
 import main.java.latintrainer.model.*;
 
 import static main.java.latintrainer.model.LatinTrainerTools.*;
-import static main.java.latintrainer.model.QueryList.WORDS;
 
 public class NextWordIntentHandler implements RequestHandler{
 
@@ -85,7 +83,7 @@ public class NextWordIntentHandler implements RequestHandler{
             isChangingSession = false;
         }
         // check mode
-        currentQuery = WORDS.get((int) (Math.random()*20));
+        currentQuery = currentSession.getCurrentWord();
         // check direction
         // String toTranslate = currentQuery.getLatinWord(); //old
         String toTranslate = currentDirIsGerman ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
