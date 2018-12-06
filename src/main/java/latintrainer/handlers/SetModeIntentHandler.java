@@ -11,14 +11,10 @@ import main.java.latintrainer.model.LatinTrainerTools;
 import java.util.Map;
 import java.util.Optional;
 
-import static main.java.latintrainer.handlers.LaunchRequestHandler.MODE_SLOT;
-
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 import static com.amazon.ask.request.Predicates.intentName;
-//import static main.java.latintrainer.handlers.SetConfigIntentHandler.MODE_SLOT;
 
 public class SetModeIntentHandler implements RequestHandler{
-
-    public static String DIR_SLOT = "dir";
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -28,7 +24,7 @@ public class SetModeIntentHandler implements RequestHandler{
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
-        Slot answerSlot = LatinTrainerTools.getAnswerSlot(MODE_SLOT, input);  // slots.get(MODE_SLOT);
+        Slot answerSlot = getAnswerSlot(MODE_SLOT, input);
 
         String speechText;
         String repromptText;
@@ -37,9 +33,9 @@ public class SetModeIntentHandler implements RequestHandler{
 
             String userAnswer = answerSlot.getValue();
 
-            if (userAnswer.equalsIgnoreCase("Fortschritt") || userAnswer.equalsIgnoreCase("Zufall")) {
+            if (userAnswer.equalsIgnoreCase(PROGRESS) || userAnswer.equalsIgnoreCase(RANDOM)) {
 
-                LatinTrainerTools.saveData("modus", userAnswer.toLowerCase(), input);
+                saveData(MODE, userAnswer, input);
 
                 speechText = String.format("Okay. Dein Modus ist %s. Waehle nun die Richtung: Willst du lieber die " +
                         "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Waehle Richtung deutsch.", userAnswer);

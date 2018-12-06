@@ -14,18 +14,15 @@ import main.java.latintrainer.model.Query;
 import main.java.latintrainer.model.Session;
 import main.java.latintrainer.model.*;
 
-
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 import static main.java.latintrainer.model.QueryList.WORDS;
 
 public class NextWordIntentHandler implements RequestHandler{
-    public static final String ANSWER_KEY = "ANSWER";
-    public static final String ANSWER_SLOT = "Answer";
+
     public static Session currentSession;
     public static Query currentQuery;
     Mode sessionMode;
     Direction sessionDir;
-    public static boolean currentDirIsGerman;
-    public static boolean isChangingSession = true;
     private boolean isFirst = true;
     String savedMode;
     String savedDir;
@@ -40,8 +37,7 @@ public class NextWordIntentHandler implements RequestHandler{
     @Override
     public Optional<Response> handle(HandlerInput input) {
         if (isChangingSession) {
-            AttributesManager attributesManager = input.getAttributesManager();
-            Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
+            Map<String, Object> persistentAttributes = getAttributes(input);
             savedMode = (String) persistentAttributes.get("modus");
             savedDir = (String) persistentAttributes.get("richtung");
             savedChapter = Integer.parseInt((String)persistentAttributes.get("kapitel"));

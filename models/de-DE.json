@@ -241,17 +241,17 @@
           "values": [
             {
               "name": {
-                "value": "Zufall"
+                "value": "zufall"
               }
             },
             {
               "name": {
-                "value": "Fortschritt"
+                "value": "fortschritt"
               }
             },
             {
               "name": {
-                "value": "Kapitel"
+                "value": "kapitel"
               }
             }
           ]

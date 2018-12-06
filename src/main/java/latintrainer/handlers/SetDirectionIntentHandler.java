@@ -11,11 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.SetModeIntentHandler.DIR_SLOT;
-
-import static main.java.latintrainer.handlers.NextWordIntentHandler.isChangingSession;
-
-import static main.java.latintrainer.handlers.NextWordIntentHandler.isChangingSession;
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 
 public class SetDirectionIntentHandler implements RequestHandler{
 
@@ -34,8 +30,9 @@ public class SetDirectionIntentHandler implements RequestHandler{
 
             String userAnswer = answerSlot.getValue();
 
-            if(userAnswer.equalsIgnoreCase("lateinisch") || userAnswer.equalsIgnoreCase("deutsch")) {
-                LatinTrainerTools.saveData("richtung", userAnswer.toLowerCase(), input);
+            if(userAnswer.equalsIgnoreCase(LATIN) || userAnswer.equalsIgnoreCase(GERMAN)) {
+                saveData(DIRECTION, userAnswer, input);
+
                 speechText = "Sage neues Wort, um die Übung zu beginnen";
                 repromptText = "Bitte sage neues Wort.";
                 isChangingSession = true;

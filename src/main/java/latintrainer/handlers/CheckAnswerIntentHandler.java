@@ -12,7 +12,9 @@ import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.handlers.NextWordIntentHandler.currentQuery;
 import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
 import static main.java.latintrainer.handlers.NextWordIntentHandler.currentDirIsGerman;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.ANSWER_SLOT;
+
+
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 
 public class CheckAnswerIntentHandler implements RequestHandler{
     @Override
