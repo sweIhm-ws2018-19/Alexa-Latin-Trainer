@@ -28,7 +28,7 @@ public class SetModeIntentHandler implements RequestHandler{
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
-        Slot answerSlot = LatinTrainerTools.getAnswerSlot(DIR_SLOT, input);  // slots.get(MODE_SLOT);
+        Slot answerSlot = LatinTrainerTools.getAnswerSlot(MODE_SLOT, input);  // slots.get(MODE_SLOT);
 
         String speechText;
         String repromptText;
@@ -39,7 +39,7 @@ public class SetModeIntentHandler implements RequestHandler{
 
             if (userAnswer.equalsIgnoreCase("Fortschritt") || userAnswer.equalsIgnoreCase("Zufall")) {
 
-                LatinTrainerTools.saveData("modus", userAnswer, input);
+                LatinTrainerTools.saveData("modus", userAnswer.toLowerCase(), input);
 
                 speechText = String.format("Okay. Dein Modus ist %s. Waehle nun die Richtung: Willst du lieber die " +
                         "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Waehle Richtung deutsch.", userAnswer);
