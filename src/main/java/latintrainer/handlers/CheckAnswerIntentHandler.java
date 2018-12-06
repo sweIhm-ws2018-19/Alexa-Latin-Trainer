@@ -4,6 +4,7 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import com.amazon.ask.response.ResponseBuilder;
+import main.java.latintrainer.model.LatinTrainerTools;
 
 import java.util.Map;
 import java.util.Optional;
@@ -15,20 +16,17 @@ import static main.java.latintrainer.model.LatinTrainerTools.*;
 
 
 public class CheckAnswerIntentHandler implements RequestHandler{
+
     @Override
     public boolean canHandle(HandlerInput input) {
+
         return input.matches(intentName("CheckAnswerIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        Request request = input.getRequestEnvelope().getRequest();
-        IntentRequest intentRequest = (IntentRequest) request;
-        Intent intent = intentRequest.getIntent();
-        Map<String, Slot> slots = intent.getSlots();
-
         // Get the color slot from the list of slots.
-        Slot answerSlot = slots.get(ANSWER_SLOT);
+        Slot answerSlot = LatinTrainerTools.getAnswerSlot(ANSWER_SLOT, input);
         String answer = currentDirIsGerman ? currentQuery.getGermanWord(): currentQuery.getLatinWord();
         String speechText;
         String repromptText;
@@ -46,7 +44,6 @@ public class CheckAnswerIntentHandler implements RequestHandler{
             } else{
                 speechText = String.format("Falsch. Es ist nicht %s. Willst du das Wort wiederholen, überspringen oder auflösen?", userAnswer);
                 currentSession.getCurrentHighscore().addToHighscore(-2);
-                currentSession.answeredCorrectly();
                 repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
             }
         } else {

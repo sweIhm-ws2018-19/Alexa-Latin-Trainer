@@ -6,6 +6,8 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 
 import main.java.latintrainer.model.LatinTrainerTools;
+import main.java.latintrainer.model.Mode;
+import main.java.latintrainer.model.Session;
 
 
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.Optional;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class SetModeIntentHandler implements RequestHandler{
+public class SetModeIntentHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -25,7 +27,6 @@ public class SetModeIntentHandler implements RequestHandler{
     public Optional<Response> handle(HandlerInput input) {
 
         Slot answerSlot = getAnswerSlot(MODE_SLOT, input);
-
         String speechText;
         String repromptText;
 

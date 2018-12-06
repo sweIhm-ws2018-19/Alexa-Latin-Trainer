@@ -10,35 +10,16 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for
      the specific language governing permissions and limitations under the License.
 */
-
 package main.java.latintrainer.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
-
-import java.io.IOException;
 import java.util.Optional;
-import java.util.logging.Logger;
-
 import static com.amazon.ask.request.Predicates.requestType;
 
-
 public class LaunchRequestHandler implements RequestHandler {
-
-    public static final String MODE_SLOT = "mode";
-//    public static Session currentSession;
-//
-//    private static final Logger log = Logger.getLogger(LaunchRequestHandler.class.getName());
-//
-//    static {
-//        try {
-//            currentSession = new Session();
-//        } catch (IOException e) {
-//            log.info("!!!Session could not be created!!!");
-//        }
-//    }
 
     @Override
     public boolean canHandle(HandlerInput input) {

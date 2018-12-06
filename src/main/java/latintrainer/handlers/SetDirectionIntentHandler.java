@@ -1,15 +1,10 @@
 package main.java.latintrainer.handlers;
 
-import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import main.java.latintrainer.model.LatinTrainerTools;
-
-
-import java.util.Map;
 import java.util.Optional;
-
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
 
@@ -32,7 +27,6 @@ public class SetDirectionIntentHandler implements RequestHandler{
 
             if(userAnswer.equalsIgnoreCase(LATIN) || userAnswer.equalsIgnoreCase(GERMAN)) {
                 saveData(DIRECTION, userAnswer, input);
-
                 speechText = "Sage neues Wort, um die Übung zu beginnen";
                 repromptText = "Bitte sage neues Wort.";
                 isChangingSession = true;

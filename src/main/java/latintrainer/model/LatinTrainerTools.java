@@ -6,7 +6,6 @@ import com.amazon.ask.model.Intent;
 import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Slot;
-
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +38,6 @@ public class LatinTrainerTools {
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
         Map<String, Slot> slots = intent.getSlots();
-
         return slots.get(slotName);
     }
 
@@ -59,6 +57,5 @@ public class LatinTrainerTools {
     }
 
     public static List<Query> createQueryList() {return null;}
-
 
 }

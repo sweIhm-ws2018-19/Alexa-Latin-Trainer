@@ -1,10 +1,10 @@
 package main.java.latintrainer.model;
 
-
 import java.util.List;
 import java.util.Random;
 
 public class Session {
+
     private Direction dir;
     private Mode mode;
     private int chapter;
@@ -15,6 +15,12 @@ public class Session {
     private boolean[] alreadyAsked;
     private boolean[] answeredCorrectly;
 
+
+    public Session() {
+        currentWordIndex = -1;
+        alreadyAsked = new boolean[20];
+        answeredCorrectly = new boolean[20];
+    }
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
         this.dir = dir;
@@ -27,32 +33,27 @@ public class Session {
         answeredCorrectly = new boolean[20];
     }
 
-    public Query getCurrentWord(int... index) {
-        Query result;
-        if(index.length == 0) {
-            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(20) : (currentWordIndex+1)%20;
-            result = checkForNextUnasked(currentWordIndex);
-            alreadyAsked[currentWordIndex] = true;
+    public Query getCurrentWord() {
+            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex+1)%wordList.size();
+            int savePoint = currentWordIndex;
+            Query result = checkForNextUnasked(currentWordIndex);
 
-        }
-        else {
-            currentWordIndex = index[0]%wordList.size();
-            result = wordList.get(currentWordIndex);
-            alreadyAsked[currentWordIndex] = true;
-        }
+            if(result == null)
+                result = checkForNextFailed(savePoint);
+
+            if(result == null) {
+                chapter++;
+                wordList = QueryList.getChapter(chapter);
+                currentWordIndex = 0;
+                alreadyAsked = new boolean[wordList.size()];
+                answeredCorrectly = new boolean[wordList.size()];
+                result = getCurrentWord();
+            }
         return result;
     }
 
     public void answeredCorrectly() {
         answeredCorrectly[currentWordIndex] = true;
-    }
-
-    public void answeredCorrectly(int index) {
-        answeredCorrectly[index] = true;
-    }
-
-    private void setAlreadyAsked(int index) {
-        alreadyAsked[index] = true;
     }
 
     private Query checkForNextUnasked(int index) {
@@ -71,6 +72,8 @@ public class Session {
             counter++;
         }
         currentWordIndex = i;
+
+        // flag for setting the allreadyAskedArray on index i to true
         if(flag)
             arr[i] = true;
 
@@ -93,6 +96,7 @@ public class Session {
         return mode;
     }
 
+
     public void setDir(Direction dir) {
         this.dir = dir;
     }
@@ -101,7 +105,8 @@ public class Session {
         this.mode = mode;
     }
 
-    public void setChapter(int index) { chapter = index;   }
+    public void setChapter(int index) { chapter = index; }
+
 
     public void setAllTimeHighscore(int highscore) {
         this.allTimeHighscore = new Highscore(highscore);
