@@ -25,7 +25,8 @@ public class NextWordIntentHandler implements RequestHandler{
     Mode sessionMode;
     Direction sessionDir;
     public static boolean currentDirIsGerman;
-    public static boolean isFirst = true;
+    public static boolean isChangingSession = true;
+    private boolean isFirst = true;
     String savedMode;
     String savedDir;
     int savedChapter;
@@ -38,13 +39,13 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        if (isFirst) {
+        if (isChangingSession) {
             AttributesManager attributesManager = input.getAttributesManager();
             Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
             savedMode = (String) persistentAttributes.get("modus");
             savedDir = (String) persistentAttributes.get("richtung");
-            savedChapter = 1;//(String) persistentAttributes.get("kapitel");
-            savedHighscore = 4;//(String) persistentAttributes.get("highscore");
+            savedChapter = Integer.parseInt((String)persistentAttributes.get("kapitel"));
+            savedHighscore = Integer.parseInt((String) persistentAttributes.get("highscore"));
 
 
             switch (savedMode) {
@@ -76,9 +77,16 @@ public class NextWordIntentHandler implements RequestHandler{
                 default:
                     throw new RuntimeException();
             }
-
-            currentSession = new Session(sessionDir, sessionMode, savedChapter, savedHighscore);
-            isFirst = false;
+            if (isFirst) {
+                currentSession = new Session(sessionDir, sessionMode, savedChapter, savedHighscore);
+                isFirst = false;
+            } else {
+                currentSession.setDir(sessionDir);
+                currentSession.setMode(sessionMode);
+                currentSession.setChapter(savedChapter);
+                currentSession.setAllTimeHighscore(savedHighscore);
+            }
+            isChangingSession = false;
         }
         // check mode
         currentQuery = WORDS.get((int) (Math.random()*20));

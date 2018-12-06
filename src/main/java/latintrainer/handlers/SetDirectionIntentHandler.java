@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.handlers.SetModeIntentHandler.DIR_SLOT;
+import static main.java.latintrainer.handlers.NextWordIntentHandler.isChangingSession;
 
 public class SetDirectionIntentHandler implements RequestHandler{
     @Override
@@ -41,6 +42,7 @@ public class SetDirectionIntentHandler implements RequestHandler{
                 attributesManager.savePersistentAttributes();
                 speechText = "Sage neues Wort, um die Übung zu beginnen";
                 repromptText = "Bitte sage neues Wort.";
+                isChangingSession = true;
             }
             else {
                 speechText = "Ich habe dich nicht verstanden. Wenn ich lateinische Vokabeln ansagen soll, sage lateinisch. Ansonsten sage deutsch.";
