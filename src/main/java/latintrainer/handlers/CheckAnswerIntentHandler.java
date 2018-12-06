@@ -41,10 +41,12 @@ public class CheckAnswerIntentHandler implements RequestHandler{
             if (userAnswer.equalsIgnoreCase(answer)) {
                 speechText = "Richtig. Sage Neues Wort um weiterzumachen";
                 currentSession.getCurrentHighscore().addToHighscore(2);
+                currentSession.answeredCorrectly();
                 repromptText = "Sage Neues Wort um weiterzumachen";
             } else{
                 speechText = String.format("Falsch. Es ist nicht %s. Willst du das Wort wiederholen, überspringen oder auflösen?", userAnswer);
                 currentSession.getCurrentHighscore().addToHighscore(-2);
+                currentSession.answeredCorrectly();
                 repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
             }
         } else {

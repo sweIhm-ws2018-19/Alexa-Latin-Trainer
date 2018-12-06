@@ -12,6 +12,9 @@ public class Session {
     private int currentWordIndex;
     private Highscore currentHighscore = new Highscore(0);
     private Highscore allTimeHighscore;
+    private boolean[] alreadyAsked;
+    private boolean[] answeredCorrectly;
+
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
         this.dir = dir;
@@ -19,19 +22,59 @@ public class Session {
         this.allTimeHighscore = new Highscore(highscore);
         this.chapter = chapter;
         wordList = QueryList.getChapter(chapter);
-        currentWordIndex = 0;
+        currentWordIndex = -1;
+        alreadyAsked = new boolean[20];
+        answeredCorrectly = new boolean[20];
     }
 
     public Query getCurrentWord(int... index) {
         Query result;
         if(index.length == 0) {
-            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(20) : currentWordIndex+1;
-            result = wordList.get(currentWordIndex);
-        }
-        else
-            result = wordList.get(index[0]);
+            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(20) : (currentWordIndex+1)%20;
+            result = checkForNextUnasked(currentWordIndex);
+            alreadyAsked[currentWordIndex] = true;
 
+        }
+        else {
+            currentWordIndex = index[0]%wordList.size();
+            result = wordList.get(currentWordIndex);
+            alreadyAsked[currentWordIndex] = true;
+        }
         return result;
+    }
+
+    public void answeredCorrectly() {
+        answeredCorrectly[currentWordIndex] = true;
+    }
+
+    public void answeredCorrectly(int index) {
+        answeredCorrectly[index] = true;
+    }
+
+    private void setAlreadyAsked(int index) {
+        alreadyAsked[index] = true;
+    }
+
+    private Query checkForNextUnasked(int index) {
+        return findSpecificQuery(alreadyAsked, index, true);
+    }
+
+    private Query checkForNextFailed(int index) {
+        return findSpecificQuery(answeredCorrectly, index, false);
+    }
+
+    private Query findSpecificQuery(boolean[] arr, int index, boolean flag) {
+        int i = index;
+        int counter = 0;
+        while(arr[i] || counter < wordList.size()) {
+            i = (i+1)%wordList.size();
+            counter++;
+        }
+        currentWordIndex = i;
+        if(flag)
+            arr[i] = true;
+
+        return counter < wordList.size()? wordList.get(i) : null;
     }
 
     public Direction getDir() {

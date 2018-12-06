@@ -1,16 +1,15 @@
 package main.java.latintrainer.model;
 
 public class Query {
-    private final int chapter;
     private final String latinWord;
     private final String germanWord;
+    private final int index;
 
 
-    public Query(int chapter, String latin, String german)
-    {
-        this.chapter = chapter;
+    public Query(int index, String latin, String german) {
         this.germanWord = german;
         this.latinWord = latin;
+        this.index = index;
     }
 
     public String getGermanWord() {
@@ -21,13 +20,11 @@ public class Query {
         return latinWord;
     }
 
-    public int getChapter() {
-        return chapter;
-    }
+    public int getIndex() { return index;}
 
     @Override
     public String toString() {
-        return "Deutsch: " + germanWord + "; latein: " + latinWord + " Kapitel: "+chapter;
+        return "Deutsch: " + germanWord + "; latein: " + latinWord;
     }
 
 }
