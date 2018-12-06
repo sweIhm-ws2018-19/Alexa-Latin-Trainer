@@ -39,13 +39,13 @@ public class SetModeIntentHandler implements RequestHandler{
 
             if (userAnswer.equalsIgnoreCase("Fortschritt") || userAnswer.equalsIgnoreCase("Zufall")) {
 
-                speechText = "Wenn ich lateinische Vokabeln ansagen soll, sage lateinisch. Ansonsten sage deutsch.";
                 LatinTrainerTools.saveData("modus", userAnswer, input);
 
                 speechText = String.format("Okay. Dein Modus ist %s. Waehle nun die Richtung: Willst du lieber die " +
                         "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Waehle Richtung deutsch.", userAnswer);
 
                 repromptText = "Sage deutsch oder lateinisch.";
+
             } else {
                 speechText = "Ich konnte dich nicht verstehen. Sage Fortschritt für deinen letzten Speicherstand oder Zufall für eine zufällige Abfrage.";
                 repromptText = "Sage Fortschritt oder Zufall.";
