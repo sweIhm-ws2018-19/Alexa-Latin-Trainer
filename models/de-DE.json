@@ -45,7 +45,6 @@
           "name": "NextWordIntent",
           "slots": [],
           "samples": [
-            "Starte die Demo",
             "Neues Wort",
             "Ueberspringen"
           ]

@@ -23,9 +23,11 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import static com.amazon.ask.request.Predicates.requestType;
-import main.java.latintrainer.model.*;
+
 
 public class LaunchRequestHandler implements RequestHandler {
+
+    public static final String MODE_SLOT = "mode";
 //    public static Session currentSession;
 //
 //    private static final Logger log = Logger.getLogger(LaunchRequestHandler.class.getName());
@@ -45,8 +47,9 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Starte die Demo, um direkt zu beginnen, oder Hilfe um Zusatzinformationen zu bekommen.";
-        String repromptText = "Bitte sage Starte die Demo oder Hilfe.";
+        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Fortschritt, um deinen letzten Speicherstand zu laden,"+
+                " Zufall für eine beliebige Abfrage oder Hilfe um Zusatzinformationen zu bekommen.";
+        String repromptText = "Bitte sage Fortschritt oder Zufall, um zu beginnen.";
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)

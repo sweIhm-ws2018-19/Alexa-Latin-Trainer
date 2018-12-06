@@ -1,14 +1,19 @@
 package main.java.latintrainer.handlers;
 
+import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.Response;
+import com.amazon.ask.model.*;
+import main.java.latintrainer.model.LatinTrainerTools;
 
+import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
+import static main.java.latintrainer.handlers.SetModeIntentHandler.DIR_SLOT;
 
 public class SetDirectionIntentHandler implements RequestHandler{
+
     @Override
     public boolean canHandle(HandlerInput input) {
         return input.matches(intentName("SetDirectionIntent"));
@@ -16,10 +21,29 @@ public class SetDirectionIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
-                "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
-                "willst. Möchtest du die Erfahrung beginnen? Sage Starte die Demo, um loszulegen.";
-        String repromptText = "Sage Starte die Demo, um loszulegen.";
+        Slot answerSlot = LatinTrainerTools.getAnswerSlot(DIR_SLOT, input);
+
+        String speechText;
+        String repromptText;
+
+        if(answerSlot != null) {
+
+            String userAnswer = answerSlot.getValue();
+
+            if(userAnswer.equalsIgnoreCase("lateinisch") || userAnswer.equalsIgnoreCase("deutsch")) {
+                LatinTrainerTools.saveData("richtung", userAnswer, input);
+                speechText = "Sage neues Wort, um die Übung zu beginnen";
+                repromptText = "Bitte sage neues Wort.";
+            }
+            else {
+                speechText = "Ich habe dich nicht verstanden. Wenn ich lateinische Vokabeln ansagen soll, sage lateinisch. Ansonsten sage deutsch.";
+                repromptText = "Sage deutsch oder lateinisch.";
+            }
+        }
+        else {
+            speechText = "Ich habe dich nicht verstanden. Wenn ich lateinische Vokabeln ansagen soll, sage lateinisch. Ansonsten sage deutsch.";
+            repromptText = "Sage deutsch oder lateinisch.";
+        }
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
