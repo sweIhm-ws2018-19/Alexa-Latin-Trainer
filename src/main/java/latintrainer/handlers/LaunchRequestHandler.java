@@ -47,15 +47,11 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-<<<<<<< HEAD
+
         String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Fortschritt, um deinen letzten Speicherstand zu laden,"+
                 " Zufall für eine beliebige Abfrage oder Hilfe um Zusatzinformationen zu bekommen.";
         String repromptText = "Bitte sage Fortschritt oder Zufall, um zu beginnen.";
-=======
-        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Starte direkt, um mit deinen Standard " +
-                "Einstellungen zu beginnen, oder Konfigurieren, um deine Abfrage Einstellungen zu aendern.";
-        String repromptText = "Bitte sage Starte die Demo oder Hilfe.";
->>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
+
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
