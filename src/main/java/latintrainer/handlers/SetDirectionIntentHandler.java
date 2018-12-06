@@ -5,7 +5,10 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import main.java.latintrainer.model.LatinTrainerTools;
+=======
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
 =======
 >>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
 
@@ -15,6 +18,10 @@ import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.handlers.SetModeIntentHandler.DIR_SLOT;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import static main.java.latintrainer.handlers.NextWordIntentHandler.isChangingSession;
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
 =======
 import static main.java.latintrainer.handlers.NextWordIntentHandler.isChangingSession;
 >>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
@@ -29,18 +36,29 @@ public class SetDirectionIntentHandler implements RequestHandler{
     @Override
     public Optional<Response> handle(HandlerInput input) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         Slot answerSlot = LatinTrainerTools.getAnswerSlot(DIR_SLOT, input);
 =======
+=======
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
         Map<String, Slot> slots = intent.getSlots();
+<<<<<<< HEAD
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
+=======
 >>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
 
         String speechText;
         String repromptText;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        Slot answerSlot = slots.get(DIR_SLOT);
+
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
 =======
         Slot answerSlot = slots.get(DIR_SLOT);
 
@@ -51,10 +69,13 @@ public class SetDirectionIntentHandler implements RequestHandler{
 
             if(userAnswer.equalsIgnoreCase("lateinisch") || userAnswer.equalsIgnoreCase("deutsch")) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 LatinTrainerTools.saveData("richtung", userAnswer, input);
                 speechText = "Sage neues Wort, um die Übung zu beginnen";
                 repromptText = "Bitte sage neues Wort.";
 =======
+=======
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
                 AttributesManager attributesManager = input.getAttributesManager();
                 Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
                 persistentAttributes.put("richtung", userAnswer.toLowerCase());
@@ -63,6 +84,9 @@ public class SetDirectionIntentHandler implements RequestHandler{
                 speechText = "Sage neues Wort, um die Übung zu beginnen";
                 repromptText = "Bitte sage neues Wort.";
                 isChangingSession = true;
+<<<<<<< HEAD
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
+=======
 >>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
             }
             else {

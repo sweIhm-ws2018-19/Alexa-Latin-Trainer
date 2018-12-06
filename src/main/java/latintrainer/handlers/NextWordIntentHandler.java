@@ -43,10 +43,13 @@ public class NextWordIntentHandler implements RequestHandler{
             AttributesManager attributesManager = input.getAttributesManager();
             Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
 <<<<<<< HEAD
+<<<<<<< HEAD
             persistentAttributes.put("kapitel", 1);
             persistentAttributes.put("highscore", 4);
             attributesManager.setPersistentAttributes(persistentAttributes);
             attributesManager.savePersistentAttributes();
+=======
+>>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
 =======
 >>>>>>> 71ca4bde6cbacae9187b063083e274eb1aac4d60
             savedMode = (String) persistentAttributes.get("modus");
