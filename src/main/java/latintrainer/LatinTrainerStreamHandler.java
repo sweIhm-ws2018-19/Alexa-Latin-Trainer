@@ -25,6 +25,7 @@ public class LatinTrainerStreamHandler extends SkillStreamHandler {
                 .addRequestHandlers(
                         new SetModeIntentHandler(),
                         new SetDirectionIntentHandler(),
+                        new SetConfigIntentHandler(),
                         new NextWordIntentHandler(),
                         new CheckAnswerIntentHandler(),
                         new NoIdeaIntentHandler(),

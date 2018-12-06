@@ -39,12 +39,12 @@ public class CancelandStopIntentHandler implements RequestHandler {
         if (thisScore > oldAllTimeHighscore) {
             AttributesManager attributesManager = input.getAttributesManager();
             Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
-            persistentAttributes.put("highscore", thisScore);
+            persistentAttributes.put("highscore", Integer.toString(thisScore));
             attributesManager.setPersistentAttributes(persistentAttributes);
             attributesManager.savePersistentAttributes();
         }
         return input.getResponseBuilder()
-                .withSpeech("Auf Wiedersehen")
+                .withSpeech(String.format("Du hast diese Session %d Punkte erreicht. Auf Wiedersehen",thisScore))
                 .withSimpleCard("LatinTrainerSession", "Auf Wiedersehen")
                 .build();
     }

@@ -1,31 +1,32 @@
 package main.java.latintrainer.handlers;
+
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
-
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentDirIsGerman;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentQuery;
 
-public class RepeatWordIntentHandler implements RequestHandler{
+public class SetConfigIntentHandler implements RequestHandler {
+    public static String MODE_SLOT = "mode";
+
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("RepeatWordIntent"));
+        return input.matches(intentName("SetConfigIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String toTranslate = currentDirIsGerman ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
-        String speechText = "Das zu übersetzende Wort lautet " + toTranslate + ". Bitte sage, die Antwort ist x y, " +
-                "oder wenn du es nicht weißt, keine Ahnung.";
+        String speechText = "Okay, wir konfigurieren den Latein Trainer neu. Zuerst kannst du den Modus waehlen. Du " +
+                "kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. Sage zum Beispiel: Waehle Modus " +
+                "Fortschritt";
+        String repromptText = "Du kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. Sage zum " +
+                "Beispiel: Waehle Modus Fortschritt";
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)
-                .withReprompt(speechText)
+                .withReprompt(repromptText)
                 .withShouldEndSession(false)
                 .build();
     }
 }
-

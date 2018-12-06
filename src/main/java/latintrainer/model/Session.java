@@ -7,7 +7,6 @@ public class Session {
     private Chapter chapter;
     private Highscore currentHighscore = new Highscore(0);
     private Highscore allTimeHighscore;
-    private int index;
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
         this.dir = dir;
@@ -18,14 +17,6 @@ public class Session {
 
     public void incrementChapter() {
         this.chapter.setChapterNumber(this.chapter.getChapterAsInt()+1);
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public int getIndex() {
-        return index;
     }
 
     public Chapter getChapter() {
@@ -45,6 +36,22 @@ public class Session {
 
     public Mode getMode() {
         return mode;
+    }
+
+    public void setDir(Direction dir) {
+        this.dir = dir;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
+    public void setChapter(int chapter) {
+        this.chapter = new Chapter(chapter);
+    }
+
+    public void setAllTimeHighscore(int highscore) {
+        this.allTimeHighscore = new Highscore(highscore);
     }
 
     @Override
