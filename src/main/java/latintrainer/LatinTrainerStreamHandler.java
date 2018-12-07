@@ -23,6 +23,7 @@ public class LatinTrainerStreamHandler extends SkillStreamHandler {
     private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
+                        new LaunchRequestHandler(),
                         new SetModeIntentHandler(),
                         new SetDirectionIntentHandler(),
                         new SetConfigIntentHandler(),
@@ -33,7 +34,6 @@ public class LatinTrainerStreamHandler extends SkillStreamHandler {
                         new WhatsMySuccessIntentHandler(),
                         new RepeatWordIntentHandler(),
                         new WhatsMyHighscoreIntentHandler(),
-                        new LaunchRequestHandler(),
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),

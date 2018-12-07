@@ -24,7 +24,7 @@
             }
           ],
           "samples": [
-            "{mode}"
+            "Waehle Modus {mode}"
           ]
         },
         {
@@ -36,15 +36,21 @@
             }
           ],
           "samples": [
-            "{dir}",
-            "Von {dir}",
-            "{dir}e"
+            "Waehle Richtung {dir}"
+          ]
+        },
+        {
+          "name": "SetConfigIntent",
+          "slots": [],
+          "samples": [
+            "Konfigurieren"
           ]
         },
         {
           "name": "NextWordIntent",
           "slots": [],
           "samples": [
+            "Starte direkt",
             "Neues Wort",
             "Ueberspringen"
           ]
@@ -112,6 +118,10 @@
         },
         {
           "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         }
       ],
@@ -241,17 +251,17 @@
           "values": [
             {
               "name": {
-                "value": "zufall"
+                "value": "Zufall"
               }
             },
             {
               "name": {
-                "value": "fortschritt"
+                "value": "Fortschritt"
               }
             },
             {
               "name": {
-                "value": "kapitel"
+                "value": "Kapitel"
               }
             }
           ]
