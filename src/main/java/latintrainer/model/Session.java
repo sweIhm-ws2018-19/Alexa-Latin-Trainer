@@ -67,8 +67,8 @@ public class Session {
     private Query findSpecificQuery(boolean[] arr, int index, boolean flag) {
         int i = index;
         int counter = 0;
-        while(arr[i] || counter < wordList.size()) {
-            i = (i+1)%wordList.size();
+        while(arr[i] && counter < wordList.size()) {
+            i = new Random().nextInt(wordList.size());
             counter++;
         }
         currentWordIndex = i;

@@ -29,8 +29,8 @@ public class LaunchRequestHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
-        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage Fortschritt, um deinen letzten Speicherstand zu laden,"+
-                " Zufall für eine beliebige Abfrage oder Hilfe um Zusatzinformationen zu bekommen.";
+        String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage starte direkt, um bei deinem letzten Kapitel weiterzumachen," +
+                " Konfigurieren, um deine Abfrage Einstellungen anzupassen oder Hilfe um Zusatzinformationen zu bekommen.";
         String repromptText = "Bitte sage Fortschritt oder Zufall, um zu beginnen.";
 
         return input.getResponseBuilder()
