@@ -11,6 +11,8 @@ import java.util.Map;
 
 public class LatinTrainerTools {
 
+    private LatinTrainerTools() {}
+
     // String constants used across different classes
     public static final String DIR_SLOT = "dir";
     public static final String MODE_SLOT = "mode";
@@ -56,6 +58,6 @@ public class LatinTrainerTools {
         return attributesManager.getPersistentAttributes();
     }
 
-    public static List<Query> createQueryList() {return null;}
+    //public static List<Query> createQueryList() {return null;}
 
 }

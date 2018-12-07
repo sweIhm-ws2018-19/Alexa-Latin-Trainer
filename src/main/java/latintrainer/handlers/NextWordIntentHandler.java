@@ -23,8 +23,9 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        Mode sessionMode = null;
-        Direction sessionDir = null;
+        // dummy values to avoid bug - if
+        Mode sessionMode = Mode.PROGRESS;
+        Direction sessionDir = Direction.GERMAN;
         int savedChapter = 0;
         int savedHighscore = 0;
 
@@ -81,8 +82,8 @@ public class NextWordIntentHandler implements RequestHandler{
         // String toTranslate = currentQuery.getLatinWord(); //old
         String toTranslate = currentDirIsGerman ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
         String speechText = String.format("Das zu übersetzende Wort lautet %s. Bitte sage, die Antwort ist x y, " +
-                "oder wenn du es nicht weißt, keine Ahnung. Session: %s, %s, %d, %d", toTranslate, sessionDir.getDirection(),
-                sessionMode.getModeName(), savedChapter, savedHighscore);
+                "oder wenn du es nicht weißt, keine Ahnung. Session: %s, %s, %d, %d", toTranslate, currentSession.getDir().getDirection(),
+                currentSession.getMode().getModeName(), currentSession.getChapter(), currentSession.getAllTimeHighscore().getHighscoreValue());
 
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)

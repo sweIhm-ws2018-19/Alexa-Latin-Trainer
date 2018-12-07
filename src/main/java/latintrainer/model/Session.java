@@ -96,6 +96,10 @@ public class Session {
         return mode;
     }
 
+    public int getChapter() {
+        return chapter;
+    }
+
 
     public void setDir(Direction dir) {
         this.dir = dir;
