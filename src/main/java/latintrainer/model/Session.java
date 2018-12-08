@@ -68,7 +68,7 @@ public class Session {
         int i = index;
         int counter = 0;
         while(arr[i] && counter < wordList.size()) {
-            i = new Random().nextInt(wordList.size());
+            i = (i+1)%wordList.size();
             counter++;
         }
         currentWordIndex = i;

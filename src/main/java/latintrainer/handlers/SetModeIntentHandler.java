@@ -38,19 +38,19 @@ public class SetModeIntentHandler implements RequestHandler {
 
                 saveData(MODE, userAnswer, input);
 
-                speechText = String.format("Okay. Dein Modus ist %s. Waehle nun die Richtung: Willst du lieber die " +
-                        "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Waehle Richtung deutsch.", userAnswer);
+                speechText = String.format("Okay. Dein Modus ist %s. Wähle nun die Richtung: Willst du lieber die " +
+                        "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Wähle Richtung deutsch.", userAnswer);
 
-                repromptText = "Sage deutsch oder lateinisch.";
+                repromptText = "Sage zum Beispiel Wähle Richtung deutsch.";
 
             } else {
                 speechText = "Ich konnte dich nicht verstehen. Sage Fortschritt für deinen letzten Speicherstand oder Zufall für eine zufällige Abfrage.";
-                repromptText = "Sage Fortschritt oder Zufall.";
+                repromptText = "Sage zum Beispiel Wähle Modus Fortschritt oder Zufall.";
             }
         }
         else {
             speechText = "Das habe ich leider nicht verstanden. Bitte versuche es noch einmal.";
-            repromptText = "Sage Fortschritt oder Zufall.";
+            repromptText = "Sage zum Beispiel Wähle Modus Fortschritt oder Zufall.";
         }
 
         return input.getResponseBuilder()

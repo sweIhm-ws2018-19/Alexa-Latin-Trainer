@@ -15,6 +15,10 @@ public class NextWordIntentHandler implements RequestHandler{
     public static Session currentSession;
     public static Query currentQuery;
     private static boolean isFirst = true;
+    Mode sessionMode = Mode.PROGRESS;
+    Direction sessionDir = Direction.GERMAN;
+    int savedChapter = 0;
+    int savedHighscore = 0;
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -23,12 +27,6 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        // dummy values to avoid bug - if
-        Mode sessionMode = Mode.PROGRESS;
-        Direction sessionDir = Direction.GERMAN;
-        int savedChapter = 0;
-        int savedHighscore = 0;
-
         if (isChangingSession) {
             Map<String, Object> persistentAttributes = getAttributes(input);
             String savedMode = (String) persistentAttributes.get(MODE);
@@ -40,10 +38,10 @@ public class NextWordIntentHandler implements RequestHandler{
                 case PROGRESS:
                     sessionMode = Mode.PROGRESS;
                     break;
-                case RANDOM:
+                case CHAPTER:
                     sessionMode = Mode.CHAPTER;
                     break;
-                case CHAPTER:
+                case RANDOM:
                     sessionMode = Mode.RANDOM;
                     break;
                 default:
