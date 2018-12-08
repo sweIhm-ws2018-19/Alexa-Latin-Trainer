@@ -25,6 +25,7 @@ public class SetModeIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        currentHandler = "SetMode";
 
         Slot answerSlot = getAnswerSlot(MODE_SLOT, input);
         String speechText;

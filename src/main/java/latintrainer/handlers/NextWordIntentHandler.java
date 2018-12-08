@@ -27,6 +27,7 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        currentHandler = "NextWord";
         if (isChangingSession) {
             Map<String, Object> persistentAttributes = getAttributes(input);
             String savedMode = (String) persistentAttributes.get(MODE);
@@ -74,10 +75,9 @@ public class NextWordIntentHandler implements RequestHandler{
             }
             isChangingSession = false;
         }
-        // check mode
+
         currentQuery = currentSession.getCurrentWord();
-        // check direction
-        // String toTranslate = currentQuery.getLatinWord(); //old
+
         String toTranslate = currentDirIsGerman ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
         String speechText = String.format("Das zu übersetzende Wort lautet %s. Bitte sage, die Antwort ist x y, " +
                 "oder wenn du es nicht weißt, keine Ahnung.", toTranslate);

@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
+import static main.java.latintrainer.model.LatinTrainerTools.currentHandler;
 
 public class WhatsMyHighscoreIntentHandler implements RequestHandler{
     @Override
@@ -18,6 +19,7 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        currentHandler = "Highscore";
         int allTimeHighscore = currentSession.getAllTimeHighscore().getHighscoreValue();
         int currentScore = currentSession.getCurrentHighscore().getHighscoreValue();
         String speechText;

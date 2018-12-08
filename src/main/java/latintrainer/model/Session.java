@@ -7,14 +7,13 @@ public class Session {
 
     private Direction dir;
     private Mode mode;
-    private int chapter;
+    private Chapter chapter;
     private List<Query> wordList;
     private int currentWordIndex;
     private Highscore currentHighscore = new Highscore(0);
     private Highscore allTimeHighscore;
     private boolean[] alreadyAsked;
     private boolean[] answeredCorrectly;
-
 
     public Session() {
         currentWordIndex = -1;
@@ -26,7 +25,7 @@ public class Session {
         this.dir = dir;
         this.mode = mode;
         this.allTimeHighscore = new Highscore(highscore);
-        this.chapter = chapter;
+        this.chapter = new Chapter(chapter);
         wordList = QueryList.getChapter(chapter);
         currentWordIndex = -1;
         alreadyAsked = new boolean[20];
@@ -42,8 +41,8 @@ public class Session {
                 result = checkForNextFailed(savePoint);
 
             if(result == null) {
-                chapter++;
-                wordList = QueryList.getChapter(chapter);
+                chapter.setChapterNumber(chapter.getChapterAsInt()+1);
+                wordList = QueryList.getChapter(chapter.getChapterAsInt());
                 currentWordIndex = 0;
                 alreadyAsked = new boolean[wordList.size()];
                 answeredCorrectly = new boolean[wordList.size()];
@@ -54,6 +53,20 @@ public class Session {
 
     public void answeredCorrectly() {
         answeredCorrectly[currentWordIndex] = true;
+    }
+
+    public int getAnsweredCorrectlyAsInt() {
+        int result = 0;
+        for (int i = 0; i < answeredCorrectly.length; i++){
+            if (answeredCorrectly[i])
+                result ++;
+        }
+
+        return result;
+    }
+
+    public int getChapterSize(){
+        return wordList.size();
     }
 
     private Query checkForNextUnasked(int index) {
@@ -73,7 +86,7 @@ public class Session {
         }
         currentWordIndex = i;
 
-        // flag for setting the allreadyAskedArray on index i to true
+        // flag for setting the alreadyAskedArray on index i to true
         if(flag)
             arr[i] = true;
 
@@ -96,7 +109,7 @@ public class Session {
         return mode;
     }
 
-    public int getChapter() {
+    public Chapter getChapter() {
         return chapter;
     }
 
@@ -109,7 +122,7 @@ public class Session {
         this.mode = mode;
     }
 
-    public void setChapter(int index) { chapter = index; }
+    public void setChapter(int index) { chapter.setChapterNumber(index); }
 
 
     public void setAllTimeHighscore(int highscore) {

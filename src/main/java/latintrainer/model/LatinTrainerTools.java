@@ -29,6 +29,7 @@ public class LatinTrainerTools {
     public static final String CHAPTER = "kapitel";
     public static final String HIGHSCORE = "highscore";
 
+    public static String currentHandler = "Launch";
     public static boolean isChangingSession = true;
     public static boolean currentDirIsGerman = false;
     public static boolean modeIsRandom = true;

@@ -6,6 +6,8 @@ import com.amazon.ask.model.Response;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
+import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
+import static main.java.latintrainer.model.LatinTrainerTools.currentHandler;
 
 public class WhatsMySuccessIntentHandler implements RequestHandler{
     @Override
@@ -15,9 +17,16 @@ public class WhatsMySuccessIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
-                "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
-                "willst. Möchtest du die Erfahrung beginnen? Sage Starte die Demo, um loszulegen.";
+        currentHandler = "Success";
+        int currentChapter = currentSession.getChapter().getChapterAsInt();
+        int chapterCount = currentSession.getAnsweredCorrectlyAsInt();
+        int chapterSize = currentSession.getChapterSize();
+        String mode = currentSession.getMode().getModeName();
+        String direction = currentSession.getDir().getDirection();
+        String speechText = String.format("Du bist gerade in Kapitel %d. Du hast in diesem Kapitel bereits %d von %d" +
+                " Wörtern richtig beantwortet. Weiter so! Gerade ist der Modus %s und die Richtung %s ausgewählt." +
+                " Wenn du das ändern willst, sage: konfigurieren. Ansonsten sage neues Wort.", currentChapter,
+                chapterCount, chapterSize, mode, direction);
         String repromptText = "Sage Start, um loszulegen.";
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
