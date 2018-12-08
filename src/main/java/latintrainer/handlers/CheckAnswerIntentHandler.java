@@ -24,7 +24,7 @@ public class CheckAnswerIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        currentHandler = "CheckAnswer";
+        LatinTrainerTools.setCurrentHandler("CheckAnswer");
         // Get the color slot from the list of slots.
         Slot answerSlot = LatinTrainerTools.getAnswerSlot(ANSWER_SLOT, input);
         String answer = currentDirIsGerman ? currentQuery.getGermanWord(): currentQuery.getLatinWord();

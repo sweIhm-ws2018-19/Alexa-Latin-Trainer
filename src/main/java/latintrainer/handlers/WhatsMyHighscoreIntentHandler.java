@@ -3,13 +3,12 @@ import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import main.java.latintrainer.model.LatinTrainerTools;
 
-import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
-import static main.java.latintrainer.model.LatinTrainerTools.currentHandler;
 
 public class WhatsMyHighscoreIntentHandler implements RequestHandler{
     @Override
@@ -19,7 +18,7 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        currentHandler = "Highscore";
+        LatinTrainerTools.setCurrentHandler("Highscore");
         int allTimeHighscore = currentSession.getAllTimeHighscore().getHighscoreValue();
         int currentScore = currentSession.getCurrentHighscore().getHighscoreValue();
         String speechText;

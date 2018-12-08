@@ -17,7 +17,7 @@ public class SetDirectionIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        currentHandler = "SetDir";
+        LatinTrainerTools.setCurrentHandler("SetDir");
         Slot answerSlot = LatinTrainerTools.getAnswerSlot(DIR_SLOT, input);
         String speechText;
         String repromptText;

@@ -16,11 +16,11 @@ package main.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import main.java.latintrainer.model.LatinTrainerTools;
 
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.model.LatinTrainerTools.currentHandler;
 
 public class HelpIntentHandler implements RequestHandler {
     @Override
@@ -32,7 +32,7 @@ public class HelpIntentHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         String speechText;
         String repromptText;
-        switch (currentHandler) {
+        switch (LatinTrainerTools.getCurrentHandler()) {
             case "Launch":
                 speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
                         "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +

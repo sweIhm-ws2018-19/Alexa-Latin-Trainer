@@ -27,7 +27,7 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        currentHandler = "NextWord";
+        LatinTrainerTools.setCurrentHandler("NextWord");
         if (isChangingSession) {
             Map<String, Object> persistentAttributes = getAttributes(input);
             String savedMode = (String) persistentAttributes.get(MODE);
