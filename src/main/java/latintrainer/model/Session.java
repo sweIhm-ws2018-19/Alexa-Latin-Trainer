@@ -19,17 +19,18 @@ public class Session {
     private String currentHandler;
 
     public Session() {
-        currentWordIndex = -1;
+        currentWordIndex = 0;
         alreadyAsked = new boolean[20];
         answeredCorrectly = new boolean[20];
         isChangingSession = true;
         currentHandler = "Launch";
         chapter = new Chapter(0);
         wordList = this.chapter.getWordsOfThisChapter();
+        currentQuery = wordList.get(currentWordIndex);
     }
 
     public Query nextQuery() {
-            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex+1)%wordList.size();
+            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex++)%wordList.size();
             int savePoint = currentWordIndex;
             currentQuery = checkForNextUnasked(currentWordIndex);
 
@@ -37,11 +38,7 @@ public class Session {
                 currentQuery = checkForNextFailed(savePoint);
 
             if(currentQuery == null) {
-                chapter.setChapterNumber(chapter.getChapterAsInt()+1);
-                currentWordIndex = 0;
-                alreadyAsked = new boolean[wordList.size()];
-                answeredCorrectly = new boolean[wordList.size()];
-                currentQuery = nextQuery();
+                setChapter(chapter.getChapterAsInt()+1);
                 setIsChangingSession(false);
             }
         return currentQuery;
@@ -115,7 +112,11 @@ public class Session {
 
     public Session setChapter(int index) {
         chapter.setChapterNumber(index);
+        alreadyAsked = new boolean[wordList.size()];
+        answeredCorrectly = new boolean[wordList.size()];
+        currentWordIndex = 0;
         wordList = chapter.getWordsOfThisChapter();
+        currentQuery = wordList.get(currentWordIndex);
         return this;
     }
 
