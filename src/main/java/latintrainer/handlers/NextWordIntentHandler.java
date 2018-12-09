@@ -28,13 +28,20 @@ public class NextWordIntentHandler implements RequestHandler{
             int savedChapter = Integer.parseInt((String)persistentAttributes.get(CHAPTER));
             int savedHighscore = Integer.parseInt((String) persistentAttributes.get(HIGHSCORE));
 
-            Mode savedModeValue = savedMode.equalsIgnoreCase(Mode.PROGRESS.getModeName())?
-                    Mode.PROGRESS : savedMode.equalsIgnoreCase(Mode.CHAPTER.getModeName())?
-                    Mode.CHAPTER : Mode.RANDOM;
+            Mode savedModeValue = Mode.CHAPTER;
 
-            Direction savedDirValue = savedDir.equalsIgnoreCase(Direction.LATIN.getDirection())?
-                    Direction.LATIN : savedDir.equalsIgnoreCase(Direction.GERMAN.getDirection())?
-                    Direction.GERMAN : Direction.RANDOM;
+            if(savedMode.equalsIgnoreCase(Mode.PROGRESS.getModeName()))
+                savedModeValue = Mode.PROGRESS;
+            else if(savedMode.equalsIgnoreCase(Mode.RANDOM.getModeName()))
+                savedModeValue = Mode.RANDOM;
+
+
+            Direction savedDirValue = Direction.RANDOM;
+
+            if(savedDir.equalsIgnoreCase(Direction.LATIN.getDirection()))
+                savedDirValue = Direction.LATIN;
+            else if(savedDir.equalsIgnoreCase(Direction.GERMAN.getDirection()))
+                savedDirValue = Direction.GERMAN;
 
             CURRENT_SESSION.setMode(savedModeValue).setDir(savedDirValue).setChapter(savedChapter).setAllTimeHighscore(savedHighscore).setIsChangingSession(false);
         }

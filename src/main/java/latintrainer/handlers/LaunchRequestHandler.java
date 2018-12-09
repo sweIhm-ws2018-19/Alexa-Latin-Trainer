@@ -24,7 +24,7 @@ import main.java.latintrainer.model.Session;
 
 public class LaunchRequestHandler implements RequestHandler {
 
-    public static Session CURRENT_SESSION= new Session();
+    public static final Session CURRENT_SESSION= new Session();
 
     @Override
     public boolean canHandle(HandlerInput input) {
