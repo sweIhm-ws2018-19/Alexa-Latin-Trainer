@@ -34,12 +34,12 @@ public class HelpIntentHandler implements RequestHandler {
         String repromptText;
         switch (CURRENT_SESSION.getCurrentHandler()) {
             case "Launch":
+                repromptText = "Sage Starte direkt, um loszulegen.";
                 speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
                         "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
                         "willst. Zusätzlich kannst du jederzeit deinen Highscore und deinen Fortschritt abfragen. Sage " +
                         "dafür einfach Highscore beziehungsweise Fortschritt. Möchtest du die Erfahrung nun beginnen? " +
-                        "Sage Starte direkt, um loszulegen.";
-                repromptText = "Sage Starte direkt, um loszulegen.";
+                        repromptText;
                 break;
             case "NextWord":
                 speechText = "Dir wurde soeben ein Wort gesagt, das du übersetzen sollst. Damit deine Antwort " +

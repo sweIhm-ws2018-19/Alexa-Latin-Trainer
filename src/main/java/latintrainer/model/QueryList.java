@@ -15,17 +15,17 @@ public class QueryList {
         return new QueryList().wordsForChapter(index);
     }
 
-    private final List<Query> CHAPTER_ONE = DUMMY_CHAPTER;
+    private final List<Query> chapterOne = DUMMY_CHAPTER;
 
-    private final List<Query> CHAPTER_TWO = DUMMY_CHAPTER;
+    private final List<Query> chapterTwo = DUMMY_CHAPTER;
 
-    private final List<Query> CHAPTER_THREE = DUMMY_CHAPTER;
+    private final List<Query> chapterThree = DUMMY_CHAPTER;
 
-    private final List<Query> CHAPTER_FOUR = DUMMY_CHAPTER;
+    private final List<Query> chapterFour = DUMMY_CHAPTER;
 
-    private final List<Query> CHAPTER_FIVE = DUMMY_CHAPTER;
+    private final List<Query> chapterFive = DUMMY_CHAPTER;
 
-    private final List<Query> CHAPTER_SIX = DUMMY_CHAPTER;
+    private final List<Query> chapterSix = DUMMY_CHAPTER;
 
     private static final List<Query> DUMMY_CHAPTER = Arrays.asList(
             new Query(0, "Domus","Haus"),
@@ -49,7 +49,7 @@ public class QueryList {
             new Query(18, "Verbum","Wort"),
             new Query(19, "Lex","Gesetz"));
 
-    List<List<Query>> queries = Arrays.asList(CHAPTER_ONE, CHAPTER_TWO, CHAPTER_THREE, CHAPTER_FOUR, CHAPTER_FIVE, CHAPTER_SIX);
+    List<List<Query>> queries = Arrays.asList(chapterOne, chapterTwo, chapterThree, chapterFour, chapterFive, chapterSix);
 
     private List<Query> wordsForChapter(int index) {
         return queries.get(index%queries.size()).stream().collect(Collectors.toList());
