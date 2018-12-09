@@ -8,8 +8,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SessionTest {
-
-    /*Session sutOne = new Session("GERMAN", "RANDOM", 1, 0, 1);
+/*
+    Session sutOne = new Session("GERMAN", "RANDOM", 1, 0, 1);
 
     @Test
     public void checkGetChapter() {
@@ -27,7 +27,7 @@ public class SessionTest {
         Query testQuery = sutOne.getCurrentQuery();
 
         assertEquals(null, testQuery);
-    }*/
-
+    }
+*/
 
 }

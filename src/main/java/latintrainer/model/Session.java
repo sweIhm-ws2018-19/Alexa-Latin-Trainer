@@ -27,7 +27,7 @@ public class Session {
         isFirstRound = true;
         currentHandler = "Launch";
         chapter = new Chapter(0);
-        wordList = QueryList.getChapter(chapter.getChapterAsInt());
+        wordList = this.chapter.getWordsOfThisChapter();
     }
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
@@ -35,7 +35,7 @@ public class Session {
         this.mode = mode;
         this.allTimeHighscore = new Highscore(highscore);
         this.chapter = new Chapter(chapter);
-        wordList = QueryList.getChapter(chapter);
+        wordList = this.chapter.getWordsOfThisChapter();
         currentWordIndex = -1;
         currentQuery = wordList.get(0);
         alreadyAsked = new boolean[20];
@@ -138,7 +138,7 @@ public class Session {
 
     public Session setChapter(int index) {
         chapter.setChapterNumber(index);
-        wordList = QueryList.getChapter(chapter.getChapterAsInt());
+        wordList = chapter.getWordsOfThisChapter();
         return this;
     }
 

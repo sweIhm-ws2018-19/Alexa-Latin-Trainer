@@ -1,6 +1,7 @@
 package main.java.latintrainer.model;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +13,7 @@ public class QueryList {
     private QueryList() {}
 
     public static List<Query> getChapter(int index) {
-        return new QueryList().wordsForChapter(index);
+        return queries.get(index%queries.size()).stream().collect(Collectors.toList());
     }
 
     private static final List<Query> CHAPTER_ONE = Arrays.asList(
@@ -81,10 +82,6 @@ public class QueryList {
             new Query(18, "parvus","klein"),
             new Query(19, "modus","Art"));
 
-    List<List<Query>> queries = Arrays.asList(CHAPTER_ONE, CHAPTER_TWO, CHAPTER_THREE);
-
-    private List<Query> wordsForChapter(int index) {
-        return queries.get(index%queries.size()).stream().collect(Collectors.toList());
-    }
+    private static final List<List<Query>> queries = Arrays.asList(CHAPTER_ONE, CHAPTER_TWO, CHAPTER_THREE);
 
 }
