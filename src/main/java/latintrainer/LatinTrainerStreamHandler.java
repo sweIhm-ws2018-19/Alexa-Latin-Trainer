@@ -21,9 +21,13 @@ import main.java.latintrainer.model.Session;
 
 public class LatinTrainerStreamHandler extends SkillStreamHandler {
 
-    public static final Session CURRENT_SESSION = new Session();
+    public static Session CURRENT_SESSION;
+
 
     private static Skill getSkill() {
+
+        CURRENT_SESSION = new Session();
+
         return Skills.standard()
                 .addRequestHandlers(
                         new LaunchRequestHandler(),

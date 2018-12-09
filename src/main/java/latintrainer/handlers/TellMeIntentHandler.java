@@ -10,7 +10,6 @@ import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.LatinTrainerStreamHandler.CURRENT_SESSION;
 
-
 public class TellMeIntentHandler implements RequestHandler{
     @Override
     public boolean canHandle(HandlerInput input) {

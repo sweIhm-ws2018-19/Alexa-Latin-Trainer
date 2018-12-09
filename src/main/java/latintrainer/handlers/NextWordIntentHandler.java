@@ -36,13 +36,7 @@ public class NextWordIntentHandler implements RequestHandler{
                     Direction.LATIN : savedDir.equalsIgnoreCase(Direction.GERMAN.getDirection())?
                     Direction.GERMAN : Direction.RANDOM;
 
-            CURRENT_SESSION.setMode(savedModeValue).setDir(savedDirValue).setIsChangingSession(false);
-
-            if (CURRENT_SESSION.isFirstRound()) {
-                CURRENT_SESSION.setChapter(0).setAllTimeHighscore(0).setIsFirstRound(false);
-            } else {
-                CURRENT_SESSION.setChapter(savedChapter).setAllTimeHighscore(savedHighscore);
-            }
+            CURRENT_SESSION.setMode(savedModeValue).setDir(savedDirValue).setChapter(savedChapter).setAllTimeHighscore(savedHighscore).setIsChangingSession(false);
         }
 
         Query currentQuery = CURRENT_SESSION.nextQuery();
