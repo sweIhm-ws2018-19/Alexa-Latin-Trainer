@@ -58,6 +58,7 @@ public class Session {
     }
 
     public void answeredCorrectly() {
+
         answeredCorrectly[currentWordIndex] = true;
     }
 

@@ -12,7 +12,8 @@ public class Highscore {
     }
 
     public void addToHighscore(int value) {
-        highscoreValue += value;
+
+        highscoreValue = (value+highscoreValue) > 0? value+highscoreValue : 0;
     }
 
     public void setHighscoreValue(int newScore) {

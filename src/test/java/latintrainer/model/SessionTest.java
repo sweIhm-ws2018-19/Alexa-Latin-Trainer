@@ -1,9 +1,10 @@
 package test.java.latintrainer.model;
 
-import main.java.latintrainer.model.Direction;
-import main.java.latintrainer.model.Mode;
-import main.java.latintrainer.model.Session;
+import main.java.latintrainer.model.*;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -154,6 +155,102 @@ public class SessionTest {
 
         assertTrue(expectedOne && expectedTwo);
         }
+
+
+    @Test
+    public void answeredNoneCorrectZeroAsked() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+
+        int expected = 0;
+
+        assertEquals(expected, sut.getAnsweredCorrectlyAsInt());
+    }
+
+    @Test
+    public void answeredAllCorrect() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        for(int i = 0; i < 20; i++) {
+            sut.nextQuery();
+            sut.answeredCorrectly();
+        }
+
+        int expected = 20;
+
+        assertEquals(expected, sut.getAnsweredCorrectlyAsInt());
+    }
+
+    @Test
+    public void answeredNoneCorrect() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        for(int i = 0; i < 20; i++) {
+            sut.nextQuery();
+        }
+
+        int expected = 0;
+
+        assertEquals(expected, sut.getAnsweredCorrectlyAsInt());
+    }
+
+    @Test
+    public void answeredHalfCorrect() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        for(int i = 0; i < 20; i++) {
+            sut.nextQuery();
+            if(i%2==0)
+                sut.answeredCorrectly();
+        }
+
+        int expected = 10;
+
+        assertEquals(expected, sut.getAnsweredCorrectlyAsInt());
+    }
+
+    @Test
+    public void checkCurrentHighScoreHalfCorrect() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        for(int i = 0; i < 20; i++) {
+            sut.nextQuery();
+            if(i%2 == 0)
+                sut.getCurrentHighscore().addToHighscore(2);
+            else
+                sut.getCurrentHighscore().addToHighscore(-2);
+        }
+
+        int expected = 0;
+
+        assertEquals(expected, sut.getCurrentHighscore().getHighscoreValue());
+    }
+
+    @Test
+    public void checkCurrentHighScoreNoneCorrect() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        for(int i = 0; i < 20; i++) {
+            sut.nextQuery();
+            sut.getCurrentHighscore().addToHighscore(-2);
+        }
+
+        int expected = 0;
+
+        assertEquals(expected, sut.getCurrentHighscore().getHighscoreValue());
+    }
+
+    @Test
+    public void nextQueryForWholeChapter(){
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        List<Query> queryList = new ArrayList<>();
+        for(int i = 0; i < 20; i++) {
+            queryList.add(sut.nextQuery());
+            sut.answeredCorrectly();
+        }
+
+        List<Query> expected = QueryList.getChapter(1);
+
+        boolean matchingLists = queryList.containsAll(expected);
+
+        assertTrue(matchingLists);
+    }
+
+
 
 
 }
