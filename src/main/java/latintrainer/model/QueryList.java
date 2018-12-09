@@ -15,7 +15,7 @@ public class QueryList {
         return new QueryList().wordsForChapter(index);
     }
 
-    private static final List<Query> CHAPTOR_ONE = Arrays.asList(
+    private static final List<Query> CHAPTER_ONE = Arrays.asList(
             new Query(0, "Domus","Haus"),
             new Query(1, "Sol","Sonne"),
             new Query(2, "Amicus","Freund"),
@@ -81,7 +81,7 @@ public class QueryList {
             new Query(18, "parvus","klein"),
             new Query(19, "modus","Art"));
 
-    List<List<Query>> queries = Arrays.asList(CHAPTER_TWO, CHAPTER_TWO, CHAPTER_THREE);
+    List<List<Query>> queries = Arrays.asList(CHAPTER_ONE, CHAPTER_TWO, CHAPTER_THREE);
 
     private List<Query> wordsForChapter(int index) {
         return queries.get(index%queries.size()).stream().collect(Collectors.toList());
