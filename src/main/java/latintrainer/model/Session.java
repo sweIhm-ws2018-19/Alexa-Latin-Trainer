@@ -137,6 +137,7 @@ public class Session {
 
     public Session setChapter(int index) {
         chapter.setChapterNumber(index);
+        wordList = QueryList.getChapter(chapter.getChapterAsInt());
         return this;
     }
 

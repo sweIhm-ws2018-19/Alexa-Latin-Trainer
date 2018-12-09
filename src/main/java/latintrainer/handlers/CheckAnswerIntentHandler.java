@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
-import static main.java.latintrainer.LatinTrainerStreamHandler.CURRENT_SESSION;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 public class CheckAnswerIntentHandler implements RequestHandler{
 

@@ -20,8 +20,11 @@ import com.amazon.ask.model.Response;
 
 import java.util.Optional;
 import static com.amazon.ask.request.Predicates.requestType;
+import main.java.latintrainer.model.Session;
 
 public class LaunchRequestHandler implements RequestHandler {
+
+    public static Session CURRENT_SESSION= new Session();
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -30,7 +33,6 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-
         String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage starte direkt, um bei deinem letzten Kapitel weiterzumachen," +
                 " Konfigurieren, um deine Abfrage Einstellungen anzupassen oder Hilfe um Zusatzinformationen zu bekommen.";
         String repromptText = "Bitte sage Fortschritt oder Zufall, um zu beginnen.";

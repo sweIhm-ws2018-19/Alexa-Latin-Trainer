@@ -16,7 +16,7 @@ package main.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
-import static main.java.latintrainer.LatinTrainerStreamHandler.CURRENT_SESSION;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 import java.util.Optional;
 

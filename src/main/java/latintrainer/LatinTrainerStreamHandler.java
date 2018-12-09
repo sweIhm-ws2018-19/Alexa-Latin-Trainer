@@ -17,16 +17,10 @@ import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
 import main.java.latintrainer.handlers.*;
-import main.java.latintrainer.model.Session;
 
 public class LatinTrainerStreamHandler extends SkillStreamHandler {
 
-    public static Session CURRENT_SESSION;
-
-
     private static Skill getSkill() {
-
-        CURRENT_SESSION = new Session();
 
         return Skills.standard()
                 .addRequestHandlers(
