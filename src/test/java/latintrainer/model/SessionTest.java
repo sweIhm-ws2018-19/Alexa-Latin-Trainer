@@ -8,8 +8,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SessionTest {
-/*
-    Session sutOne = new Session("GERMAN", "RANDOM", 1, 0, 1);
+
+    Session sutOne = new Session();
+
+    @Test
+    public void
 
     @Test
     public void checkGetChapter() {
@@ -28,6 +31,6 @@ public class SessionTest {
 
         assertEquals(null, testQuery);
     }
-*/
+
 
 }

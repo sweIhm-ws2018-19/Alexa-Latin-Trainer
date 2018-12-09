@@ -16,7 +16,6 @@ public class Session {
     private boolean[] alreadyAsked;
     private boolean[] answeredCorrectly;
     private boolean isChangingSession;
-    private boolean isFirstRound;
     private String currentHandler;
 
     public Session() {
@@ -24,24 +23,9 @@ public class Session {
         alreadyAsked = new boolean[20];
         answeredCorrectly = new boolean[20];
         isChangingSession = true;
-        isFirstRound = true;
         currentHandler = "Launch";
         chapter = new Chapter(0);
         wordList = this.chapter.getWordsOfThisChapter();
-    }
-
-    public Session(Direction dir, Mode mode, int chapter, int highscore) {
-        this.dir = dir;
-        this.mode = mode;
-        this.allTimeHighscore = new Highscore(highscore);
-        this.chapter = new Chapter(chapter);
-        wordList = this.chapter.getWordsOfThisChapter();
-        currentWordIndex = -1;
-        currentQuery = wordList.get(0);
-        alreadyAsked = new boolean[20];
-        answeredCorrectly = new boolean[20];
-        isChangingSession = false;
-        isFirstRound = false;
     }
 
     public Query nextQuery() {
@@ -73,13 +57,6 @@ public class Session {
 
     public Session setCurrentHandler(String handler) {
         currentHandler = handler;
-        return this;
-    }
-
-    public boolean isFirstRound() { return isFirstRound;}
-
-    public Session setIsFirstRound(boolean isFirst) {
-        isFirstRound = isFirst;
         return this;
     }
 
