@@ -26,6 +26,8 @@ public class Session {
         isChangingSession = true;
         isFirstRound = true;
         currentHandler = "Launch";
+        chapter = new Chapter(0);
+        wordList = QueryList.getChapter(chapter.getChapterAsInt());
     }
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
@@ -52,12 +54,11 @@ public class Session {
 
             if(currentQuery == null) {
                 chapter.setChapterNumber(chapter.getChapterAsInt()+1);
-                wordList = QueryList.getChapter(chapter.getChapterAsInt());
                 currentWordIndex = 0;
                 alreadyAsked = new boolean[wordList.size()];
                 answeredCorrectly = new boolean[wordList.size()];
                 currentQuery = nextQuery();
-                isChangingSession();
+                setIsChangingSession(false);
             }
         return currentQuery;
     }
