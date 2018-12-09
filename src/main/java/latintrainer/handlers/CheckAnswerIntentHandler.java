@@ -4,15 +4,14 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import com.amazon.ask.response.ResponseBuilder;
+import main.java.latintrainer.model.Direction;
 import main.java.latintrainer.model.LatinTrainerTools;
 
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentQuery;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
-
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 public class CheckAnswerIntentHandler implements RequestHandler{
 
@@ -24,10 +23,10 @@ public class CheckAnswerIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        LatinTrainerTools.setCurrentHandler("CheckAnswer");
+        CURRENT_SESSION.setCurrentHandler("CheckAnswer");
         // Get the color slot from the list of slots.
         Slot answerSlot = LatinTrainerTools.getAnswerSlot(ANSWER_SLOT, input);
-        String answer = currentDirIsGerman ? currentQuery.getGermanWord(): currentQuery.getLatinWord();
+        String answer = CURRENT_SESSION.getDir().equals(Direction.GERMAN) ? CURRENT_SESSION.getCurrentWord().getGermanWord() : CURRENT_SESSION.getCurrentWord().getLatinWord();
         String speechText;
         String repromptText;
         boolean isAskResponse = false;
@@ -38,12 +37,12 @@ public class CheckAnswerIntentHandler implements RequestHandler{
             String userAnswer = answerSlot.getValue();
             if (userAnswer.equalsIgnoreCase(answer)) {
                 speechText = "Richtig. Sage Neues Wort um weiterzumachen";
-                currentSession.getCurrentHighscore().addToHighscore(2);
-                currentSession.answeredCorrectly();
+                CURRENT_SESSION.getCurrentHighscore().addToHighscore(2);
+                CURRENT_SESSION.answeredCorrectly();
                 repromptText = "Sage Neues Wort um weiterzumachen";
             } else{
                 speechText = String.format("Falsch. Es ist nicht %s. Willst du das Wort wiederholen, überspringen oder auflösen?", userAnswer);
-                currentSession.getCurrentHighscore().addToHighscore(-2);
+                CURRENT_SESSION.getCurrentHighscore().addToHighscore(-2);
                 repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
             }
         } else {

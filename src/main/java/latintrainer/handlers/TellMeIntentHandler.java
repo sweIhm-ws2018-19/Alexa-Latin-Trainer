@@ -1,13 +1,16 @@
 package main.java.latintrainer.handlers;
+
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import main.java.latintrainer.model.Direction;
 
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentQuery;
-import static main.java.latintrainer.model.LatinTrainerTools.*;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
+
+
 public class TellMeIntentHandler implements RequestHandler{
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -16,7 +19,7 @@ public class TellMeIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String answer = currentDirIsGerman ? currentQuery.getGermanWord(): currentQuery.getLatinWord();
+        String answer = CURRENT_SESSION.getDir().equals(Direction.GERMAN) ? CURRENT_SESSION.getCurrentWord().getGermanWord(): CURRENT_SESSION.getCurrentWord().getLatinWord();
         String speechText = "Die Antwort ist " + answer + ". Sage Neues Wort um ein neues Wort zu bekommen.";
         String repromptText = "Sage Neues Wort um ein neues Wort zu bekommen.";
         return input.getResponseBuilder()

@@ -1,18 +1,12 @@
 package main.java.latintrainer.handlers;
 
-import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
-
-import main.java.latintrainer.model.LatinTrainerTools;
-import main.java.latintrainer.model.Mode;
-import main.java.latintrainer.model.Session;
-
-
-import java.util.Map;
 import java.util.Optional;
 
+import main.java.latintrainer.model.Mode;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
 import static com.amazon.ask.request.Predicates.intentName;
 
@@ -25,7 +19,7 @@ public class SetModeIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        LatinTrainerTools.setCurrentHandler("SetMode");
+        CURRENT_SESSION.setCurrentHandler("SetMode");
 
         Slot answerSlot = getAnswerSlot(MODE_SLOT, input);
         String speechText;
@@ -35,9 +29,12 @@ public class SetModeIntentHandler implements RequestHandler {
 
             String userAnswer = answerSlot.getValue();
 
-            if (userAnswer.equalsIgnoreCase(PROGRESS) || userAnswer.equalsIgnoreCase(RANDOM)) {
+            if (userAnswer.equalsIgnoreCase(Mode.PROGRESS.getModeName()) || userAnswer.equalsIgnoreCase(Mode.RANDOM.getModeName())) {
 
                 saveData(MODE, userAnswer, input);
+
+                Mode choice = userAnswer.equalsIgnoreCase(Mode.PROGRESS.getModeName())? Mode.PROGRESS : Mode.RANDOM;
+                CURRENT_SESSION.setMode(choice);
 
                 speechText = String.format("Okay. Dein Modus ist %s. Wähle nun die Richtung: Willst du lieber die " +
                         "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Wähle Richtung deutsch.", userAnswer);

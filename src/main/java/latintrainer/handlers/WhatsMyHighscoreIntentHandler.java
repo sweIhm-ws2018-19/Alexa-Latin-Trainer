@@ -1,14 +1,13 @@
 package main.java.latintrainer.handlers;
-import com.amazon.ask.attributes.AttributesManager;
+
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import main.java.latintrainer.model.LatinTrainerTools;
-
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 public class WhatsMyHighscoreIntentHandler implements RequestHandler{
     @Override
@@ -18,9 +17,9 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        LatinTrainerTools.setCurrentHandler("Highscore");
-        int allTimeHighscore = currentSession.getAllTimeHighscore().getHighscoreValue();
-        int currentScore = currentSession.getCurrentHighscore().getHighscoreValue();
+        CURRENT_SESSION.setCurrentHandler("Highscore");
+        int allTimeHighscore = CURRENT_SESSION.getAllTimeHighscore().getHighscoreValue();
+        int currentScore = CURRENT_SESSION.getCurrentHighscore().getHighscoreValue();
         String speechText;
         String repromptText;
         if (allTimeHighscore>currentScore) {

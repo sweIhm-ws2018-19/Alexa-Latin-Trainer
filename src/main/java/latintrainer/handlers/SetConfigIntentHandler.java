@@ -6,7 +6,7 @@ import com.amazon.ask.model.Response;
 import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 
-import main.java.latintrainer.model.LatinTrainerTools;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 public class SetConfigIntentHandler implements RequestHandler {
 
@@ -17,7 +17,7 @@ public class SetConfigIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        LatinTrainerTools.setCurrentHandler("SetConfig");
+        CURRENT_SESSION.setCurrentHandler("SetConfig");
         String speechText = "Okay, wir konfigurieren den Latein Trainer neu. Zuerst kannst du den Modus wählen. Du " +
                 "kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. Sage zum Beispiel: Wähle Modus " +
                 "Fortschritt";

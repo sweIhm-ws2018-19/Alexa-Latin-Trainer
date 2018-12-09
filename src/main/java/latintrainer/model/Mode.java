@@ -12,4 +12,5 @@ public enum Mode {
     public String getModeName() {
         return modeName;
     }
+
 }

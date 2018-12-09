@@ -8,17 +8,10 @@ import java.util.Optional;
 import main.java.latintrainer.model.*;
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 
 public class NextWordIntentHandler implements RequestHandler{
-
-    public static Session currentSession;
-    public static Query currentQuery;
-    private static boolean isFirst = true;
-    Mode sessionMode = Mode.PROGRESS;
-    Direction sessionDir = Direction.GERMAN;
-    int savedChapter = 0;
-    int savedHighscore = 0;
 
     @Override
     public boolean canHandle(HandlerInput input) {
@@ -27,58 +20,34 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        LatinTrainerTools.setCurrentHandler("NextWord");
-        if (isChangingSession) {
+        CURRENT_SESSION.setCurrentHandler("NextWord");
+        if (CURRENT_SESSION.isChangingSession()) {
             Map<String, Object> persistentAttributes = getAttributes(input);
             String savedMode = (String) persistentAttributes.get(MODE);
             String savedDir = (String) persistentAttributes.get(DIRECTION);
-            savedChapter = Integer.parseInt((String)persistentAttributes.get(CHAPTER));
-            savedHighscore = Integer.parseInt((String) persistentAttributes.get(HIGHSCORE));
+            int savedChapter = Integer.parseInt((String)persistentAttributes.get(CHAPTER));
+            int savedHighscore = Integer.parseInt((String) persistentAttributes.get(HIGHSCORE));
 
-            switch (savedMode) {
-                case PROGRESS:
-                    sessionMode = Mode.PROGRESS;
-                    break;
-                case CHAPTER:
-                    sessionMode = Mode.CHAPTER;
-                    break;
-                case RANDOM:
-                    sessionMode = Mode.RANDOM;
-                    break;
-                default:
-                    throw new RuntimeException();
-            }
-            switch (savedDir) {
-                case GERMAN:
-                    sessionDir = Direction.GERMAN;
-                    currentDirIsGerman = true;
-                    break;
-                case LATIN:
-                    sessionDir = Direction.LATIN;
-                    currentDirIsGerman = false;
-                    break;
-                case RANDOM:
-                    sessionDir = Direction.RANDOM;
-                    currentDirIsGerman = Math.random() < 0.5;
-                    break;
-                default:
-                    throw new RuntimeException();
-            }
-            if (isFirst) {
-                currentSession = new Session(sessionDir, sessionMode, savedChapter, savedHighscore);
-                isFirst = false;
+            Mode savedModeValue = savedMode.equalsIgnoreCase(Mode.PROGRESS.getModeName())?
+                    Mode.PROGRESS : savedMode.equalsIgnoreCase(Mode.CHAPTER.getModeName())?
+                    Mode.CHAPTER : Mode.RANDOM;
+
+            Direction savedDirValue = savedDir.equalsIgnoreCase(Direction.LATIN.getDirection())?
+                    Direction.LATIN : savedDir.equalsIgnoreCase(Direction.GERMAN.getDirection())?
+                    Direction.GERMAN : Direction.RANDOM;
+
+            CURRENT_SESSION.setMode(savedModeValue).setDir(savedDirValue).setIsChangingSession(false);
+
+            if (CURRENT_SESSION.isFirstRound()) {
+                CURRENT_SESSION.setChapter(0).setAllTimeHighscore(0).setIsFirstRound(false);
             } else {
-                currentSession.setDir(sessionDir);
-                currentSession.setMode(sessionMode);
-                currentSession.setChapter(savedChapter);
-                currentSession.setAllTimeHighscore(savedHighscore);
+                CURRENT_SESSION.setChapter(savedChapter).setAllTimeHighscore(savedHighscore);
             }
-            isChangingSession = false;
         }
 
-        currentQuery = currentSession.getCurrentWord();
+        Query currentQuery = CURRENT_SESSION.nextQuery();
 
-        String toTranslate = currentDirIsGerman ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
+        String toTranslate = CURRENT_SESSION.getDir().equals(Direction.GERMAN) ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
         String speechText = String.format("Das zu übersetzende Wort lautet %s. Bitte sage, die Antwort ist x y, " +
                 "oder wenn du es nicht weißt, keine Ahnung.", toTranslate);
 

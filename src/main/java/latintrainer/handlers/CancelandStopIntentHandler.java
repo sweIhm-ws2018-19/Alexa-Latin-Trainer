@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.NextWordIntentHandler.currentSession;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 
 public class CancelandStopIntentHandler implements RequestHandler {
     @Override
@@ -33,8 +33,8 @@ public class CancelandStopIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
-        int thisScore = currentSession.getCurrentHighscore().getHighscoreValue();
-        int oldAllTimeHighscore = currentSession.getAllTimeHighscore().getHighscoreValue();
+        int thisScore = CURRENT_SESSION.getCurrentHighscore().getHighscoreValue();
+        int oldAllTimeHighscore = CURRENT_SESSION.getAllTimeHighscore().getHighscoreValue();
 
         if (thisScore > oldAllTimeHighscore) {
             AttributesManager attributesManager = input.getAttributesManager();

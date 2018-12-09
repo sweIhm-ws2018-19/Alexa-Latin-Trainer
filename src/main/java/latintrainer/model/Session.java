@@ -9,16 +9,23 @@ public class Session {
     private Mode mode;
     private Chapter chapter;
     private List<Query> wordList;
+    private Query currentQuery;
     private int currentWordIndex;
     private Highscore currentHighscore = new Highscore(0);
     private Highscore allTimeHighscore;
     private boolean[] alreadyAsked;
     private boolean[] answeredCorrectly;
+    private boolean isChangingSession;
+    private boolean isFirstRound;
+    private String currentHandler;
 
     public Session() {
         currentWordIndex = -1;
         alreadyAsked = new boolean[20];
         answeredCorrectly = new boolean[20];
+        isChangingSession = true;
+        isFirstRound = true;
+        currentHandler = "Launch";
     }
 
     public Session(Direction dir, Mode mode, int chapter, int highscore) {
@@ -28,27 +35,51 @@ public class Session {
         this.chapter = new Chapter(chapter);
         wordList = QueryList.getChapter(chapter);
         currentWordIndex = -1;
+        currentQuery = wordList.get(0);
         alreadyAsked = new boolean[20];
         answeredCorrectly = new boolean[20];
+        isChangingSession = false;
+        isFirstRound = false;
     }
 
-    public Query getCurrentWord() {
+    public Query nextQuery() {
             currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex+1)%wordList.size();
             int savePoint = currentWordIndex;
-            Query result = checkForNextUnasked(currentWordIndex);
+            currentQuery = checkForNextUnasked(currentWordIndex);
 
-            if(result == null)
-                result = checkForNextFailed(savePoint);
+            if(currentQuery == null)
+                currentQuery = checkForNextFailed(savePoint);
 
-            if(result == null) {
+            if(currentQuery == null) {
                 chapter.setChapterNumber(chapter.getChapterAsInt()+1);
                 wordList = QueryList.getChapter(chapter.getChapterAsInt());
                 currentWordIndex = 0;
                 alreadyAsked = new boolean[wordList.size()];
                 answeredCorrectly = new boolean[wordList.size()];
-                result = getCurrentWord();
+                currentQuery = nextQuery();
+                isChangingSession();
             }
-        return result;
+        return currentQuery;
+    }
+
+    public Query getCurrentWord() {
+        return currentQuery;
+    }
+
+    public String getCurrentHandler() {
+        return currentHandler;
+    }
+
+    public Session setCurrentHandler(String handler) {
+        currentHandler = handler;
+        return this;
+    }
+
+    public boolean isFirstRound() { return isFirstRound;}
+
+    public Session setIsFirstRound(boolean isFirst) {
+        isFirstRound = isFirst;
+        return this;
     }
 
     public void answeredCorrectly() {
@@ -59,10 +90,17 @@ public class Session {
         int result = 0;
         for (int i = 0; i < answeredCorrectly.length; i++){
             if (answeredCorrectly[i])
-                result ++;
+                result++;
         }
-
         return result;
+    }
+
+    public boolean isChangingSession() {
+        return isChangingSession;
+    }
+
+    public void setIsChangingSession(boolean changes) {
+        isChangingSession = changes;
     }
 
     public int getChapterSize(){
@@ -93,8 +131,31 @@ public class Session {
         return counter < wordList.size()? wordList.get(i) : null;
     }
 
+    public Chapter getChapter() {
+        return chapter;
+    }
+
+    public Session setChapter(int index) {
+        chapter.setChapterNumber(index);
+        return this;
+    }
+
     public Direction getDir() {
         return dir;
+    }
+
+    public Session setDir(Direction dir) {
+        this.dir = dir;
+        return this;
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public Session setMode(Mode mode) {
+        this.mode = mode;
+        return this;
     }
 
     public Highscore getCurrentHighscore() {
@@ -105,28 +166,9 @@ public class Session {
         return allTimeHighscore;
     }
 
-    public Mode getMode() {
-        return mode;
-    }
-
-    public Chapter getChapter() {
-        return chapter;
-    }
-
-
-    public void setDir(Direction dir) {
-        this.dir = dir;
-    }
-
-    public void setMode(Mode mode) {
-        this.mode = mode;
-    }
-
-    public void setChapter(int index) { chapter.setChapterNumber(index); }
-
-
-    public void setAllTimeHighscore(int highscore) {
+    public Session setAllTimeHighscore(int highscore) {
         this.allTimeHighscore = new Highscore(highscore);
+        return this;
     }
 
     @Override
