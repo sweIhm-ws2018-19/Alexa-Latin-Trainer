@@ -250,6 +250,19 @@ public class SessionTest {
         assertTrue(matchingLists);
     }
 
+    @Test
+    public void nextQueryAndCurrentWord() {
+        sut.setDir(Direction.LATIN).setChapter(0).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        sut.nextQuery();
+
+        String wordNext = sut.nextQuery().getLatinWord();
+        String wordCurrent = sut.getCurrentWord().getLatinWord();
+
+        assertEquals(wordNext, wordCurrent);
+    }
+
+
+
 
 
 
