@@ -17,8 +17,11 @@ import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
 import main.java.latintrainer.handlers.*;
+import main.java.latintrainer.model.Session;
 
 public class LatinTrainerStreamHandler extends SkillStreamHandler {
+
+    public static final Session CURRENT_SESSION = new Session();
 
     private static Skill getSkill() {
         return Skills.standard()

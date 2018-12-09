@@ -8,7 +8,7 @@ import java.util.Optional;
 import main.java.latintrainer.model.*;
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
-import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
+import static main.java.latintrainer.LatinTrainerStreamHandler.CURRENT_SESSION;
 
 
 public class NextWordIntentHandler implements RequestHandler{

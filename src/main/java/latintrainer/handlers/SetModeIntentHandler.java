@@ -6,7 +6,7 @@ import com.amazon.ask.model.*;
 import java.util.Optional;
 
 import main.java.latintrainer.model.Mode;
-import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
+import static main.java.latintrainer.LatinTrainerStreamHandler.CURRENT_SESSION;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
 import static com.amazon.ask.request.Predicates.intentName;
 

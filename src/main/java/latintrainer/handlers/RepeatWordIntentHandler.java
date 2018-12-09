@@ -7,7 +7,7 @@ import main.java.latintrainer.model.Direction;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
+import static main.java.latintrainer.LatinTrainerStreamHandler.CURRENT_SESSION;
 
 public class RepeatWordIntentHandler implements RequestHandler{
     @Override
