@@ -137,5 +137,23 @@ public class SessionTest {
         assertEquals(expected, sut.nextQuery().getLatinWord());
     }
 
+    @Test
+    public void chapterSwitchFromSecondToThirdChapterWithDirectionFromLatinToGerman() {
+        sut.setDir(Direction.LATIN).setChapter(1).setMode(Mode.PROGRESS).setAllTimeHighscore(0);
+        for(int i = 0; i < 19; i++) {
+            sut.nextQuery();
+            sut.answeredCorrectly();
+        }
+        String lastWordChapTwoLatin = sut.nextQuery().getLatinWord();
+        sut.answeredCorrectly();
+        sut.setDir(Direction.GERMAN);
+        String firstWordChapThreeGerman = sut.nextQuery().getGermanWord();
+
+        boolean expectedOne = lastWordChapTwoLatin.equalsIgnoreCase("totus");
+        boolean expectedTwo = firstWordChapThreeGerman.equalsIgnoreCase("glauben");
+
+        assertTrue(expectedOne && expectedTwo);
+        }
+
 
 }
