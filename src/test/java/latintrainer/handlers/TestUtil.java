@@ -9,10 +9,7 @@ import com.amazon.ask.response.ResponseBuilder;
 
 import org.mockito.Mockito;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
@@ -68,7 +65,41 @@ public class TestUtil {
         final Map<String, Object> sessionAttributes = new HashMap<>();
         final Map<String, Object> persistentAttributes = new HashMap<>();
         sessionAttributes.put(slotName, slotValue);
-        final HandlerInput inputMock = TestUtil.mockHandlerInput(null, sessionAttributes, persistentAttributes, null);
+        final HandlerInput inputMock = TestUtil.mockHandlerInput(slotName, slotValue, sessionAttributes, persistentAttributes, null);
+        final Optional<Response> res = handler.handle(inputMock);
+
+        assertTrue(res.isPresent());
+        final Response response = res.get();
+
+        //assertFalse(response.getShouldEndSession());
+        assertNotEquals("Test", response.getReprompt());
+        assertNotNull(response.getOutputSpeech());
+        return response;
+    }
+
+
+    public static Response standardTestForHandle(RequestHandler handler, Map<String, String> slots) {
+        final Map<String, Object> sessionAttributes = new HashMap<>();
+        final Map<String, Object> persistentAttributes = new HashMap<>();
+        persistentAttributes.putAll(slots);
+        sessionAttributes.putAll(slots);
+        final HandlerInput inputMock = TestUtil.mockHandlerInput(slots, sessionAttributes, persistentAttributes, null);
+        final Optional<Response> res = handler.handle(inputMock);
+
+        assertTrue(res.isPresent());
+        final Response response = res.get();
+
+        //assertFalse(response.getShouldEndSession());
+        assertNotEquals("Test", response.getReprompt());
+        assertNotNull(response.getOutputSpeech());
+        return response;
+    }
+
+
+    public static Response standardTestForHandle(RequestHandler handler) {
+        final Map<String, Object> sessionAttributes = new HashMap<>();
+        sessionAttributes.put("Modus", "Test");
+        final HandlerInput inputMock = TestUtil.mockHandlerInput(sessionAttributes, null, null);
         final Optional<Response> res = handler.handle(inputMock);
 
         assertTrue(res.isPresent());
