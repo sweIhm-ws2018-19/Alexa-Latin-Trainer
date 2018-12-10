@@ -6,7 +6,6 @@ import com.amazon.ask.model.*;
 import com.amazon.ask.response.ResponseBuilder;
 import main.java.latintrainer.model.Direction;
 import main.java.latintrainer.model.LatinTrainerTools;
-
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;

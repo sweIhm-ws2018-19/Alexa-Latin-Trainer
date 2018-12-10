@@ -1,11 +1,13 @@
 package main.java.latintrainer.handlers;
 
+import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import java.util.Map;
 import java.util.Optional;
 import main.java.latintrainer.model.*;
+
 import static com.amazon.ask.request.Predicates.intentName;
 import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
@@ -20,7 +22,9 @@ public class NextWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+
         CURRENT_SESSION.setCurrentHandler("NextWord");
+
         if (CURRENT_SESSION.isChangingSession()) {
             Map<String, Object> persistentAttributes = getAttributes(input);
             String savedMode = (String) persistentAttributes.get(MODE);

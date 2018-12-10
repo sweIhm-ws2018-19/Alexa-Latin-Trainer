@@ -39,7 +39,7 @@ public class LatinTrainerStreamHandler extends SkillStreamHandler {
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new FallbackIntentHandler())
-                .withTableName("LateinTrainerData")
+                .withTableName("LateinTrainerDB")
                 .withAutoCreateTable(true)
                 //.withSkillId("")
                 .build();

@@ -7,7 +7,6 @@ import com.amazon.ask.response.ResponseBuilder;
 import main.java.latintrainer.handlers.LaunchRequestHandler;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import static main.java.latintrainer.model.LatinTrainerTools.*;
 
 
@@ -22,11 +21,6 @@ import static org.mockito.Mockito.when;
 
 
 public class LaunchRequestHandlerTest {
-
-    @Test
-    public void testEnabled() {
-        assertEquals(true, true);
-    }
 
     private LaunchRequestHandler sut;
     private HandlerInput inputMock;

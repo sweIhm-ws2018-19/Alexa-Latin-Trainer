@@ -43,4 +43,11 @@ public class LatinTrainerTools {
         AttributesManager attributesManager = input.getAttributesManager();
         return attributesManager.getPersistentAttributes();
     }
+
+    public static void checkAndSaveAlltimeHighscore(Session currentSession, HandlerInput input) {
+        int currentScore = currentSession.getCurrentHighscore().getHighscoreValue();
+        int allTimeHS = currentSession.getAllTimeHighscore().getHighscoreValue();
+        int newAlltimeHS = allTimeHS > currentScore? allTimeHS : currentScore;
+        LatinTrainerTools.saveData(HIGHSCORE, Integer.toString(newAlltimeHS), input);
+    }
 }

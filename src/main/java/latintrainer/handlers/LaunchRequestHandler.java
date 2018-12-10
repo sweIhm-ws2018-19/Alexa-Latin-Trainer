@@ -16,11 +16,12 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
-
-
 import java.util.Optional;
-import static com.amazon.ask.request.Predicates.requestType;
 import main.java.latintrainer.model.Session;
+
+import static com.amazon.ask.request.Predicates.requestType;
+
+
 
 public class LaunchRequestHandler implements RequestHandler {
 
@@ -33,6 +34,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+
         String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage starte direkt, um bei deinem letzten Kapitel weiterzumachen," +
                 " Konfigurieren, um deine Abfrage Einstellungen anzupassen oder Hilfe um Zusatzinformationen zu bekommen.";
         String repromptText = "Bitte sage Fortschritt oder Zufall, um zu beginnen.";
