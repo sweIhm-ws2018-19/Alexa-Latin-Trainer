@@ -2,6 +2,7 @@ package test.java.latintrainer.handlers;
 
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.SessionEndedRequestHandler;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,5 +33,5 @@ public class SessionEndedIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
-
+    
 }
