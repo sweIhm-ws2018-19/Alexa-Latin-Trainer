@@ -147,14 +147,10 @@ public class Session {
     }
 
     public Highscore getCurrentHighscore() {
-        int highscore = allTimeHighscore.getHighscoreValue() > currentHighscore.getHighscoreValue()? allTimeHighscore.getHighscoreValue() : currentHighscore.getHighscoreValue();
-        allTimeHighscore.setHighscoreValue(highscore);
         return currentHighscore;
     }
 
     public Highscore getAllTimeHighscore() {
-        int highscore = allTimeHighscore.getHighscoreValue() > currentHighscore.getHighscoreValue()? allTimeHighscore.getHighscoreValue() : currentHighscore.getHighscoreValue();
-        allTimeHighscore.setHighscoreValue(highscore);
         return allTimeHighscore;
     }
 

@@ -24,7 +24,9 @@
             }
           ],
           "samples": [
-            "Waehle Modus {mode}"
+            "Waehle Modus {mode}",
+            "Modus {mode}",
+            "{mode}"
           ]
         },
         {
@@ -36,14 +38,23 @@
             }
           ],
           "samples": [
-            "Waehle Richtung {dir}"
+            "Waehle Richtung {dir}",
+            "Richtung {dir}",
+            "{dir}",
+            "zu {dir}"
           ]
         },
         {
           "name": "SetConfigIntent",
           "slots": [],
           "samples": [
-            "Konfigurieren"
+            "Konfigurieren",
+            "Einstellungen",
+            "config",
+            "ändern",
+            "Session bearbeiten",
+            "anpassen",
+            "Settings"
           ]
         },
         {
@@ -52,7 +63,8 @@
           "samples": [
             "Starte direkt",
             "Neues Wort",
-            "Ueberspringen"
+            "Ueberspringen",
+            "Next"
           ]
         },
         {
@@ -64,7 +76,9 @@
             }
           ],
           "samples": [
-            "Die Antwort ist {Answer}"
+            "Die Antwort ist {Answer}",
+            "check {Answer}",
+            "{Answer}"
           ]
         },
         {

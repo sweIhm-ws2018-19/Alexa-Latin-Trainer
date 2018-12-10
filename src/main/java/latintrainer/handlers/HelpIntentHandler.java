@@ -17,7 +17,6 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
-
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;

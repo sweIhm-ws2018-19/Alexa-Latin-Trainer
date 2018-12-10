@@ -12,13 +12,11 @@
 */
 
 package main.java.latintrainer.handlers;
-
-import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 
-import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
@@ -33,18 +31,10 @@ public class CancelandStopIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
-        int thisScore = CURRENT_SESSION.getCurrentHighscore().getHighscoreValue();
-        int oldAllTimeHighscore = CURRENT_SESSION.getAllTimeHighscore().getHighscoreValue();
+        checkAndSaveAlltimeHighscore(CURRENT_SESSION,input);
 
-        if (thisScore > oldAllTimeHighscore) {
-            AttributesManager attributesManager = input.getAttributesManager();
-            Map<String, Object> persistentAttributes = attributesManager.getPersistentAttributes();
-            persistentAttributes.put("highscore", Integer.toString(thisScore));
-            attributesManager.setPersistentAttributes(persistentAttributes);
-            attributesManager.savePersistentAttributes();
-        }
         return input.getResponseBuilder()
-                .withSpeech(String.format("Du hast diese Session %d Punkte erreicht. Auf Wiedersehen",thisScore))
+                .withSpeech(String.format("Du hast diese Session %d Punkte erreicht. Auf Wiedersehen",CURRENT_SESSION.getCurrentHighscore().getHighscoreValue()))
                 .withSimpleCard("LatinTrainerSession", "Auf Wiedersehen")
                 .build();
     }

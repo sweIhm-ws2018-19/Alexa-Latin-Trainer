@@ -17,6 +17,8 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.SessionEndedRequest;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 
 import java.util.Optional;
 
@@ -31,6 +33,8 @@ public class SessionEndedRequestHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
         // any cleanup logic goes here
+        checkAndSaveAlltimeHighscore(CURRENT_SESSION, input);
+
         return input.getResponseBuilder().build();
     }
 }

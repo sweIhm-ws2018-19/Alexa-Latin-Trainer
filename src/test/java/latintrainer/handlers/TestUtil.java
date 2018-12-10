@@ -7,10 +7,9 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.*;
 import com.amazon.ask.response.ResponseBuilder;
 
-import main.java.latintrainer.model.LatinTrainerTools;
-import static main.java.latintrainer.model.LatinTrainerTools.*;
 import org.mockito.Mockito;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -20,7 +19,20 @@ import static org.mockito.Mockito.when;
 
 public class TestUtil {
 
-    public static HandlerInput mockHandlerInput(String mode,
+    public static HandlerInput mockHandlerInput(Map<String, Object> sessionAttributes,
+                                                Map<String, Object> persistentAttributes,
+                                                Map<String, Object> requestAttributes) {
+        return mockHandlerInput(Collections.emptyMap(), sessionAttributes, persistentAttributes, requestAttributes);
+    }
+
+    public static HandlerInput mockHandlerInput(String key, String value,
+                                                Map<String, Object> sessionAttributes,
+                                                Map<String, Object> persistentAttributes,
+                                                Map<String, Object> requestAttributes) {
+        return mockHandlerInput(Collections.singletonMap(key, value), sessionAttributes, persistentAttributes, requestAttributes);
+    }
+
+    public static HandlerInput mockHandlerInput(Map<String, String> slotValues,
                                                 Map<String, Object> sessionAttributes,
                                                 Map<String, Object> persistentAttributes,
                                                 Map<String, Object> requestAttributes) {
@@ -29,18 +41,19 @@ public class TestUtil {
         when(attributesManagerMock.getPersistentAttributes()).thenReturn(persistentAttributes);
         when(attributesManagerMock.getRequestAttributes()).thenReturn(requestAttributes);
 
+
         // Mock Slots
+        Intent.Builder intentBuilder = Intent.builder();
+        slotValues.forEach((key, value) -> intentBuilder.putSlotsItem(key, Slot.builder()
+                .withName(key)
+                .withValue(value)
+                .build()));
+
         final RequestEnvelope requestEnvelopeMock = RequestEnvelope.builder()
                 .withRequest(IntentRequest.builder()
-                        .withIntent(Intent.builder()
-                                .putSlotsItem(MODE_SLOT, Slot.builder()
-                                        .withName(MODE_SLOT)
-                                        .withValue(mode)
-                                        .build())
-                                .build())
+                        .withIntent(intentBuilder.build())
                         .build())
                 .build();
-
 
         // Mock Handler input attributes
         final HandlerInput input = Mockito.mock(HandlerInput.class);
@@ -51,10 +64,10 @@ public class TestUtil {
         return input;
     }
 
-    public static Response standardTestForHandle(RequestHandler handler) {
+    public static Response standardTestForHandle(RequestHandler handler, String slotName, String slotValue) {
         final Map<String, Object> sessionAttributes = new HashMap<>();
         final Map<String, Object> persistentAttributes = new HashMap<>();
-        sessionAttributes.put(MODE, "Test");
+        sessionAttributes.put(slotName, slotValue);
         final HandlerInput inputMock = TestUtil.mockHandlerInput(null, sessionAttributes, persistentAttributes, null);
         final Optional<Response> res = handler.handle(inputMock);
 
@@ -66,8 +79,9 @@ public class TestUtil {
         assertNotNull(response.getOutputSpeech());
         return response;
     }
+
     public static Response sessionEndedTestForHandle(RequestHandler handler) {
-        final HandlerInput inputMock = TestUtil.mockHandlerInput(null, null, null, null);
+        final HandlerInput inputMock = TestUtil.mockHandlerInput(null,  null, null, null);
         final Optional<Response> res = handler.handle(inputMock);
 
         assertTrue(res.isPresent());
@@ -76,3 +90,6 @@ public class TestUtil {
         return response;
     }
 }
+
+
+
