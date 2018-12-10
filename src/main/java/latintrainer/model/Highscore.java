@@ -1,6 +1,7 @@
 package main.java.latintrainer.model;
 
 public class Highscore {
+
     private int highscoreValue;
 
     public Highscore(int highscore){
