@@ -2,11 +2,17 @@ package test.java.latintrainer.handlers;
 
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.CheckAnswerIntentHandler;
 import org.junit.Before;
 import org.junit.Test;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static main.java.latintrainer.model.LatinTrainerTools.*;
+import static main.java.latintrainer.model.LatinTrainerTools.HIGHSCORE;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -33,5 +39,6 @@ public class CheckAnswerIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
+
 
 }
