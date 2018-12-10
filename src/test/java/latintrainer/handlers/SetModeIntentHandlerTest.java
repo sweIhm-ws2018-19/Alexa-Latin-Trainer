@@ -2,14 +2,11 @@ package test.java.latintrainer.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
-import main.java.latintrainer.handlers.SetDirectionIntentHandler;
 import main.java.latintrainer.handlers.SetModeIntentHandler;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-import test.java.latintrainer.handlers.TestUtil;
 
-import static main.java.latintrainer.model.LatinTrainerTools.DIR_SLOT;
 import static main.java.latintrainer.model.LatinTrainerTools.MODE_SLOT;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

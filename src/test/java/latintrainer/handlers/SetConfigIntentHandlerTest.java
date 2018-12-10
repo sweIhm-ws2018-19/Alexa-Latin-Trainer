@@ -1,9 +1,7 @@
 package test.java.latintrainer.handlers;
 
-import com.amazon.ask.attributes.AttributesManager;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
-import com.amazon.ask.response.ResponseBuilder;
 import main.java.latintrainer.handlers.SetConfigIntentHandler;
 import org.junit.Before;
 import org.junit.Test;
