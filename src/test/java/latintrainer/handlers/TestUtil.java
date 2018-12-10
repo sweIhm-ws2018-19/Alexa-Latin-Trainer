@@ -41,7 +41,6 @@ public class TestUtil {
                         .build())
                 .build();
 
-
         // Mock Handler input attributes
         final HandlerInput input = Mockito.mock(HandlerInput.class);
         when(input.getAttributesManager()).thenReturn(attributesManagerMock);
@@ -66,6 +65,7 @@ public class TestUtil {
         assertNotNull(response.getOutputSpeech());
         return response;
     }
+
     public static Response sessionEndedTestForHandle(RequestHandler handler) {
         final HandlerInput inputMock = TestUtil.mockHandlerInput(null, null, null, null);
         final Optional<Response> res = handler.handle(inputMock);
