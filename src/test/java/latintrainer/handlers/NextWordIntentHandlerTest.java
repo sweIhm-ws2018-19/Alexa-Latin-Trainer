@@ -33,7 +33,7 @@ public class NextWordIntentHandlerTest {
 
     @Test
     public void testCtor() {
-        assertEquals(sut.getClass(), HelpIntentHandler.class);
+        assertEquals(sut.getClass(), NextWordIntentHandler.class);
     }
 
     @Test
