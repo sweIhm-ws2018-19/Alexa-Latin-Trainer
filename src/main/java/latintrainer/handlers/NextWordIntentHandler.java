@@ -50,7 +50,9 @@ public class NextWordIntentHandler implements RequestHandler{
 
         String toTranslate = CURRENT_SESSION.getDir().equals(Direction.GERMAN) ? currentQuery.getLatinWord(): currentQuery.getGermanWord();
         String speechText = String.format("Das zu übersetzende Wort lautet %s. Bitte sage, die Antwort ist x y, " +
-                "oder wenn du es nicht weißt, keine Ahnung.", toTranslate);
+                "oder wenn du es nicht weißt, keine Ahnung.", toTranslate) +
+                (CURRENT_SESSION.getAlreadyAskedAsInt() % 5 == 0? " Vergiss nicht: Du kannst auch jederzeit " +
+                "deinen Highscore oder deinen Fortschritt abrufen. Sage dafür einfach Highscore beziehungsweise Fortschritt.":"");
 
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)

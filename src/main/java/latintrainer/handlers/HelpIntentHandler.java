@@ -34,17 +34,20 @@ public class HelpIntentHandler implements RequestHandler {
         String repromptText;
         switch (CURRENT_SESSION.getCurrentHandler()) {
             case "Launch":
-                repromptText = "Sage Starte direkt, um loszulegen.";
+                repromptText = "Sage Starte direkt, um loszulegen";
                 speechText = "Danke für das Öffnen von Latein Trainer. Latein Trainer hilft dir, deine lateinischen " +
-                        "Vokabeln besser zu verinnerlichen. Außerdem kannst du selber festlegen, wie du abgefragt werden " +
-                        "willst. Zusätzlich kannst du jederzeit deinen Highscore und deinen Fortschritt abfragen. Sage " +
-                        "dafür einfach Highscore beziehungsweise Fortschritt. Möchtest du die Erfahrung nun beginnen? " +
-                        repromptText;
+                        "Vokabeln besser zu verinnerlichen. Solltest du mal nicht wissen, wie es weiter geht oder was " +
+                        "du sagen musst, damit Alexa dich versteht, sage einfach Hilfe und Alexa erklärt dir den nächsten " +
+                        "Schritt. Außerdem kannst du selber festlegen, wie du abgefragt werden willst. Sage hierfür Konfigurieren" +
+                        "und Alexa führt dich durch alle Konfigurationsschritte. Zusätzlich kannst du jederzeit deinen Highscore und " +
+                        "deinen Fortschritt abfragen. Sage dafür einfach Highscore beziehungsweise Fortschritt. Möchtest du die Erfahrung nun beginnen? " +
+                        repromptText + ", oder Konfigurieren, um deine Abfrage einzustellen.";
                 break;
             case "NextWord":
                 speechText = "Dir wurde soeben ein Wort gesagt, das du übersetzen sollst. Damit deine Antwort " +
                         "verarbeitet werden kann musst du sagen: Die Antwort ist Bla Bla. Solltest du die Antwort nicht " +
-                        "wissen, sage: keine Ahnung. So werden dir auch keine Punkte abgezogen.";
+                        "wissen, sage: keine Ahnung. So werden dir auch keine Punkte abgezogen. Du kannst auch jederzeit " +
+                        "deinen Highscore oder deinen Fortschritt abrufen. Sage dafür einfach Highscore beziehungsweise Fortschritt.";
                 repromptText = "Sage: Die Antwort ist Bla Bla.";
                 break;
             case "CheckAnswer":

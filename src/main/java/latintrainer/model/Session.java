@@ -39,6 +39,8 @@ public class Session {
 
             if(currentQuery == null) {
                 setChapter(chapter.getChapterAsInt()+1);
+                alreadyAsked = new boolean[wordList.size()];
+                answeredCorrectly = new boolean[wordList.size()];
                 setIsChangingSession(false);
             }
         return currentQuery;
@@ -62,9 +64,17 @@ public class Session {
     }
 
     public int getAnsweredCorrectlyAsInt() {
+        return getBooleanArrayAsInt(answeredCorrectly);
+    }
+
+    public int getAlreadyAskedAsInt() {
+        return getBooleanArrayAsInt(alreadyAsked);
+    }
+
+    private int getBooleanArrayAsInt(boolean[] arr) {
         int result = 0;
-        for (int i = 0; i < answeredCorrectly.length; i++){
-            if (answeredCorrectly[i])
+        for (int i = 0; i < arr.length; i++){
+            if (arr[i])
                 result++;
         }
         return result;
@@ -112,8 +122,6 @@ public class Session {
 
     public Session setChapter(int index) {
         chapter.setChapterNumber(index);
-        alreadyAsked = new boolean[wordList.size()];
-        answeredCorrectly = new boolean[wordList.size()];
         currentWordIndex = 0;
         wordList = chapter.getWordsOfThisChapter();
         currentQuery = wordList.get(currentWordIndex);

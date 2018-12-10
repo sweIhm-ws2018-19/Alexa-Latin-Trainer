@@ -18,11 +18,9 @@ public class SetConfigIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
         CURRENT_SESSION.setCurrentHandler("SetConfig");
-        String speechText = "Okay, wir konfigurieren den Latein Trainer neu. Zuerst kannst du den Modus wählen. Du " +
-                "kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. Sage zum Beispiel: Wähle Modus " +
-                "Fortschritt";
-        String repromptText = "Du kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. Sage zum " +
-                "Beispiel: Wähle Modus Fortschritt";
+        String speechText = "Okay, Du kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. " +
+                "Sage zum Beispiel: Wähle Modus Fortschritt oder Hilfe für genauere Informationen";
+        String repromptText = "Sage zum Beispiel: Wähle Modus Fortschritt";
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
                 .withSpeech(speechText)

@@ -36,8 +36,8 @@ public class SetModeIntentHandler implements RequestHandler {
                 Mode choice = userAnswer.equalsIgnoreCase(Mode.PROGRESS.getModeName())? Mode.PROGRESS : Mode.RANDOM;
                 CURRENT_SESSION.setMode(choice);
 
-                speechText = String.format("Okay. Dein Modus ist %s. Wähle nun die Richtung: Willst du lieber die " +
-                        "deutschen oder die lateinischen Worte sagen? Sage zum Beispiel Wähle Richtung deutsch.", userAnswer);
+                speechText = String.format("Okay. Dein Modus ist %s. Wähle nun die Richtung. Sage zum Beispiel:" +
+                        " Wähle Richtung deutsch. Oder sage Hilfe für eine genauere Anleitung.", userAnswer);
 
                 repromptText = "Sage zum Beispiel Wähle Richtung deutsch.";
 
