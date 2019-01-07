@@ -2,6 +2,7 @@ package test.java.latintrainer.handlers;
 
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.CancelandStopIntentHandler;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class CancelandStopIntentHandlerTest {
+public class CancelAndStopIntentHandlerTest {
 
     private CancelandStopIntentHandler sut;
     private HandlerInput inputMock;
