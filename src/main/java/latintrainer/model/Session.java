@@ -74,7 +74,7 @@ public class Session {
     }
 
     public void answeredCorrectly() {
-        answeredCorrectly();
+        setLastWordAnswered();
         correct++;
         answeredCorrectly[currentWordIndex] = true;
     }
