@@ -46,5 +46,4 @@ public class CheckAnswerIntentHandlerTest {
                 response.getOutputSpeech().toString().contains("Falsch. Es ist nicht") ||
                 response.getOutputSpeech().toString().contains("Das habe ich leider nicht verstanden. Bitte versuche es noch einmal."));
     }
-
 }
