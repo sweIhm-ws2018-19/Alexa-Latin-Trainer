@@ -99,6 +99,8 @@ public class TestUtil {
     public static Response standardTestForHandle(RequestHandler handler) {
         final Map<String, Object> sessionAttributes = new HashMap<>();
         sessionAttributes.put("Modus", "Test");
+        sessionAttributes.put("Kapitel", "1");
+        sessionAttributes.put("highscore", "Test");
         final HandlerInput inputMock = TestUtil.mockHandlerInput(sessionAttributes, null, null);
         final Optional<Response> res = handler.handle(inputMock);
 

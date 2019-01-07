@@ -7,11 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-import java.util.HashMap;
-import java.util.Map;
 
 import static main.java.latintrainer.model.LatinTrainerTools.*;
-import static main.java.latintrainer.model.LatinTrainerTools.HIGHSCORE;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
