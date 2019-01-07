@@ -18,6 +18,7 @@ public class NoIdeaIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.answeredCorrectly();
         CURRENT_SESSION.updateHighscore();
         String speechText = "Kein Problem. Willst du das Wort wiederholen, überspringen oder auflösen?";
         String repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";

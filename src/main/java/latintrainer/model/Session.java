@@ -19,6 +19,7 @@ public class Session {
     private String currentHandler;
     private int correct;
     private int asked;
+    private boolean lastWordAnswered = true;
 
 
     public Session() {
@@ -35,21 +36,28 @@ public class Session {
 
     public Query nextQuery() {
 
-            currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex++)%wordList.size();
+        if(lastWordAnswered) {
+            currentWordIndex = mode == Mode.RANDOM ? new Random().nextInt(wordList.size()) : (currentWordIndex++) % wordList.size();
             int savePoint = currentWordIndex;
             currentQuery = checkForNextUnasked(currentWordIndex);
 
-            if(currentQuery == null)
+            if (currentQuery == null)
                 currentQuery = checkForNextFailed(savePoint);
 
-            if(currentQuery == null) {
-                setChapter(chapter.getChapterAsInt()+1);
+            if (currentQuery == null) {
+                setChapter(chapter.getChapterAsInt() + 1);
                 alreadyAsked = new boolean[wordList.size()];
                 answeredCorrectly = new boolean[wordList.size()];
                 setIsChangingSession(false);
             }
             asked++;
+            lastWordAnswered = false;
+        }
         return currentQuery;
+    }
+
+    public void setLastWordAnswered() {
+        lastWordAnswered = true;
     }
 
     public Query getCurrentWord() {
@@ -66,6 +74,7 @@ public class Session {
     }
 
     public void answeredCorrectly() {
+        answeredCorrectly();
         correct++;
         answeredCorrectly[currentWordIndex] = true;
     }
@@ -156,7 +165,7 @@ public class Session {
     public void updateHighscore() {
         int updatedHighscore = (correct*2) + ((correct*2) - (asked*2));
         updatedHighscore = updatedHighscore < 0? 0 : updatedHighscore;
-        getCurrentHighscore().addToHighscore(updatedHighscore);
+        getCurrentHighscore().setHighscoreValue(updatedHighscore);
     }
 
     public Highscore getCurrentHighscore() {

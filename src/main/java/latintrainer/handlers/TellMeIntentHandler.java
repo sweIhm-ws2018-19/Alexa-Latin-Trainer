@@ -18,6 +18,7 @@ public class TellMeIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.answeredCorrectly();
         CURRENT_SESSION.updateHighscore();
         String answer = CURRENT_SESSION.getDir().equals(Direction.GERMAN) ? CURRENT_SESSION.getCurrentWord().getGermanWord(): CURRENT_SESSION.getCurrentWord().getLatinWord();
         String speechText = "Die Antwort ist " + answer + ". Sage Neues Wort um ein neues Wort zu bekommen.";
