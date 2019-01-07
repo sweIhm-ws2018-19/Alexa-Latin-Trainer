@@ -65,6 +65,11 @@ public class HelpIntentHandler implements RequestHandler {
                         "abgefragt werden soll. Damit Alexa dich versteht, musst du zum Beispiel sagen: Wähle Modus Zufall.";
                 repromptText = "Sage zum Beispiel: Wähle Modus Zufall";
                 break;
+            case "SetChap":
+                speechText = "Jetzt kannst du ein Kapitel wählen. Momentan bietet dir der Lateintrainer drei Kapitel " +
+                        "zur Auswahl. Damit Alexa dich versteht, musst du zum Beispiel sagen: Wähle Kapitel zwei.";
+                repromptText = "Sage zum Beispiel: Wähle Kapitel zwei";
+                break;
             case "SetMode":
                 speechText = "Nun kannst du deine bevorzugte Übersetzungsrichtung wählen. Willst du lieber, dass Alexa" +
                         " die lateinischen Wörter vorsagt und du dann die deutschen Übersetzungen sagen sollst, dann sage: " +

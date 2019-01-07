@@ -33,28 +33,16 @@ public class SetChapterIntentHandler implements RequestHandler {
         if (answerSlot != null) {
 
             String userAnswer = answerSlot.getValue();
-            if (userAnswer.equals("eins") || userAnswer.equals("zwei") || userAnswer.equals("drei")) {
-
-                saveData(CHAPTER, userAnswer, input);
-                int choice = userAnswer.equals("eins")? 0 : userAnswer.equals("zwei") ? 1 : 2;
-                CURRENT_SESSION.setChapter(choice);
-
-                speechText = String.format("Okay. Dein Kapitel ist %s Option 1. Wähle nun die Richtung. Sage zum Beispiel:" +
-                        " Wähle Richtung deutsch. Oder sage Hilfe für eine genauere Anleitung.", userAnswer);
-
-                repromptText = "Sage zum Beispiel Wähle Richtung deutsch.";
-
-            }  else if (userAnswer.equals("1") || userAnswer.equals("2") || userAnswer.equals("3")) {
+            if (userAnswer.equals("1") || userAnswer.equals("2") || userAnswer.equals("3")) {
 
                 saveData(CHAPTER, userAnswer, input);
                 int choice = userAnswer.equals("1")? 0 : userAnswer.equals("2") ? 1 : 2;
                 CURRENT_SESSION.setChapter(choice);
 
-                speechText = String.format("Okay. Dein Kapitel ist %s Option 2. Wähle nun die Richtung. Sage zum Beispiel:" +
-                        " Wähle Richtung deutsch. Oder sage Hilfe für eine genauere Anleitung.", userAnswer);
+                speechText = "Okay. Dein Kapitel ist Nummer " + userAnswer + " von drei. Wähle nun die Richtung. Sage zum Beispiel: " +
+                        " Wähle Richtung deutsch. Oder sage Hilfe für eine genauere Anleitung.";
 
                 repromptText = "Sage zum Beispiel Wähle Richtung deutsch.";
-
             }
             else {
                 speechText = "Ich konnte dich nicht verstehen. Sage wähle Kapitel eins zum Beispiel.";
