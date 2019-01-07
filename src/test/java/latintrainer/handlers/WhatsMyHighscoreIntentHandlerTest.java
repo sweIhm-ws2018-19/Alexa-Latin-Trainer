@@ -36,15 +36,5 @@ public class WhatsMyHighscoreIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
-    @Test
-    public void testHandle() {
-        Map<String, String> slots = new HashMap<>();
-        slots.put(DIRECTION, "deutsch");
-        slots.put(MODE, "Fortschritt");
-        slots.put(CHAPTER, "1");
-        slots.put(HIGHSCORE, "50");
-        final Response response = TestUtil.standardTestForHandle(sut, slots);
-        assertTrue(response.getOutputSpeech().toString().contains("Du hast gerade") ||
-                response.getOutputSpeech().toString().contains("Diese Session ist bis jetzt deine beste! Du hast gerade"));
-    }
+
 }
