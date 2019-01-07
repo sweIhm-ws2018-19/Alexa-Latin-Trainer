@@ -35,7 +35,7 @@ public class Session {
 
     public Query nextQuery() {
 
-        int updatedHighscore = (correct*2) - (asked*2);
+        int updatedHighscore = (correct*2) + ((correct*2) - (asked*2));
         updatedHighscore = updatedHighscore < 0? 0 : updatedHighscore;
         getCurrentHighscore().addToHighscore(updatedHighscore);
 
