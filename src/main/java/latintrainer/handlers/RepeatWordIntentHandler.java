@@ -17,6 +17,7 @@ public class RepeatWordIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.updateHighscore();
         String toTranslate = CURRENT_SESSION.getDir().equals(Direction.GERMAN) ? CURRENT_SESSION.getCurrentWord().getLatinWord(): CURRENT_SESSION.getCurrentWord().getGermanWord();
         String speechText = "Das zu übersetzende Wort lautet " + toTranslate + ". Bitte sage, die Antwort ist x y, " +
                 "oder wenn du es nicht weißt, keine Ahnung.";

@@ -22,6 +22,7 @@ public class CheckAnswerIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("CheckAnswer");
         // Get the color slot from the list of slots.
         Slot answerSlot = LatinTrainerTools.getAnswerSlot(ANSWER_SLOT, input);

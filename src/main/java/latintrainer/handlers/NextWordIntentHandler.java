@@ -22,12 +22,12 @@ public class NextWordIntentHandler implements RequestHandler{
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
+        CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("NextWord");
 
         if (CURRENT_SESSION.isChangingSession()) {
             Map<String, Object> persistentAttributes = getAttributes(input);
             if(persistentAttributes.isEmpty()){
-                CURRENT_SESSION.highscoreUpdated(true);
                 saveData(DIRECTION, "deutsch", input);
                 saveData(MODE, "zufall", input);
                 saveData(CHAPTER, "1", input);

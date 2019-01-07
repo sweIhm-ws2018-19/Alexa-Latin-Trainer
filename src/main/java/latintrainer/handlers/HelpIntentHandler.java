@@ -31,6 +31,7 @@ public class HelpIntentHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         String speechText;
         String repromptText;
+        CURRENT_SESSION.updateHighscore();
         switch (CURRENT_SESSION.getCurrentHandler()) {
             case "Launch":
                 repromptText = "Sage Starte direkt, um loszulegen";

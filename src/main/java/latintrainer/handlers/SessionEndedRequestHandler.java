@@ -33,6 +33,7 @@ public class SessionEndedRequestHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
         // any cleanup logic goes here
+        CURRENT_SESSION.updateHighscore();
         checkAndSaveAlltimeHighscore(CURRENT_SESSION, input);
 
         return input.getResponseBuilder().build();

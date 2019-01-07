@@ -16,6 +16,7 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("Highscore");
         int allTimeHighscore = CURRENT_SESSION.getAllTimeHighscore().getHighscoreValue();
         int currentScore = CURRENT_SESSION.getCurrentHighscore().getHighscoreValue();

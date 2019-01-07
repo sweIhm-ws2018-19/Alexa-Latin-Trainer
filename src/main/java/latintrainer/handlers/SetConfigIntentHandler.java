@@ -17,6 +17,7 @@ public class SetConfigIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("SetConfig");
         String speechText = "Okay, Du kannst zwischen den Modi Zufall, Fortschritt und Kapitel entscheiden. " +
                 "Sage zum Beispiel: Wähle Modus Fortschritt oder Hilfe für genauere Informationen";

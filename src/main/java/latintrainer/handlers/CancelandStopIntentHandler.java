@@ -31,6 +31,7 @@ public class CancelandStopIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
 
+        CURRENT_SESSION.updateHighscore();
         checkAndSaveAlltimeHighscore(CURRENT_SESSION,input);
 
         return input.getResponseBuilder()

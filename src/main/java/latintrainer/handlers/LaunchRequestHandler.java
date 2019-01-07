@@ -34,6 +34,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.updateHighscore();
         String speechText = "Hallo. Ich bin Dein Latein Trainer. Sage starte direkt, um direkt anzufangen, oder Hilfe, " +
                 "um Zusatzinformationen zu bekommen (besonders für Erstbenutzer empfohlen).";
         String repromptText = "Bitte sage starte direkt oder Hilfe.";

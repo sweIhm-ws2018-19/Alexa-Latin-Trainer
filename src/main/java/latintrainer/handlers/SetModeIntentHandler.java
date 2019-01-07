@@ -19,6 +19,7 @@ public class SetModeIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+        CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("SetMode");
 
         Slot answerSlot = getAnswerSlot(MODE_SLOT, input);

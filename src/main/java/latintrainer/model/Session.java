@@ -35,10 +35,6 @@ public class Session {
 
     public Query nextQuery() {
 
-        int updatedHighscore = (correct*2) + ((correct*2) - (asked*2));
-        updatedHighscore = updatedHighscore < 0? 0 : updatedHighscore;
-        getCurrentHighscore().addToHighscore(updatedHighscore);
-
             currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex++)%wordList.size();
             int savePoint = currentWordIndex;
             currentQuery = checkForNextUnasked(currentWordIndex);
@@ -155,6 +151,12 @@ public class Session {
     public Session setMode(Mode mode) {
         this.mode = mode;
         return this;
+    }
+
+    public void updateHighscore() {
+        int updatedHighscore = (correct*2) + ((correct*2) - (asked*2));
+        updatedHighscore = updatedHighscore < 0? 0 : updatedHighscore;
+        getCurrentHighscore().addToHighscore(updatedHighscore);
     }
 
     public Highscore getCurrentHighscore() {
