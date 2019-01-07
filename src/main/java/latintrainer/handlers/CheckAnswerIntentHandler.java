@@ -42,6 +42,7 @@ public class CheckAnswerIntentHandler implements RequestHandler{
             } else{
                 speechText = String.format("Falsch. Es ist nicht %s. Willst du das Wort wiederholen, überspringen oder auflösen?", userAnswer);
                 repromptText = "Willst du das Wort wiederholen, überspringen oder auflösen?";
+                CURRENT_SESSION.setLastWordAnswered();
             }
         } else {
             // Render an error since we don't know what the users answer is.

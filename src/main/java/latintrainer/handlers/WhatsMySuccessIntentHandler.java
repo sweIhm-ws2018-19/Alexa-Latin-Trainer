@@ -18,7 +18,7 @@ public class WhatsMySuccessIntentHandler implements RequestHandler{
     public Optional<Response> handle(HandlerInput input) {
         CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("Success");
-        int currentChapter = CURRENT_SESSION.getChapter().getChapterAsInt();
+        int currentChapter = CURRENT_SESSION.getChapter().getChapterAsInt()+1;
         int chapterCount = CURRENT_SESSION.getAnsweredCorrectlyAsInt();
         int chapterSize = CURRENT_SESSION.getChapterSize();
         String mode = CURRENT_SESSION.getMode().getModeName();
