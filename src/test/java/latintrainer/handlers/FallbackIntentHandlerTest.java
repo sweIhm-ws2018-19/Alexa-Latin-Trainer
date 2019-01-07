@@ -2,6 +2,7 @@ package test.java.latintrainer.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 
+import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.FallbackIntentHandler;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,5 +33,9 @@ public class FallbackIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
-
+    @Test
+    public void testHandle() {
+        final Response response = TestUtil.standardTestForHandle(sut);
+        assertTrue(response.getOutputSpeech().toString().contains("Tut mir leid, das weiss ich nicht. Sage einfach Hilfe."));
+    }
 }
