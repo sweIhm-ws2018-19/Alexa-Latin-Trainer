@@ -261,9 +261,24 @@ public class SessionTest {
         assertEquals(wordNext, wordCurrent);
     }
 
+    @Test
+    public void setCurrentHighscore() {
+        sut = new Session();
+        sut.getCurrentHighscore().setHighscoreValue(20);
 
+        int expected = 20;
 
+        assertEquals(expected, sut.getCurrentHighscore().getHighscoreValue());
+    }
 
+    @Test
+    public void setAlltimeHighscore() {
+        sut.setAllTimeHighscore(2000);
+
+        int expected = 2000;
+
+        assertEquals(expected, sut.getAllTimeHighscore().getHighscoreValue());
+    }
 
 
 }
