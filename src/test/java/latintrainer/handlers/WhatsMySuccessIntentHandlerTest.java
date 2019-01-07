@@ -33,10 +33,6 @@ public class WhatsMySuccessIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
-    @Test
-    public void testHandle() {
-        final Response response = TestUtil.standardTestForHandle(sut);
-        assertTrue(response.getOutputSpeech().toString().contains("Du bist gerade in Kapitel"));
-    }
+
 
 }

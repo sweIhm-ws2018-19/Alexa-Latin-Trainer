@@ -33,10 +33,5 @@ public class WhatsMyHighscoreIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
-    @Test
-    public void testHandle() {
-        final Response response = TestUtil.standardTestForHandle(sut);
-        assertTrue(response.getOutputSpeech().toString().contains("Du hast gerade") ||
-                response.getOutputSpeech().toString().contains("Diese Session ist bis jetzt deine beste! Du hast gerade"));
-    }
+
 }
