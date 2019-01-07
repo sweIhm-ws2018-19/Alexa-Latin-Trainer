@@ -52,7 +52,7 @@ public class NextWordIntentHandler implements RequestHandler{
             else if(savedDir.equalsIgnoreCase(Direction.GERMAN.getDirection()))
                 savedDirValue = Direction.GERMAN;
 
-            CURRENT_SESSION.setMode(savedModeValue).setDir(savedDirValue).setChapter(savedChapter).setAllTimeHighscore(savedHighscore).setIsChangingSession(false);
+            CURRENT_SESSION.setMode(savedModeValue).setDir(savedDirValue).setChapter(savedChapter-1).setAllTimeHighscore(savedHighscore).setIsChangingSession(false);
         }
 
         Query currentQuery = CURRENT_SESSION.nextQuery();

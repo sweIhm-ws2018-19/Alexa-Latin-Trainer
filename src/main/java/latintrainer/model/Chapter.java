@@ -9,7 +9,7 @@ public class Chapter {
     private List<Query> queryList;
 
     public Chapter(int chapter){
-        this.chapterNumber =chapter;
+        this.chapterNumber = chapter;
         queryList = QueryList.getChapter(chapter);
     }
 

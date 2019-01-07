@@ -38,7 +38,7 @@ public class Session {
                 currentQuery = checkForNextFailed(savePoint);
 
             if(currentQuery == null) {
-                setChapter(chapter.getChapterAsInt());
+                setChapter(chapter.getChapterAsInt()+1);
                 alreadyAsked = new boolean[wordList.size()];
                 answeredCorrectly = new boolean[wordList.size()];
                 setIsChangingSession(false);

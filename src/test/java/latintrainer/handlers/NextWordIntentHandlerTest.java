@@ -44,7 +44,7 @@ public class NextWordIntentHandlerTest {
         slots.put(CHAPTER, "1");
         slots.put(HIGHSCORE, "50");
         final Response response = TestUtil.standardTestForHandle(sut, slots);
-        assertTrue(response.getOutputSpeech().toString().contains("Das zu übersetzende Wort lautet facere. Bitte sage, die Antwort ist x y, " +
+        assertTrue(response.getOutputSpeech().toString().contains("Das zu übersetzende Wort lautet Domus. Bitte sage, die Antwort ist x y, " +
                 "oder wenn du es nicht weißt, keine Ahnung.") ||
                 response.getOutputSpeech().toString().contains("Ich habe dich nicht verstanden. Wenn ich lateinische Vokabeln ansagen soll, sage lateinisch. Ansonsten sage deutsch."));
     }
