@@ -23,6 +23,11 @@ Now that the skill code has been uploaded to AWS Lambda we're ready to configure
 Now we're ready to define the interaction model for the skill. Under “Invocation” tab on the left side, define your Skill Invocation Name to be Latintrainer.
 
 Now it’s time to add an intent to the skill. Click the “Add” button under the Intents section of the Interaction Model. Leave “Create custom intent” selected, enter “SetModeIntentHandler” for the intent name, and create the intent. Now it’s time to add some sample utterances that will be used to invoke the intent. For this example, we’ve provided the following sample utterances, but feel free to add others.
+´´´
+Wähle Modus Zufall
+Wähle Modus Kapitel
+Wähle Modus Fortschritt
+´´´
 
 
 ## Anleitung
