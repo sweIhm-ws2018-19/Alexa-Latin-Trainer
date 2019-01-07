@@ -18,7 +18,8 @@ public class Highscore {
     }
 
     public void setHighscoreValue(int newScore) {
-        highscoreValue = newScore;
+
+        highscoreValue = newScore > 0? newScore : 0;
     }
 
     @Override

@@ -19,4 +19,32 @@ public class HighscoreTest {
         assertEquals("9000", sut.toString());
     }
 
+    @Test
+    public void setHighscoreToZero() {
+        sut.setHighscoreValue(0);
+
+        int expected = 0;
+
+        assertEquals(expected, sut.getHighscoreValue());
+    }
+
+    @Test
+    public void setMinusHighscore() {
+        sut.setHighscoreValue(-10);
+
+        int expected = 0;
+
+        assertEquals(expected, sut.getHighscoreValue());
+    }
+
+    @Test
+    public void addHighscore() {
+        sut.setHighscoreValue(10);
+        sut.addToHighscore(10);
+
+        int expected = 20;
+
+        assertEquals(expected, sut.getHighscoreValue());
+    }
+
 }
