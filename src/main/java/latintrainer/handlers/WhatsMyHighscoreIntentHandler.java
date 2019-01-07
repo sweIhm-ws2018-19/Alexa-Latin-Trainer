@@ -21,7 +21,7 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
         CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("Highscore");
         Highscore allTimeHigh = CURRENT_SESSION.getAllTimeHighscore();
-        int allTimeHighscore =allTimeHigh.getHighscoreValue();
+        int allTimeHighscore = allTimeHigh.getHighscoreValue();
         int currentScore = CURRENT_SESSION.getCurrentHighscore().getHighscoreValue();
         String speechText;
         String repromptText;

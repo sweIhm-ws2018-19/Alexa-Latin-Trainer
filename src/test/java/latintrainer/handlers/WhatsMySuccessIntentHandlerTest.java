@@ -40,12 +40,7 @@ public class WhatsMySuccessIntentHandlerTest {
     }
     @Test
     public void testHandle() {
-        Map<String, String> slots = new HashMap<>();
-        slots.put(DIRECTION, "deutsch");
-        slots.put(MODE, "Fortschritt");
-        slots.put(CHAPTER, "1");
-        slots.put(HIGHSCORE, "50");
-        final Response response = TestUtil.standardTestForHandle(sut, slots);
+        final Response response = TestUtil.standardTestForHandle(sut, CHAP_SLOT, "1");
         assertTrue(response.getOutputSpeech().toString().contains("Du bist gerade in Kapitel"));
     }
 
