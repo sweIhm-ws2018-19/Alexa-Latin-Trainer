@@ -4,10 +4,7 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
-import main.java.latintrainer.model.Chapter;
-import main.java.latintrainer.model.Direction;
 import main.java.latintrainer.model.LatinTrainerTools;
-import main.java.latintrainer.model.Mode;
 
 import java.util.Optional;
 
@@ -36,7 +33,22 @@ public class SetChapterIntentHandler implements RequestHandler {
             if (userAnswer.equals("1") || userAnswer.equals("2") || userAnswer.equals("3")) {
 
                 saveData(CHAPTER, userAnswer, input);
-                int choice = userAnswer.equals("1")? 0 : userAnswer.equals("2") ? 1 : 2;
+                int choice;
+                switch (userAnswer) {
+                    case "1":
+                        choice = 0;
+                        break;
+                    case "2":
+                        choice = 1;
+                        break;
+                    case "3":
+                        choice = 2;
+                        break;
+                    default:
+                        choice = 0;
+                        break;
+                }
+
                 CURRENT_SESSION.setChapter(choice);
 
                 speechText = "Okay. Dein Kapitel ist Nummer " + userAnswer + " von drei. Wähle nun die Richtung. Sage zum Beispiel: " +
@@ -45,13 +57,13 @@ public class SetChapterIntentHandler implements RequestHandler {
                 repromptText = "Sage zum Beispiel Wähle Richtung deutsch.";
             }
             else {
-                speechText = "Ich konnte dich nicht verstehen. Sage wähle Kapitel eins zum Beispiel.";
+                speechText = "Ich konnte dich nicht verstehen. Sage zum Beispiel wähle Kapitel eins.";
                 repromptText = "Sage zum Beispiel Wähle Kapitel eins.";
             }
         }
         else {
-            speechText = "Das habe ich leider nicht verstanden. Bitte versuche es noch einmal.";
-            repromptText = "Sage zum Beispiel Wähle Modus Fortschritt oder Zufall.";
+            speechText = "Ich konnte dich nicht verstehen. Sage zum Beispiel wähle Kapitel eins.";
+            repromptText = "Sage zum Beispiel Wähle Kapitel eins.";
         }
         return input.getResponseBuilder()
                 .withSimpleCard("LatinTrainerSession", speechText)
