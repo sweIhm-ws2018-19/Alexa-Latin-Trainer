@@ -26,6 +26,12 @@ public class NextWordIntentHandler implements RequestHandler{
 
         if (CURRENT_SESSION.isChangingSession()) {
             Map<String, Object> persistentAttributes = getAttributes(input);
+            if(persistentAttributes.isEmpty()){
+                saveData(DIRECTION, "deutsch", input);
+                saveData(MODE, "zufall", input);
+                saveData(CHAPTER, "1", input);
+                saveData(HIGHSCORE, "0", input);
+            }
             String savedMode = (String) persistentAttributes.get(MODE);
             String savedDir = (String) persistentAttributes.get(DIRECTION);
             int savedChapter = Integer.parseInt((String)persistentAttributes.get(CHAPTER));
