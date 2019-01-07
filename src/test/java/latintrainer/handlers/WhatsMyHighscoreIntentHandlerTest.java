@@ -3,6 +3,7 @@ package test.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.WhatsMyHighscoreIntentHandler;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +38,8 @@ public class WhatsMyHighscoreIntentHandlerTest {
 
     @Test
     public void testHandle() {
+        CURRENT_SESSION.setAllTimeHighscore(3);
+        CURRENT_SESSION.getCurrentHighscore().setHighscoreValue(2);
         final Response response = TestUtil.standardTestForHandle(sut, CHAP_SLOT, "1");
         assertTrue(response.getOutputSpeech().toString().contains("Du hast gerade") ||
                 response.getOutputSpeech().toString().contains("Diese Session ist bis jetzt deine beste! Du hast gerade"));

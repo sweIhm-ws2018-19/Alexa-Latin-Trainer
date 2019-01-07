@@ -3,6 +3,10 @@ package test.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.WhatsMySuccessIntentHandler;
+import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSION;
+
+import main.java.latintrainer.model.Direction;
+import main.java.latintrainer.model.Mode;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +41,8 @@ public class WhatsMySuccessIntentHandlerTest {
     }
     @Test
     public void testHandle() {
+        CURRENT_SESSION.setMode(Mode.PROGRESS);
+        CURRENT_SESSION.setDir(Direction.LATIN);
         final Response response = TestUtil.standardTestForHandle(sut, CHAP_SLOT, "1");
         assertTrue(response.getOutputSpeech().toString().contains("Du bist gerade in Kapitel"));
     }
