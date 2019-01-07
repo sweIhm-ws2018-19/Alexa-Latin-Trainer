@@ -163,7 +163,8 @@ public class Session {
     }
 
     public void updateHighscore() {
-        int updatedHighscore = (correct*2) + ((correct*2) - (asked*2));
+        int localAsked = lastWordAnswered? asked-1 : asked;
+        int updatedHighscore = (correct*2) + ((correct*2) - (localAsked*2));
         updatedHighscore = updatedHighscore < 0? 0 : updatedHighscore;
         getCurrentHighscore().setHighscoreValue(updatedHighscore);
     }
