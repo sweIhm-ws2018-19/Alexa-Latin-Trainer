@@ -11,7 +11,7 @@ import static main.java.latintrainer.handlers.LaunchRequestHandler.CURRENT_SESSI
 import java.util.Optional;
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class SetDirectionIntentHandler implements RequestHandler{
+public class SetDirectionIntentHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {

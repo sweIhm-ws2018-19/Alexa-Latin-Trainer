@@ -33,5 +33,5 @@ public class SessionEndedIntentHandlerTest {
         when(inputMock.matches(any())).thenReturn(true);
         assertTrue(sut.canHandle(inputMock));
     }
-    
+
 }
