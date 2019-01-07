@@ -3,6 +3,7 @@ package test.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.model.Response;
 import main.java.latintrainer.handlers.WhatsMyHighscoreIntentHandler;
+import main.java.latintrainer.model.Session;
 import org.junit.Before;
 import org.junit.Test;
 

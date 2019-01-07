@@ -2,6 +2,7 @@ package main.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import main.java.latintrainer.model.Mode;
 
 import java.util.Optional;
 
@@ -21,7 +22,8 @@ public class WhatsMySuccessIntentHandler implements RequestHandler{
         int currentChapter = CURRENT_SESSION.getChapter().getChapterAsInt()+1;
         int chapterCount = CURRENT_SESSION.getAnsweredCorrectlyAsInt();
         int chapterSize = CURRENT_SESSION.getChapterSize();
-        String mode = CURRENT_SESSION.getMode().getModeName();
+        Mode modeTest = CURRENT_SESSION.getMode();
+        String mode = modeTest.getModeName();
         String direction = CURRENT_SESSION.getDir().getDirection();
         String speechText = String.format("Du bist gerade in Kapitel %d und hast in diesem Kapitel bereits %d von %d" +
                 " Wörtern richtig beantwortet. Weiter so! Gerade ist der Modus %s und die Richtung %s ausgewählt." +

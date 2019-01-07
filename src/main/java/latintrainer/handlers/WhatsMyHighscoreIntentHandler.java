@@ -3,6 +3,8 @@ package main.java.latintrainer.handlers;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import main.java.latintrainer.model.Highscore;
+
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
@@ -18,7 +20,8 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
     public Optional<Response> handle(HandlerInput input) {
         CURRENT_SESSION.updateHighscore();
         CURRENT_SESSION.setCurrentHandler("Highscore");
-        int allTimeHighscore = CURRENT_SESSION.getAllTimeHighscore().getHighscoreValue();
+        Highscore allTimeHigh = CURRENT_SESSION.getAllTimeHighscore();
+        int allTimeHighscore =allTimeHigh.getHighscoreValue();
         int currentScore = CURRENT_SESSION.getCurrentHighscore().getHighscoreValue();
         String speechText;
         String repromptText;
