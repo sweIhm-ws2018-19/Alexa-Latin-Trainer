@@ -76,6 +76,8 @@ public class HelpIntentHandlerTest {
                 "willst. Zusätzlich kannst du jederzeit deinen Highscore und deinen Fortschritt abfragen. Sage " +
                 "dafür einfach Highscore beziehungsweise Fortschritt. Möchtest du die Erfahrung nun beginnen? " +
                 "Sage Starte direkt, um loszulegen.";
+        String speechTextNine = "Jetzt kannst du ein Kapitel wählen. Momentan bietet dir der Lateintrainer drei Kapitel " +
+                "zur Auswahl. Damit Alexa dich versteht, musst du zum Beispiel sagen: Wähle Kapitel zwei.";
 
         assertTrue(response.getOutputSpeech().toString().contains(speechTextOne) ||
                 response.getOutputSpeech().toString().contains(speechTextTwo) ||
@@ -84,7 +86,8 @@ public class HelpIntentHandlerTest {
                 response.getOutputSpeech().toString().contains(speechTextFive) ||
                 response.getOutputSpeech().toString().contains(speechTextSix) ||
                 response.getOutputSpeech().toString().contains(speechTextSeven) ||
-                response.getOutputSpeech().toString().contains(speechTextEight));
+                response.getOutputSpeech().toString().contains(speechTextEight) ||
+                response.getOutputSpeech().toString().contains(speechTextNine));
     }
 
 }
