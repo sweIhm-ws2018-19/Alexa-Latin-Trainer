@@ -7,6 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static main.java.latintrainer.model.LatinTrainerTools.*;
+import static main.java.latintrainer.model.LatinTrainerTools.HIGHSCORE;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -35,7 +40,12 @@ public class WhatsMySuccessIntentHandlerTest {
     }
     @Test
     public void testHandle() {
-        final Response response = TestUtil.standardTestForHandle(sut);
+        Map<String, String> slots = new HashMap<>();
+        slots.put(DIRECTION, "deutsch");
+        slots.put(MODE, "Fortschritt");
+        slots.put(CHAPTER, "1");
+        slots.put(HIGHSCORE, "50");
+        final Response response = TestUtil.standardTestForHandle(sut, slots);
         assertTrue(response.getOutputSpeech().toString().contains("Du bist gerade in Kapitel"));
     }
 

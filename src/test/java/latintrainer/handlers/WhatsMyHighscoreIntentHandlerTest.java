@@ -6,7 +6,10 @@ import main.java.latintrainer.handlers.WhatsMyHighscoreIntentHandler;
 import org.junit.Before;
 import org.junit.Test;
 
-import static main.java.latintrainer.model.LatinTrainerTools.DIR_SLOT;
+import java.util.HashMap;
+import java.util.Map;
+
+import static main.java.latintrainer.model.LatinTrainerTools.*;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -35,7 +38,12 @@ public class WhatsMyHighscoreIntentHandlerTest {
     }
     @Test
     public void testHandle() {
-        final Response response = TestUtil.standardTestForHandle(sut);
+        Map<String, String> slots = new HashMap<>();
+        slots.put(DIRECTION, "deutsch");
+        slots.put(MODE, "Fortschritt");
+        slots.put(CHAPTER, "1");
+        slots.put(HIGHSCORE, "50");
+        final Response response = TestUtil.standardTestForHandle(sut, slots);
         assertTrue(response.getOutputSpeech().toString().contains("Du hast gerade") ||
                 response.getOutputSpeech().toString().contains("Diese Session ist bis jetzt deine beste! Du hast gerade"));
     }

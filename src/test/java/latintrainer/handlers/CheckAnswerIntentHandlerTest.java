@@ -41,7 +41,7 @@ public class CheckAnswerIntentHandlerTest {
     }
     @Test
     public void testHandle() {
-        final Response response = TestUtil.standardTestForHandle(sut);
+        final Response response = TestUtil.standardTestForHandle(sut, ANSWER_SLOT, "Bla");
         assertTrue(response.getOutputSpeech().toString().contains("Richtig. Sage Neues Wort um weiterzumachen") ||
                 response.getOutputSpeech().toString().contains("Falsch. Es ist nicht") ||
                 response.getOutputSpeech().toString().contains("Das habe ich leider nicht verstanden. Bitte versuche es noch einmal."));
