@@ -14,6 +14,7 @@ public class LatinTrainerTools {
 
     // String constants used across different classes
     public static final String DIR_SLOT = "dir";
+    public static final String CHAP_SLOT = "chap";
     public static final String MODE_SLOT = "mode";
     public static final String ANSWER_KEY = "ANSWER";
     public static final String ANSWER_SLOT = "Answer";

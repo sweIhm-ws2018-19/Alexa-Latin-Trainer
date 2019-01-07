@@ -23,7 +23,7 @@ public class WhatsMySuccessIntentHandler implements RequestHandler{
         int chapterSize = CURRENT_SESSION.getChapterSize();
         String mode = CURRENT_SESSION.getMode().getModeName();
         String direction = CURRENT_SESSION.getDir().getDirection();
-        String speechText = String.format("Du bist gerade in Kapitel %d. Du hast in diesem Kapitel bereits %d von %d" +
+        String speechText = String.format("Du bist gerade in Kapitel %d . Du hast in diesem Kapitel bereits %d von %d" +
                 " Wörtern richtig beantwortet. Weiter so! Gerade ist der Modus %s und die Richtung %s ausgewählt." +
                 " Wenn du das ändern willst, sage: konfigurieren. Ansonsten sage neues Wort.", currentChapter,
                 chapterCount, chapterSize, mode, direction);

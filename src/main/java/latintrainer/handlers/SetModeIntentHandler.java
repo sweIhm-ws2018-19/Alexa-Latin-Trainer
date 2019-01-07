@@ -42,9 +42,21 @@ public class SetModeIntentHandler implements RequestHandler {
 
                 repromptText = "Sage zum Beispiel Wähle Richtung deutsch.";
 
-            } else {
-                speechText = "Ich konnte dich nicht verstehen. Sage Fortschritt für deinen letzten Speicherstand oder Zufall für eine zufällige Abfrage.";
-                repromptText = "Sage zum Beispiel Wähle Modus Fortschritt oder Zufall.";
+            } else if (userAnswer.equalsIgnoreCase(Mode.CHAPTER.getModeName())) {
+                saveData(MODE, userAnswer, input);
+
+                Mode choice = Mode.CHAPTER;
+                CURRENT_SESSION.setMode(choice);
+
+                speechText = String.format("Okay. Dein Modus ist %s. Wähle nun das Kapitel. Sage zum Beispiel:" +
+                        "Wähle Kapitel eins. Oder sage Hilfe für eine genauere Anleitung.", userAnswer);
+
+                repromptText = "Sage zum Beispiel Wähle Kapitel eins.";
+
+            }
+            else {
+                speechText = "Ich konnte dich nicht verstehen. Sage wähle Modus Fortschritt, Zufall oder Kapitel.";
+                repromptText = "Sage zum Beispiel Wähle Modus Fortschritt, Zufall oder Kapitel.";
             }
         }
         else {

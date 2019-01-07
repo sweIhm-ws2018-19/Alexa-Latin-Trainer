@@ -23,14 +23,14 @@ public class WhatsMyHighscoreIntentHandler implements RequestHandler{
         String speechText;
         String repromptText;
         if (allTimeHighscore>currentScore) {
-            speechText = String.format("Dein jetziger Punktestand ist %s. Dein HighScore ist %s. Beantworte mehr Fragen, um " +
+            speechText = String.format("Du hast gerade %s Punkte. Dein HighScore liegt bei %s Punkten. Beantworte mehr Fragen, um " +
                     "deinen Highscore zu verbessern. Sage Neues Wort, um weiterzumachen.", currentScore,allTimeHighscore);
-            repromptText = String.format("Deine jetziger Punktestand ist %s. Dein HighScore ist %s. " +
+            repromptText = String.format("Du hast gerade %s Punkte. Dein HighScore liegt bei %s Punkten. " +
                     "Sage Neues Wort, um weiterzumachen.", currentScore,allTimeHighscore);
         } else {
             speechText = String.format("Diese Session ist bis jetzt deine beste! Du hast gerade %s Punkte. " +
                     " Sage Neues Wort, um weiterzumachen.", currentScore);
-            repromptText = String.format("Deine jetziger Punktestand ist %s." +
+            repromptText = String.format("Du hast gerade %s Punkte." +
                     "Sage Neues Wort, um weiterzumachen.", currentScore);
         }
         return input.getResponseBuilder()
