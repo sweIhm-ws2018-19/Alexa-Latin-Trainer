@@ -17,6 +17,9 @@ public class Session {
     private boolean[] answeredCorrectly;
     private boolean isChangingSession;
     private String currentHandler;
+    private int correct;
+    private int asked;
+
 
     public Session() {
         currentWordIndex = 0;
@@ -29,7 +32,13 @@ public class Session {
         currentQuery = wordList.get(currentWordIndex);
     }
 
+
     public Query nextQuery() {
+
+        int updatedHighscore = (correct*2) - (asked*2);
+        updatedHighscore = updatedHighscore < 0? 0 : updatedHighscore;
+        getCurrentHighscore().addToHighscore(updatedHighscore);
+
             currentWordIndex = mode == Mode.RANDOM?  new Random().nextInt(wordList.size()) : (currentWordIndex++)%wordList.size();
             int savePoint = currentWordIndex;
             currentQuery = checkForNextUnasked(currentWordIndex);
@@ -43,6 +52,7 @@ public class Session {
                 answeredCorrectly = new boolean[wordList.size()];
                 setIsChangingSession(false);
             }
+            asked++;
         return currentQuery;
     }
 
@@ -60,6 +70,7 @@ public class Session {
     }
 
     public void answeredCorrectly() {
+        correct++;
         answeredCorrectly[currentWordIndex] = true;
     }
 
