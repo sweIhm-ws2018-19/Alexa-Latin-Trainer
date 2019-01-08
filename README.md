@@ -51,7 +51,7 @@ Second configuration option is triggered with the "SetDirectionIntent".
 Waehle Richtung {dir}
 ```
 
-It has an own Slot Type named "List_OF_DIRS" containing the values:
+It has an own Slot Type named "LIST_OF_DIRS" containing the values:
 
 ```
 Deutsch
