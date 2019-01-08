@@ -1,11 +1,11 @@
 ﻿# Alexa Skill - Latein Trainer - Latintrainer
  
-Eine [AWS Lambda](http://aws.amazon.com/lambda) Funktion, mit der man lateinische Vokabeln üben kann. 
+An [AWS Lambda](http://aws.amazon.com/lambda) function to learn Latin vocabulary.
 
 ## Features
-- Auswahl der Übersetzungsrichtung (Latein-Deutsch oder Deutsch-Latein)
-- Auswahl aus verschiedenen Modi (Fortschritt, Zufall und Kapitel)
-- Ermittlung des Lernerfolgs durch Punktesystem
+- Choose direction of translation (Latin-German or German-Latin)
+- Choose the mode of learning (Progress, Random und Chapter)
+- Highscore functionality implemented
 
 ## Setup
 To run this skill you need to do two things. The first is to deploy the example code in lambda, and the second is to configure the Alexa skill to use Lambda.
@@ -23,35 +23,47 @@ Now that the skill code has been uploaded to AWS Lambda we're ready to configure
 Now we're ready to define the interaction model for the skill. Under “Invocation” tab on the left side, define your Skill Invocation Name to be Latintrainer.
 
 Now it’s time to add an intent to the skill. Click the “Add” button under the Intents section of the Interaction Model. Leave “Create custom intent” selected, enter “SetConfigIntent” for the intent name, and create the intent. Now it’s time to add some sample utterances that will be used to invoke the intent. For this example, we’ve provided the following sample utterances, but feel free to add others.
+
 ```
 Konfigurieren
 Settings
 Einstellungen
 ```
+
 Now we need to add some Intents to configure the skill. There are three more Intents concerning configuration options.
 "SetModeIntent" with the utterances:
+
 ```
 Waehle Modus {mode}
 ```
+
 Let's add a Slot Type. You can find it below Built-In Intents.Click "Add Slot Type" and under "Create custom slot type", enter the name as "LIST_OF_MODES". Add below values one at a time for this slot type.
+
 ```
 Kapitel
 Fortschritt
 Zufall
 ```
+
 Second configuration option is triggered with the "SetDirectionIntent".
+
 ```
 Waehle Richtung {dir}
 ```
+
 It has an own Slot Type named "List_OF_DIRS" containing the values:
+
 ```
 Deutsch
 Lateinisch
 ```
+
 Finally you can choose the chapter to start with by triggering "SetChapterIntent".
+
 ```
 Waehle Kapitel {chap}
 ```
+
 Create a slot "chap" and select AMAZON.NUMBER als Slot Type.
 
 In de_DE.json model-file there are more intents listed. You must create utterances but don't need any special Slot Types.
@@ -59,6 +71,7 @@ In de_DE.json model-file there are more intents listed. You must create utteranc
 Since AMAZON.CancelIntent, AMAZON.HelpIntent, and AMAZON.StopIntent are built-in Alexa intents, sample utterances do not need to be provided as they are automatically inherited.
 
 The Developer Console alternately allows you to edit the entire skill model in JSON format by selecting “JSON Editor” on the navigation bar. For this sample, the following JSON schema can be used.
+
 ```
 {
     "interactionModel": {
@@ -358,7 +371,6 @@ The Developer Console alternately allows you to edit the entire skill model in J
     }
 }
 ```
-
 
 Once you’re done editing the interaction model don't forget to save and build the model.
 
