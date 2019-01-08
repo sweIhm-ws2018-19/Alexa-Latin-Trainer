@@ -26,4 +26,24 @@ Damit der User weiß, wie erfolgreich eine Session ist/war, kann er seinen jetzi
 <img src="images/progress_diagram.JPG" alt="progress" class="inline"/><br/>
 
 ## Sonstiges
-Was ich gelernt habe: viel!
+Technische learnings:
+- Build-Management tool Maven
+- Version control and source code management via Github 
+- Continuous integration tool Travis-CI
+- Continuous code inspection tool SonarQube
+- UML design tool draw.io
+- AWS services AWS Lambda and Dynamo DB
+- Alexa Skills Kit SDK
+- Alexa Developer Console
+- REST API
+- mehr Java... 
+
+Weitere learnings:
+- agile Softwareentwicklung nach SCRUM
+- Grundlagen UML
+- Anforderungsanalyse
+- Entwurfsmuster
+- Model-View-Control
+- Software-Lebenszyklus
+
+Während des Projekts wurde die Bedeutung einer erfolgreichen Umsetzung des gewählten Frameworks SCRUM deutlich und wie stark diese vom persönlichen Engagement der beteiligten Mitglieder abhängt, um Projektziele zu erreichen. 
