@@ -19,8 +19,12 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 ## Klassendiagramm des AWS Lambda Funktion
 <img src="" alt="Klassenmodell" class="inline"/>
 
-## Aktivitätsdiagramm Lieblingsfarbe eingeben
-<img src="" alt="Lieblingsfarbe eingeben" class="inline"/>
+## Aktivitäts- und Klassendiagramme
+<img src="query_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
+<img src="config_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
+<img src="progress_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
+<img src="highscore_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
+<img src="session_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
 
 ## Sonstiges
 Was ich gelernt habe: viel!
