@@ -17,15 +17,12 @@ Damit der User weiß, wie erfolgreich eine Session ist/war, kann er seinen jetzi
 ## Anwendungsfalldiagramm
 <img src="images/Anwendungsfalldiagramm.jpeg" alt="Anwendungsfalldiagramm" class="inline"/>
 
-## Klassendiagramm des AWS Lambda Funktion
-<img src="" alt="Klassenmodell" class="inline"/>
-
 ## Aktivitäts- und Klassendiagramme
 <img src="images/query_diagram.JPG" alt="query" class="inline"/><br/>
 <img src="images/config_diagram.JPG" alt="config" class="inline"/><br/>
 <img src="images/highscore_diagram.JPG" alt="highscore" class="inline"/><br/>
 <img src="images/get_progress_diagram.JPG" alt="highscore" class="inline"/><br/>
-<img src="images/session_diagram.JPG" alt="session" class="inline"/><br/>
+<img src="images/Session_final.jpg" alt="session" class="inline"/><br/>
 <img src="images/progress_diagram.JPG" alt="progress" class="inline"/><br/>
 
 ## Sonstiges
