@@ -1,3 +1,4 @@
+<body background="caesar1.jpg">
 # Lateintrainer
 
 _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Leben lernen wir. - **Seneca**
@@ -30,3 +31,4 @@ Damit der User weiß, wie erfolgreich eine Session ist/war, kann er seinen jetzi
 
 ## Sonstiges
 Was ich gelernt habe: viel!
+</body>
