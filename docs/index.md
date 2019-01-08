@@ -14,8 +14,12 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 Der Skill soll jedem, der Interesse an der lateinischen Sprache hat, die Möglichkeit bieten, wichtige Wörter effizient zu erlernen.<br/>
 Außerdem kann der User sehr viele Konfigurationen vornehmen, um die Abfrageart von Alexa auf seine Vorlieben anzupassen.<br/>
 Damit der User weiß, wie erfolgreich eine Session ist/war, kann er seinen jetzigen Fortschritt sowie Highscores nach Belieben abrufen.
+
 ## Anwendungsfalldiagramm
 <img src="images/Anwendungsfalldiagramm.jpeg" alt="Anwendungsfalldiagramm" class="inline"/>
+
+## Fachklassendiagramm
+<img src="images/Fachklassenmodell.png" alt="Fachklassendiagramm" class="inline"/>
 
 ## Aktivitäts- und Klassendiagramme
 <img src="images/query_diagram.JPG" alt="query" class="inline"/><br/>
