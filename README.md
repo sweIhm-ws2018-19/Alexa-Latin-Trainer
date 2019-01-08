@@ -22,11 +22,35 @@ Now that the skill code has been uploaded to AWS Lambda we're ready to configure
 
 Now we're ready to define the interaction model for the skill. Under “Invocation” tab on the left side, define your Skill Invocation Name to be Latintrainer.
 
-Now it’s time to add an intent to the skill. Click the “Add” button under the Intents section of the Interaction Model. Leave “Create custom intent” selected, enter “SetModeIntentHandler” for the intent name, and create the intent. Now it’s time to add some sample utterances that will be used to invoke the intent. For this example, we’ve provided the following sample utterances, but feel free to add others.
+Now it’s time to add an intent to the skill. Click the “Add” button under the Intents section of the Interaction Model. Leave “Create custom intent” selected, enter “SetConfigIntent” for the intent name, and create the intent. Now it’s time to add some sample utterances that will be used to invoke the intent. For this example, we’ve provided the following sample utterances, but feel free to add others.
 ```
-Wähle Modus Zufall
-Wähle Modus Kapitel
-Wähle Modus Fortschritt
+Konfigurieren
+Settings
+Einstellungen
+```
+Now we need to add some Intents to configure the skill. There are three more Intents concerning configuration options.
+"SetModeIntent" with the utterances:
+```
+Waehle Modus {mode}
+```
+Let's add a Slot Type. You can find it below Built-In Intents.Click "Add Slot Type" and under "Create custom slot type", enter the name as "LIST_OF_MODES". Add below values one at a time for this slot type.
+```
+Kapitel
+Fortschritt
+Zufall
+```
+Second configuration option is triggered with the "SetDirectionIntent".
+```
+Waehle Richtung {dir}
+```
+It has an own Slot Type named "List_OF_DIRS" containing the values:
+```
+Deutsch
+Lateinisch
+```
+Finally you can choose the chapter to start with by triggering "SetChapterIntent".
+```
+Waehle Kapitel {AMAZON.Number}
 ```
 
 
