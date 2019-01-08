@@ -1,7 +1,7 @@
 # Lateintrainer
 
 _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Leben lernen wir. - **Seneca**
-<img src="images/caesar2.jpg" alt="bildchen" class="inline"/>
+<center><img src="images/caesar2.jpg" alt="bildchen" class="inline"/></center>
 
 ## Status
 [![Travis-CI Status](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1.svg?branch=master)](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1)
@@ -14,7 +14,7 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 <img src="" alt="Systemkontext" class="inline"/>
 
 ## Anwendungsfalldiagramm
-<img src="" alt="Anwendungsfalldiagramm" class="inline"/>
+<img src="images/Anwendungsfalldiagramm.jpeg" alt="Anwendungsfalldiagramm" class="inline"/>
 
 ## Klassendiagramm des AWS Lambda Funktion
 <img src="" alt="Klassenmodell" class="inline"/>
