@@ -1,6 +1,8 @@
 ﻿# Alexa Skill - Latein Trainer - Latintrainer
  
-An [AWS Lambda](http://aws.amazon.com/lambda) function to learn Latin vocabulary.
+An [AWS Lambda](http://aws.amazon.com/lambda) function to learn Latin vocabulary. 
+
+To learn more about the LatinTrainer Project visit click [here](https://sweihm-ws2018-19.github.io/skillproject-di-1/).
 
 ## Features
 - Choose direction of translation (Latin-German or German-Latin)
