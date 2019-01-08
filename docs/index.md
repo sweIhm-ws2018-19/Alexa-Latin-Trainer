@@ -4,8 +4,7 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 <img src="images/caesar2.jpg" alt="bildchen" class="inline"/>
 
 ## Status
-[![Travis-CI Status](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1.svg?branch=master)]https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1)
-
+[![Travis-CI Status](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1.svg?branch=master)](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=alexa-skills-kit-samples%3Alatintrainer&metric=alert_status)](https://sonarcloud.io/dashboard?id=alexa-skills-kit-samples%3Alatintrainer)
 
 <img src="images/asterix.jpg" alt="bild2" class="inline"/> <img src="images/caesar1.jpg" alt="bild3" class="inline"/>
