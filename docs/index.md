@@ -10,8 +10,9 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 <img src="images/asterix.jpg" alt="bild2" class="inline"/> <img src="images/caesar1.jpg" alt="bild3" class="inline"/>
 
 
-## Systemarchitektur
-<img src="" alt="Systemkontext" class="inline"/>
+## Systemidee
+Der Skill soll jedem, der Interesse an der lateinischen Sprache hat, die Möglichkeit bieten, wichtige Wörter effizient zu erlernen.
+Außerdem kann der User sehr viele Konfigurationen vornehmen, um die Abfrageart von Alexa auf seine Vorlieben anzupassen.
 
 ## Anwendungsfalldiagramm
 <img src="images/Anwendungsfalldiagramm.jpeg" alt="Anwendungsfalldiagramm" class="inline"/>
@@ -22,8 +23,9 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 ## Aktivitäts- und Klassendiagramme
 <img src="images/query_diagram.JPG" alt="query" class="inline"/>
 <img src="images/config_diagram.JPG" alt="config" class="inline"/>
-<img src="images/progress_diagram.JPG" alt="progress" class="inline"/>
 <img src="images/highscore_diagram.JPG" alt="highscore" class="inline"/>
+<img src="images/get_progress_diagram.JPG" alt="highscore" class="inline"/>
+<img src="images/progress_diagram.JPG" alt="progress" class="inline"/>
 <img src="images/session_diagram.JPG" alt="session" class="inline"/>
 
 ## Sonstiges
