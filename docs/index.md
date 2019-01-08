@@ -1,13 +1,13 @@
 # Lateintrainer
 
 _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Leben lernen wir. - **Seneca**
-<p><p><p><p><p><p><img src="images/caesar2.jpg" alt="bildchen" class="inline"/>
+<img src="images/caesar2.jpg" alt="bildchen" class="inline"/>
 
 ## Status
 [![Travis-CI Status](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1.svg?branch=master)](https://travis-ci.org/sweIhm-ws2018-19/skillproject-di-1)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=alexa-skills-kit-samples%3Alatintrainer&metric=alert_status)](https://sonarcloud.io/dashboard?id=alexa-skills-kit-samples%3Alatintrainer)
 
-<img src="images/asterix.jpg" alt="bild2" class="inline"/> <p><p><p><p><p><p><p><img src="images/caesar1.jpg" alt="bild3" class="inline"/>
+<img src="images/asterix.jpg" alt="bild2" class="inline"/> <img src="images/caesar1.jpg" alt="bild3" class="inline"/>
 
 
 ## Systemidee
@@ -25,8 +25,8 @@ Damit der User weiß, wie erfolgreich eine Session ist/war, kann er seinen jetzi
 <img src="images/config_diagram.JPG" alt="config" class="inline"/>
 <img src="images/highscore_diagram.JPG" alt="highscore" class="inline"/>
 <img src="images/get_progress_diagram.JPG" alt="highscore" class="inline"/>
-<img src="images/progress_diagram.JPG" alt="progress" class="inline"/>
 <img src="images/session_diagram.JPG" alt="session" class="inline"/>
+<img src="images/progress_diagram.JPG" alt="progress" class="inline"/>
 
 ## Sonstiges
 Was ich gelernt habe: viel!
