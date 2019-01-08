@@ -50,17 +50,320 @@ Lateinisch
 ```
 Finally you can choose the chapter to start with by triggering "SetChapterIntent".
 ```
-Waehle Kapitel {AMAZON.Number}
+Waehle Kapitel {chap}
+```
+Create a slot "chap" and select AMAZON.NUMBER als Slot Type.
+
+In de_DE.json model-file there are more intents listed. You must create utterances but don't need any special Slot Types.
+
+Since AMAZON.CancelIntent, AMAZON.HelpIntent, and AMAZON.StopIntent are built-in Alexa intents, sample utterances do not need to be provided as they are automatically inherited.
+
+The Developer Console alternately allows you to edit the entire skill model in JSON format by selecting “JSON Editor” on the navigation bar. For this sample, the following JSON schema can be used.
+```
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "lateintrainer",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "SetModeIntent",
+                    "slots": [
+                        {
+                            "name": "mode",
+                            "type": "LIST_OF_MODES"
+                        }
+                    ],
+                    "samples": [
+                        "Waehle Modus {mode}",
+                        "Modus {mode}"
+                    ]
+                },
+                {
+                    "name": "SetDirectionIntent",
+                    "slots": [
+                        {
+                            "name": "dir",
+                            "type": "LIST_OF_DIRS"
+                        }
+                    ],
+                    "samples": [
+                        "Waehle Richtung {dir}",
+                        "Richtung {dir}",
+                        "{dir}"
+                    ]
+                },
+                {
+                    "name": "SetConfigIntent",
+                    "slots": [],
+                    "samples": [
+                        "Konfigurieren",
+                        "Einstellungen",
+                        "config",
+                        "Settings",
+                        "Session bearbeiten"
+                    ]
+                },
+                {
+                    "name": "NextWordIntent",
+                    "slots": [],
+                    "samples": [
+                        "Starte direkt",
+                        "Neues Wort",
+                        "Ueberspringen",
+                        "Next"
+                    ]
+                },
+                {
+                    "name": "CheckAnswerIntent",
+                    "slots": [
+                        {
+                            "name": "Answer",
+                            "type": "LIST_OF_ANSWERS"
+                        }
+                    ],
+                    "samples": [
+                        "Die Antwort ist {Answer}",
+                        "check {Answer}"
+                    ]
+                },
+                {
+                    "name": "NoIdeaIntent",
+                    "slots": [],
+                    "samples": [
+                        "weiß nicht",
+                        "keine Ahnung",
+                        "kein Plan"
+                    ]
+                },
+                {
+                    "name": "TellMeIntent",
+                    "slots": [],
+                    "samples": [
+                        "Auflösen",
+                        "Sags mir"
+                    ]
+                },
+                {
+                    "name": "WhatsMySuccessIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wie ist mein Fortschritt",
+                        "In welchem Kapitel bin ich",
+                        "Wie stehe ich",
+                        "Wo stehe ich",
+                        "Welches Kapitel",
+                        "Fortschritt"
+                    ]
+                },
+                {
+                    "name": "RepeatWordIntent",
+                    "slots": [],
+                    "samples": [
+                        "Wiederholen",
+                        "Nochmal",
+                        "Wie bitte"
+                    ]
+                },
+                {
+                    "name": "WhatsMyHighscoreIntent",
+                    "slots": [],
+                    "samples": [
+                        "Punktestand",
+                        "Wie viele Punkte hab ich gerade",
+                        "Was ist mein Highscore",
+                        "Highscore"
+                    ]
+                },
+                {
+                    "name": "AMAZON.PauseIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ResumeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "SetChapterIntent",
+                    "slots": [
+                        {
+                            "name": "chap",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "waehle Kapitel {chap}",
+                        "Kapitel {chap}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "LIST_OF_ANSWERS",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Sonne"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Haus"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Freund"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Lehrer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Eifer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "lieben"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "vor"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Berg"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Wort"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Recht"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Gesetz"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "anvertrauen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tapfer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "versuchen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "zurückkehren"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "gut"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schwer"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "nur"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "kommen"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sehen"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LIST_OF_DIRS",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Deutsch"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Lateinisch"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LIST_OF_MODES",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Zufall"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Fortschritt"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kapitel"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
 ```
 
 
-## Anleitung
-Nachdem der Skill gestartet wird und bevor die Abfrage der Vokabeln beginnt, werden dem User Fragen zur Konfiguration gestellt.
+Once you’re done editing the interaction model don't forget to save and build the model.
 
-Beispiele für Spracheingaben durch den User:
-- Starten des Skills: "Alexa, lerne Latein mit mir"
-- Modusauswahl: "Fortschritt" oder "Zufall"
-- Vokabelabfrage: bei richtigen Antworten wird sofort die nächste Abfrage eingeleitet, bei nicht richtigen Antworten hat der User die Möglichkeit die aktuelle Vokabel zu "wiederholen", zu "überspringen" oder "auflösen" zu lassen
-- Abfrage des Fortschritts: "Wo bin ich stehen geblieben?"
-- Skill beenden: "Ende" -> Alexa sagt den Highscore der aktuellen Session an und verabschiedet sich
+Let's move on to the skill configuration section. Under “Endpoint” select “AWS Lambda ARN” and paste in the ARN of the function you created previously. The rest of the settings can be left at their default values. Click “Save Endpoints” and proceed to the next section.
 
+Finally you're ready to test the skill! In the “Test” tab of the developer console you can simulate requests, in text and voice form, to your skill. Use the invocation name along with one of the sample utterances we just configured as a guide. You should also be able to go to the [Echo webpage](https://alexa.amazon.de/spa/index.html#welcome) and see your skill listed under “Your Skills”, where you can enable the skill on your account for testing from an Alexa enabled device.
+
+At this point, feel free to start experimenting with your Intent Schema as well as the corresponding request handlers in your skill's implementation. Once you're finished iterating, you can optionally choose to move on to the process of getting your skill certified and published so it can be used by Alexa users worldwide.
