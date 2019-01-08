@@ -20,11 +20,11 @@ _"Non scholae, sed vitae discimus"_ - Nicht für die Schule, sondern für das Le
 <img src="" alt="Klassenmodell" class="inline"/>
 
 ## Aktivitäts- und Klassendiagramme
-<img src="query_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
-<img src="config_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
-<img src="progress_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
-<img src="highscore_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
-<img src="session_diagram.JPG" alt="Lieblingsfarbe eingeben" class="inline"/>
+<img src="images/query_diagram.JPG" alt="query" class="inline"/>
+<img src="images/config_diagram.JPG" alt="config" class="inline"/>
+<img src="images/progress_diagram.JPG" alt="progress" class="inline"/>
+<img src="images/highscore_diagram.JPG" alt="highscore" class="inline"/>
+<img src="images/session_diagram.JPG" alt="session" class="inline"/>
 
 ## Sonstiges
 Was ich gelernt habe: viel!
